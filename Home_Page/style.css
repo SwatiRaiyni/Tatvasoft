@@ -10,13 +10,12 @@
   html{
     scroll-behavior: smooth;
   }
-  .section{
-      padding: 200px 0;
-    }
+  
     .max-width{
       max-width: 1000px;
       padding: 0 80px;
       margin: auto;
+
     }
     .topnav {
       overflow: hidden;
@@ -31,6 +30,9 @@
       padding: 14px 16px;
       text-decoration: none;
       font-size: 17px;
+    }
+    .navbar a{
+        color: white;
     }
     
     .active {
@@ -75,6 +77,7 @@
       display: block;
       text-align: left;
     }
+   
     
     .topnav a:hover, .dropdown:hover .dropbtn {
       background-color: #555;
@@ -91,9 +94,9 @@
     }
     
     .white_logo_transparent_background-copy-6 {
-        width: 73px;
-        height: 54px;
-        margin: 0 601px 0 0;
+        width: 175px;
+        height:auto;
+      
       }
       @media screen and (max-width: 600px) {
           .topnav a:not(:first-child), .dropdown .dropbtn {
@@ -139,9 +142,7 @@
 
 
 /* all similar content styling codes */
-section{
-    padding: 100px 0;
-}
+
 
 
 section .title{
@@ -175,7 +176,7 @@ section .title::after{
 }
 /* home section styling */
 .home{
-    display: flex;
+   
     background: url("assets_Homepage/group-35.png") no-repeat center;
     height: auto;
     color:white;
@@ -258,23 +259,30 @@ img.Forma-1-copy {
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #4f4f4f;
+  
 }
-#Why-Helperland {
-  width: 28px;
-  height: 38px;
-  margin: 87px -100px 84px 90px;
+#Why-Helperland { 
   font-family: Roboto;
-  font-size: 30px;
+  line-height: 54px;
+  font-size: 20px;
   text-align: center;
-  float: center;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
+  border: 1px solid white;
+  border-radius: 54px;
+  padding:0 20px;
+  background-color:#006072;
   letter-spacing: normal;
-  text-align: left;
   color:white;
 }
+.steps{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.icon{
+  text-align: center;
+  margin-top: 30px;
+}
+
 .item {
   position: relative;  
   overflow: hidden;
@@ -379,7 +387,11 @@ img.Group-24 {
     
     padding: 20px;
     display: flex;
+    flex-wrap: wrap !important;
+    
 }
+
+
 .column{
     float: left;
     width:25%;
@@ -506,6 +518,7 @@ img.Group-33 {
   color: #f1f1f1;
 }
 
+
 .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu .text-style-1 {
   color: #6eabef;
 }
@@ -594,7 +607,6 @@ img.Group-33 {
   }
  
 }
-
 
 
 
