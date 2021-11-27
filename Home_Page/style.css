@@ -275,6 +275,7 @@ img.Forma-1-copy {
 }
 .steps{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
 }
@@ -388,6 +389,8 @@ img.Group-24 {
     padding: 20px;
     display: flex;
     flex-wrap: wrap !important;
+    justify-content: space-between;
+    align-items: stretch;
     
 }
 
@@ -696,3 +699,77 @@ width: 106px;
 height: 78px;
 margin: 0 262px 26px 2px;
 }  
+
+
+.home_s4{
+    background-color: #F4F5F8;
+  
+    padding-top: 10px;
+    
+}
+
+.home_s4_card_container{
+    padding-top: 56px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home_s4_card{
+    width: 350px;
+    height: 350px;
+    padding:30px;
+    background-color: white;
+    border-left: 4px solid blue;
+    border-radius: 4px;
+    position: relative;
+   
+    }
+   
+    p{
+        padding-top: 25px;
+        color:paragraph_color;
+        line-height: 22px;
+    }
+    a{
+        margin-top: 25px;
+        color:paragraph_color;
+       
+    }
+
+
+
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+   
+
+
+@media screen and (max-width:550px) {
+    .home_s4{
+        height:100%;
+        width:100%;
+        padding:side_padding_r;
+        padding-top: 50px;
+    }
+    .home_s4_card_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .home_s4_card{
+        margin:30px 0;
+        width:100%;
+        height: auto;
+    }
+
+
+  }
+  .home_s1_down_btn{
+    margin:0 auto;
+    margin-top: 42px;
+    background-color: black;
+    border:0;
+    border-radius: 50%;
+}
