@@ -6,3 +6,11 @@ function myFunction() {
       x.className = "topnav";
     }
   }
+  $(document).ready(function(){
+    $("#demo").on("hide.bs.collapse", function(){
+      $(".btn").html('<img src="assets/vector-smart-object-copy.png">');
+    });
+    $("#demo").on("show.bs.collapse", function(){
+      $(".btn").html('<img src="assets/vector-smart-object.png"> ');
+    });
+  });
