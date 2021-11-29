@@ -27,13 +27,13 @@
         
       </div> 
       
-  <a href="#about" class="active rounded-pill border-1 rp" >Become a helper</a>
-  <a href="#about" class="active rounded-pill border-1 rp">Login</a>
+  <a href="#about" class="acti rounded-pill border-1 rp" >Become a helper</a>
+  <a href="#about" class="acti rounded-pill border-1 rp">Login</a>
   <a href="#contact">Contact</a>
   <a href="#about">Blog</a>
   <a href="#contact">Warranty</a>
-  <a href="#news" class="active rounded-pill border-2 rp " style="border-color: white;">Prices & Services</a>
-  <a href="#home" class="active rounded-pill border-1 rp">Book Now</a>
+  <a href="#news" class="acti rounded-pill border-2 rp " style="border-color: white;">Prices & Services</a>
+  <a href="#home" class="acti rounded-pill border-1 rp">Book Now</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 
@@ -43,27 +43,33 @@
              class="responsive" width="1560" height="500">
 
              <h5 style="font-size:30px; text-align: center; margin-top: 36px;">FAQS</h5>
+             <div class="underline-design ">
+              <div class="line " style="margin-right: 10px;"></div>
+              <img src="assets/faq-star.png " alt=" ">
+              <div class="line " style="margin-left: 10px;"></div>
+          </div>
              <p style="text-align:center; font-size: 18px;">Whether you are Customer or Service provider,</p>
              <p style="text-align:center; font-size: 18px;">We have tried our best to solve all your queries 
              and questions.</p>
              <div class="container">
              <ul class="nav nav-tabs  justify-content-center">
-              <li style="background-color: #1d7a8c; font-size: 24px; width: 400px; text-align: center;" ><a href="#" style="color: white;">For Customers</a></li>
-              <li style=" font-size: 24px; width: 400px; background-color:gainsboro; text-align: center; border-bottom: #1d7a8c;"><a href="#" style="color: black">For Service Provider</a></li>
+              <li style="background-color: #1d7a8c; font-size: 24px; width: 400px; text-align: center;"><a  data-toggle="pill" href="#s1" style="color:black;">For Customers</a></li>
+              <li style=" font-size: 24px; width: 400px; background-color:gainsboro; text-align: center;"><a href="#s2" data-toggle="pill" style="color: black">For Service Provider</a></li>
               
             </ul>
             </div>
              
           <br>
           <br>
-         
-        <div style="margin-left: 300px; margin-right: 300px;">
+         <div class="tab-content">
+           <!--for customer-->
+        <div style="margin-left: 300px; margin-right: 300px;"  class="tab-pane fade in active" id="s1">
          <div style="display: flex; flex-wrap: wrap;" >
-          <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+          <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo1" style="background-color:whitesmoke !important;">
            <img src="assets/vector-smart-object-copy.png">
           </button>
-         <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-         <div id="demo" class="collapse container-fluid"">
+         <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, </p>
+         <div id="demo1" class="collapse container-fluid">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
          </div>
          </div>
@@ -79,75 +85,168 @@
           </div>
 
           <div style="display: flex; flex-wrap: wrap;">
-            <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+            <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo3" style="background-color:whitesmoke !important;">
               <img src="assets/vector-smart-object-copy.png">
             </button>
             <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-            <div id="demo" class="collapse container-fluid">
+            <div id="demo3" class="collapse container-fluid">
              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
             </div>
             </div>
 
             <div style="display: flex; flex-wrap: wrap;">
-              <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+              <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo4" style="background-color:whitesmoke !important;">
                 <img src="assets/vector-smart-object-copy.png">
               </button>
               <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-              <div id="demo" class="collapse container-fluid">
+              <div id="demo4" class="collapse container-fluid">
                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
               </div>
               </div>
 
               <div style="display: flex; flex-wrap: wrap;">
-                <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+                <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo5" style="background-color:whitesmoke !important;">
                   <img src="assets/vector-smart-object-copy.png">
                 </button>
                 <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-                <div id="demo" class="collapse container-fluid">
+                <div id="demo5" class="collapse container-fluid">
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
                 </div>
                 </div>
 
                 <div style="display: flex; flex-wrap: wrap;">
-                  <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+                  <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo6" style="background-color:whitesmoke !important;">
                     <img src="assets/vector-smart-object-copy.png">
                   </button>
                   <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-                  <div id="demo" class="collapse container-fluid">
+                  <div id="demo6" class="collapse container-fluid">
                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
                   </div>
                   </div>
 
                   <div style="display: flex; flex-wrap: wrap;">
-                    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+                    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo7" style="background-color:whitesmoke !important;">
                       <img src="assets/vector-smart-object-copy.png"> 
                     </button>
                     <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-                    <div id="demo" class="collapse container-fluid">
+                    <div id="demo7" class="collapse container-fluid">
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
                     </div>
                     </div>
 
                     <div style="display: flex; flex-wrap: wrap;">
-                      <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+                      <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo8" style="background-color:whitesmoke !important;">
                         <img src="assets/vector-smart-object-copy.png">
                         </button>
                       <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-                      <div id="demo" class="collapse container-fluid">
+                      <div id="demo8" class="collapse container-fluid">
                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
                       </div>
                       </div>
 
                       <div style="display: flex; flex-wrap: wrap;">
-                        <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo" style="background-color:whitesmoke !important;">
+                        <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo9" style="background-color:whitesmoke !important;">
                           <img src="assets/vector-smart-object-copy.png">
                         </button>
                         <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
-                        <div id="demo" class="collapse container-fluid">
+                        <div id="demo9" class="collapse container-fluid">
                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
                         </div>
                         </div>
-        </div>
+                      </div>
+
+                      <!--for service provider-->
+                      <div style="margin-left: 300px; margin-right: 300px;"  class="tab-pane fade" id="s2">
+                        <div style="display: flex; flex-wrap: wrap;" >
+                         <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#s" style="background-color:whitesmoke !important;">
+                          <img src="assets/vector-smart-object-copy.png">
+                         </button>
+                        <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                        <div id="s" class="collapse container-fluid"">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                        </div>
+                        </div>
+               
+                        <div style="display: flex; flex-wrap: wrap;">
+                         <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo12" style="background-color:whitesmoke !important;">
+                           <img src="assets/vector-smart-object-copy.png">
+                         </button>
+                         <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                         <div id="demo12" class="collapse container-fluid">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                         </div>
+                         </div>
+               
+                         <div style="display: flex; flex-wrap: wrap;">
+                           <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo13" style="background-color:whitesmoke !important;">
+                             <img src="assets/vector-smart-object-copy.png">
+                           </button>
+                           <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                           <div id="demo13" class="collapse container-fluid">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                           </div>
+                           </div>
+               
+                           <div style="display: flex; flex-wrap: wrap;">
+                             <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo14" style="background-color:whitesmoke !important;">
+                               <img src="assets/vector-smart-object-copy.png">
+                             </button>
+                             <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                             <div id="demo14" class="collapse container-fluid">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                             </div>
+                             </div>
+               
+                             <div style="display: flex; flex-wrap: wrap;">
+                               <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo15" style="background-color:whitesmoke !important;">
+                                 <img src="assets/vector-smart-object-copy.png">
+                               </button>
+                               <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                               <div id="demo15" class="collapse container-fluid">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                               </div>
+                               </div>
+               
+                               <div style="display: flex; flex-wrap: wrap;">
+                                 <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo16" style="background-color:whitesmoke !important;">
+                                   <img src="assets/vector-smart-object-copy.png">
+                                 </button>
+                                 <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                                 <div id="demo16" class="collapse container-fluid">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                                 </div>
+                                 </div>
+               
+                                 <div style="display: flex; flex-wrap: wrap;">
+                                   <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo17" style="background-color:whitesmoke !important;">
+                                     <img src="assets/vector-smart-object-copy.png"> 
+                                   </button>
+                                   <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                                   <div id="demo17" class="collapse container-fluid">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                                   </div>
+                                   </div>
+               
+                                   <div style="display: flex; flex-wrap: wrap;">
+                                     <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo18" style="background-color:whitesmoke !important;">
+                                       <img src="assets/vector-smart-object-copy.png">
+                                       </button>
+                                     <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                                     <div id="demo18" class="collapse container-fluid">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                                     </div>
+                                     </div>
+               
+                                     <div style="display: flex; flex-wrap: wrap;">
+                                       <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo19" style="background-color:whitesmoke !important;">
+                                         <img src="assets/vector-smart-object-copy.png">
+                                       </button>
+                                       <p class="loc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</p>
+                                       <div id="demo19" class="collapse container-fluid">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum. 
+                                       </div>
+                                       </div>
+        </div> </div>
        
           <h5 style="font-size:30px; text-align: center; margin-top: 30px;">GET OUR NEWSLETTER</h5><br>
           <div id="container">
