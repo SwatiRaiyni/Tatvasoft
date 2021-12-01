@@ -8,10 +8,10 @@ function myFunction() {
   }
   $(document).ready(function(){
     $("#demo").on("hide.bs.collapse", function(){
-      $(".btn").html('<img src="assets/vector-smart-object-copy.png">');
+      $("#btn").html('<img src="assets/vector-smart-object-copy.png">');
     });
     $("#demo").on("show.bs.collapse", function(){
-      $(".btn").html('<img src="assets/vector-smart-object.png"> ');
+      $("#btn").html('<img src="assets/vector-smart-object.png"> ');
     });
     $("#demo1").on("hide.bs.collapse", function(){
       $(".btn").html('<img src="assets/vector-smart-object-copy.png">');
@@ -62,10 +62,10 @@ function myFunction() {
       $(".btn").html('<img src="assets/vector-smart-object.png"> ');
     });
     $("#s").on("hide.bs.collapse", function(){
-      $(".btn").html('<img src="assets/vector-smart-object-copy.png">');
+      $("#btn").html('<img src="assets/vector-smart-object-copy.png">');
     });
     $("#s").on("show.bs.collapse", function(){
-      $(".btn").html('<img src="assets/vector-smart-object.png"> ');
+      $("#btn").html('<img src="assets/vector-smart-object.png"> ');
     });
     $("#demo19").on("hide.bs.collapse", function(){
       $(".btn").html('<img src="assets/vector-smart-object-copy.png">');
