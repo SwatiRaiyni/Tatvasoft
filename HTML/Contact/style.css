@@ -41,10 +41,10 @@ html{
   .rp{
     line-height: 12px;
     margin-top: 10px;
+    border:1px solid #FFFFFF80;
     
     
   }
-  
   .topnav .icon {
     display: none;
   }
@@ -242,125 +242,135 @@ html{
     
       
       /*footer section*/
-      .footer-section {
-        background-color: black;
-        height: 132px;
-        width: 100%;
-      }
+  .footer-section {
+    background-color: black;
+    
+    width: 100%;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  
+    padding-top: 2rem;
+    margin: 0 120px;
+  
+  }
+  
+  .footer img {
+    width: fit-content;
+  }
+  
+  .social-icon {
+    text-align: end;
+  }
+  
+ 
+  
+  .footer-nav a {
+    color: white;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  
+  .footer-nav a:hover {
+    color: yellow;
+  }
+  
+  .fb-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    
+  }
+  
+  .fb-icon:hover {
+    color: blue;
+    transition: all 0.2s;
+  }
+  
+  .insta-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+   
+  }
+  
+  .insta-icon:hover {
+    color: darkmagenta;
+    transition: all 0.2s;
+  }
+  
+  .privacy-policy-sec p {
+    margin-bottom: 0 !important;
+    font-size: 15px;
+    align-items: center;
+  }
+  
+  .privacy-policy-sec {
+    background-color: #292929;
+    color: white;
+    padding: 0.5rem 0 0.5rem 0;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn-ok {
+    margin-left: auto;
+    width: 99px;
+    height: 40px;
+    background-color: yellow;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+  }
+
+  @media screen and (max-width:941px) {
+    .footer-logo{
+      width:100% !important;
+      text-align: center;
+    } 
+    .footer-nav {
+      margin-top: 10px;
+      align-items: center;
+      margin:10px auto;
       
-      .footer-content {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        margin-top: auto;
-        padding-top: 2rem;
-        margin-left: 114px;
-      }
-      
-      .footer img {
-        width: fit-content;
-      }
-      
-      .social-icon {
-        text-align: end;
-      }
-      
-      .footer-nav {
-        margin-left: auto;
-      }
-      
-      .footer-nav a {
-        color: white;
-        text-transform: uppercase;
-        font-size: 13px;
-      }
-      
-      .footer-nav a:hover {
-        color: yellow;
-      }
-      
-      .fb-icon {
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        margin-left: auto;
-      }
-      
-      .fb-icon:hover {
-        color: blue;
-        transition: all 0.2s;
-      }
-      
-      .insta-icon {
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        margin-right: 123px;
-      }
-      
-      .insta-icon:hover {
-        color: darkmagenta;
-        transition: all 0.2s;
-      }
-      
-      .privacy-policy-sec p {
-        margin-bottom: 0 !important;
-        font-size: 15px;
-        align-items: center;
-      }
-      
-      .privacy-policy-sec {
-        background-color: #292929;
-        color: white;
-        padding: 0.5rem 0 0.5rem 0;
-        width: 100%;
-        height: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .btn-ok {
-        margin-left: auto;
-        width: 99px;
-        height: 40px;
-        background-color: yellow;
-        outline: none;
-        border: none;
-        border-radius: 25px;
-      }
-      @media screen and (max-width:500px) {
-      
-      .footer-section {
-        height: max-content;
-      }
-      .footer-content {
-        display: inline;
-      }
-      .footer-content img {
-        margin-top: 10px;
-      }
-      .footer-content i {
-        margin-top: 10px;
-        margin-left: 43%;
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
-      .footer-nav {
-        margin-top: 10px;
-      }
-      .fb-icon,
-      .insta-icon {
-        margin-left: 0;
-        margin-right: 0;
-      }
-      .privacy-policy-sec {
-        display: inline-block;
-        text-align: center;
-      }
-      .btn-ok {
-        width: 70px;
-        height: 30px;
-        margin-top: 10px;
-      }
-      }
+    }
+  }
+  @media screen and (max-width:500px) {
+  
+  .footer-section {
+    height: max-content;
+  }
+  
+  .footer-content img {
+    margin-top: 10px;
+  }
+ 
+  .footer-nav {
+    margin-top: 10px;
+    
+  }
+  .fb-icon,
+  .insta-icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .privacy-policy-sec {
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-ok {
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  .footer-logo{
+    width:100% !important;
+  }
+  }
+ 
