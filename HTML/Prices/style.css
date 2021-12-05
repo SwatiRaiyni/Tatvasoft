@@ -20,6 +20,7 @@ html{
   .topnav {
     overflow: hidden;
     background-color:gray;
+    
 
   }
   
@@ -303,8 +304,11 @@ ul.no-bullets {
     margin-bottom: 13px;
   
   }
+  .r h3{
+    font-size: 20px;
+  }
   .lh3{
-    font-weight: bold;
+    font-weight: bold !important;
   }
   .yhl p{
     width: 284px;

@@ -253,7 +253,41 @@ html{
     
   }
 }
-@media screen and (max-width:500px) {
+@media screen and (max-width:530px) {
+  .footer-logo{
+    display: flex;
+    flex-wrap: wrap;
+    width:50% !important;
+    align-items: center;
+    justify-content: center;
+  } 
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    align-items: center;
+    margin:10px auto;
+    
+  }
+  .privacy-policy-sec {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .btn-ok {
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  .footer-logo{
+    width:50% !important;
+  }
+  .abc{
+    width:50px;
+    justify-content: center;
+  }
+}
+/*@media screen and (max-width:500px) {
 
 .footer-section {
   height: max-content;
@@ -285,7 +319,7 @@ html{
   width:100% !important;
 }
 }
-
+*/
 
 
 .white_logo_transparent_background-copy-3 {
