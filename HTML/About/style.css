@@ -4,18 +4,12 @@ body {margin:0;font-family:Arial}
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family:  "Roboto" , sans-serif;
 }
 html{
   scroll-behavior: smooth;
 }
-.section{
-    padding: 200px 0;
-  }
-  .max-width{
-    max-width: 1000px;
-    padding: 0 80px;
-    margin: auto;
-  }
+/*for nav bar*/
   .topnav {
     overflow: hidden;
     background-color:gray;
@@ -28,22 +22,40 @@ html{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
   }
-  
+  /*for rounded pill*/
   .acti
    {
     background-color: #006072;
     color: white;
     
-  }
+}
   .rp{
-    line-height: 12px;
-    margin-top: 10px;
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border:1px solid #FFFFFF80;
-    
-    
+    border-color: white;
+    width: 161px;
+
   }
+  .rp1{
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border:1px solid #FFFFFF80;
+    border-color: white;
+    width: 111px;
+  }
+  .rp3{
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border:1px solid #FFFFFF80;
+    border-color: white;
+    width: 83px;
+  }/* complete*/
   
   .topnav .icon {
     display: none;
@@ -133,48 +145,94 @@ html{
           width: 100%;
           text-align: left;
         }
-      }
+      }/*complete*/
       @media screen and (max-width: 1000px) {
       .forp{
 
         margin-left: 200px !important;
         margin-right: 200px !important;
       }
+     
       }
       @media screen and (max-width: 595px){
         .forp{
-        margin: 10px !important;}
+        margin: 20px !important;}
       } 
+      @media screen and (max-width: 595px){
+        .title-main1{
+          font-size: 30px !important;
+        }
+      }
+      @media screen and (max-width: 372px){
+        .title-main1{
+          font-size: 20px !important;
+        }
+      }
       /*navbar complete*/
 
       .line {
         width: 62px;
         height: 1px;
         background-color: #CCCCCC;
+        margin-right: 10px;
+        margin-left: 10px;
       }
       .underline-design {
         display: flex;
         justify-content: center;
         align-items: center;
       }
+      .title-main1{
+        font-size:36px;
+         text-align: center;
+         margin-top: 30px;
+      }
       #responsive {
         width: 100%;
         max-width: auto;
         height: auto;
+        width:1560;
+        height:500;
       }
-      #container {
-        display: flex;
-         flex-direction: row;
-         justify-content: center;
-         align-items: center;
-      
-      }
+    
 .forp{
   font-size :16px; 
   text-align: center; 
-  margin-left: 300px;
-   margin-right: 300px;
+  margin-left: 290px;
+   margin-right: 288px;
 }
+/* Get newsletter part */
+.title-main2{
+  font-size:18px;
+   text-align: center;
+   margin-top: 30px;
+}
+.email{
+  background-color:#f4f5f8; 
+  border-radius: 50px;
+   width: 233px; 
+  height: 30px;
+   border:solid 1px #565656;
+  }
+  .submitb{
+    background-color: #ff7b6d;
+     border-radius: 50px;
+      width: 88px; 
+      height: 30px;
+       border:0;
+  }
+  .title-main{
+    font-size: 20px !important;
+  }
+
+#container {
+  display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+
+}
+
 
     /*footer section*/
 .footer-section {
@@ -311,40 +369,6 @@ html{
     flex-wrap: wrap;
   }
 }
-/*@media screen and (max-width:500px) {
-
-.footer-section {
-  height: max-content;
-}
-
-.footer-content img {
-  margin-top: 10px;
-}
-
-.footer-nav {
-  margin-top: 10px;
-  
-}
-.fb-icon,
-.insta-icon {
-  margin-left: 0;
-  margin-right: 0;
-}
-.privacy-policy-sec {
-  display: inline-block;
-  text-align: center;
-}
-.btn-ok {
-  width: 70px;
-  height: 30px;
-  margin-top: 10px;
-}
-.footer-logo{
-  width:100% !important;
-}
-}*/
-
-
 
 .white_logo_transparent_background-copy-3 {
   width: 106px;

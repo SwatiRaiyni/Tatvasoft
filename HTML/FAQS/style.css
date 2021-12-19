@@ -10,14 +10,7 @@ body {margin:0;font-family:Arial}
 html{
   scroll-behavior: smooth;
 }
-.section{
-  padding: 200px 0;
-}
-.max-width{
-  max-width: 1000px;
-  padding: 0 80px;
-  margin: auto;
-}
+/* nav bar */
 .topnav {
   overflow: hidden;
   background-color:gray;
@@ -30,20 +23,39 @@ html{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
 }
+.rp{
+  line-height: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border:1px solid #FFFFFF80;
+  border-color: white;
+  width: 161px;
+}
+ 
+ .rp1{
+  line-height: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border:1px solid #FFFFFF80;
+  border-color: white;
+  width: 111px;
+}
+.rp3{
+  line-height: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border:1px solid #FFFFFF80;
+  border-color: white;
+  width: 83px;
+}
+
 
 .acti
  {
   background-color: #006072;
   color: white;
-  
-}
-.rp{
-  line-height: 12px;
-  margin-top: 10px;
-  border:1px solid #FFFFFF80;
-  
   
 }
 
@@ -104,23 +116,20 @@ html{
     height: 54px;
   
   }
-
- 
- 
+  /* img main*/
 .responsive {
   width: 100%;
   max-width: auto;
   height: auto;
+  width:1560;
+   height:500;
 }
 
-.Whether-you-are-Customer-or-Service-provider-We-have-tried-our {
-  width: 100%;
- max-width: auto;
- height: auto;
-  text-align: center;
-
-  width:1560; height:500;
-  
+/* for main heading*/
+.title-main3{
+  font-size:36px;
+   text-align: center;
+    margin-top:40px;
 }
 
 .container {
@@ -136,22 +145,160 @@ html{
    justify-content: center;
    align-items: center;
 }
-.loc{
-   font-weight: bold;
-   font-size: 14px;
- }
 
+/* border for title */
  .line {
   width: 62px;
   height: 1px;
   background-color: #CCCCCC;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .underline-design {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.faqsubpart1{
+  text-align:center; 
+  font-size: 18px;
+  line-height:22px;
+  
+}
+.faqsubpart{
+  text-align:center; 
+  font-size: 18px;
+  line-height:22px;
+  margin-top: 39px;
+}
+/* for content*/
+.wrapping{
+  display: flex;
+   flex-wrap: wrap;
+  justify-content: center;
+}
+.loc{
+  font-weight: bold;
+  font-size: 16px;
+}
+.loc11{
+  font-size: 16px;
+  margin-left: 300px;
+  margin-right: 321px;
+ }
+ 
+ @media screen and (max-width:941px) {
+  .loc11{
+    font-size: 15px;
+    margin: auto !important;
+   
+   }
+ }
+ @media screen and (max-width:1000px) {
+  .loc11{
+    font-size: 15px;
+    margin-left: 100px;
+    margin-right: 100px;
+   
+   }
+ }
 
+ @media screen and (max-width:1041px) {
+  .loc11{
+    font-size: 16px;
+    margin-left: 60px;
+    margin-right: 60px;
+   
+   }
+ }
+ @media screen and (max-width:1215px) {
+  .loc11{
+    font-size: 16px;
+    margin-left: 140px;
+    margin-right: 140px;
+   
+   }
+ }
+ @media screen and (max-width:1048px) {
+  .loc11{
+    font-size: 16px;
+    margin-left: 100px;
+    margin-right: 100px;
+   
+   }
+ }
+ @media screen and (max-width:956px) {
+  .loc11{
+    font-size: 15px;
+    margin:auto !important;
+  
+   
+   }
+ }
+/* end */
+/*get newsletter */
+.email{
+  background-color:#f4f5f8; 
+  border-radius: 50px;
+   width: 233px; 
+  height: 30px;
+   border:solid 1px #565656;
+  }
+  .submitb{
+    background-color: #ff7b6d;
+     border-radius: 50px;
+      width: 88px; 
+      height: 30px;
+       border:0;
+  }
+  .title-main{
+    font-size: 20px !important;
+  }
+  .title-main2{
+    font-size:18px;
+     text-align: center;
+     margin-top: 30px;
+  }
+/* two tabs */
+#menu ul li.selected {
+  background-color:#1d7a8c;
+  color:#646464;
+}
+
+#menu a {
+  background-color: #1d7a8c;
+  color: white;
+  font-size: 24px;
+  width: 400px; 
+  text-align: center;
+  margin-top: 30px;
+ 
+}
+#menu a:hover {
+  
+  background-color:#f6f6f6;
+  color:#646464;
+  border-bottom-color: #1d7a8c solid !important;
+}
+
+#menu a:active {
+  background-color:#f6f6f6;
+  color:#646464 !important;
+  border-color: #1d7a8c !important;
+ 
+}
+@media screen and (max-width:449px) {
+  #menu a{
+    width:310px;
+    font-size: 19px;
+  }
+}
+@media screen and (max-width:320px) {
+  #menu a{
+    width:220px;
+    font-size: 15px;
+  }
+}
 
 /*footer section*/
 .footer-section {

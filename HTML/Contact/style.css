@@ -9,44 +9,55 @@ body {margin:0;font-family:Arial}
 html{
   scroll-behavior: smooth;
 }
-.section{
-    padding: 200px 0;
-  }
-  .max-width{
-    max-width: 1000px;
-    padding: 0 80px;
-    margin: auto;
-  }
-  .topnav {
+
+/* for navbar*/
+.topnav {
     overflow: hidden;
     background-color:gray;
-  }
-  
-  .topnav a {
+}
+.topnav a {
     float: right;
     display: block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
-  }
+    font-size: 16px;
+}
   
-  .acti
+.acti
    {
     background-color: #006072;
     color: white;
     
-  }
+}
   .rp{
-    line-height: 12px;
-    margin-top: 10px;
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border:1px solid #FFFFFF80;
-    
-    
+    border-color: white;
+    width: 161px;
+  }
+  .rp1{
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border:1px solid #FFFFFF80;
+    border-color: white;
+    width: 111px;
+  }
+  .rp3{
+    line-height: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border:1px solid #FFFFFF80;
+    border-color: white;
+    width: 83px;
   }
   .topnav .icon {
     display: none;
+    font-size:15px;
   }
   
   .dropdown {
@@ -103,6 +114,10 @@ html{
     
     
     }
+    .imgtop{
+      width:30px; 
+      height: 40px;
+    }
 
     @media screen and (max-width: 600px) {
         .topnav a:not(:first-child), .dropdown .dropbtn {
@@ -135,112 +150,164 @@ html{
         }
       }
       /*navbar complete*/
-
+      /*for contact main page img*/
+      #responsive {
+        width: 100%;
+        max-width: auto;
+        height: auto;
+        width:1560 ;height:500;
+      }
  /*line with image design*/
 
  .line {
   width: 62px;
   height: 1px;
   background-color: #CCCCCC;
+  margin-right: 10px;
+  margin-left: 10px;
+
 }
 .underline-design {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+/* complete*/
+/* for main title*/
+.title-main1{
+  font-size:36px;
+   text-align: center;
+   margin-top: 30px;
+}
+.title-main3{
+  font-size:28px;
+   text-align: center;
+   margin-top: 30px;
+}
+.title-main2{
+  font-size:18px;
+   text-align: center;
+   margin-top: 30px;
+}
 /* */
 
- /*line*/
+ /*line break*/
  hr{
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 150px;
+  margin-right: 150px;
   border-style: inset;
   border-width: 0.5px;
-  color: #006072;
+  border-color: #00617209;
 }/**/
-      #responsive {
-        width: 100%;
-        max-width: auto;
-        height: auto;
-      }
      
-      input[type=text], select, textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-        
-      }
-      
-      label {
-        padding: 12px 12px 12px 0;
-        display: inline-block;
-      }
-      input[type=text]{
-        align-items: center;
-        padding: 12px 20px;
-      }
-      input[type=submit] {
-        background-color:#006072;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        float: right;
-      }
-      
-      input[type=submit]:hover {
-        background-color:#006072;
-      }
-      /*for form*/
-      .containr {
-        border-radius: 5px;
-        padding: 20px;
-      }
-      
-      .col-25 {
-        float: left;
-        width: 25%;
-        margin-top: 6px;
-      }
-      
-      .col-75 {
-        justify-content: center;
-        align-items: center;
-        margin-left:370px;
-        width: 50%;
-        margin-top: 6px;
-      }
-      
-      /* Clear floats after the columns */
-      .row:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-      
-      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width:1200px) {
-        .col-25, .col-75, input[type=submit] ,input[type=text]{
-          width: 100%;
-          margin-top: 0;
-          margin-left: 0px;
-        }
-      }
-      #container {
+     
+  /* for contact us */    
+  .contact-list{
+        width: 80%;
+        margin: 20px auto;
         display: flex;
-         flex-direction: row;
-         justify-content: center;
-         align-items: center;
-      
-      }
+        justify-content:space-between;
     
-      
+    }
+    .c-img{
+      width: 108px;
+      height: 108px;
+      margin: 10px auto;
+      position: relative;
+  }
+  .c-img img{
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+  }
+  .c-list{
+      display: block;
+      text-align: center;
+  }
+  .c-title{
+      font-size:16px;
+      line-height: 1.5;
+  }
+  /* for form */
+  .modal-body{
+    padding: 5px;
+}
+.modal-body1{
+  padding-bottom: 10px;
+}
+.c-form{
+    width: 50%;
+    margin: 0 auto;
+}
+.form-title{
+    text-align: center;
+    margin: 40px auto;
+    color: #565656;
+}
+.form-control, .input-group-text{
+    height: 50px;
+}
+.submitbtn{
+    text-align: center;
+}
+.submitbtn button{
+    width: 163px;
+    height: 46px;
+    margin: 10px;
+    background-color: #1D7A8C;
+    color:white;
+    font-size: 20px;
+    border-radius: 25px;
+    border: none;
+}
+
+@media screen and (max-width:1215px) {
+    .c-form{
+        width: 80%;
+    }
+}
+/* for google*/
+#map{
+  margin-top: 50px;
+}
+#map iframe{
+  width: 100%;
+  height: 400px;
+}
+/* Get newslwtter*/
+
+.email{
+  background-color:#f4f5f8; 
+  border-radius: 50px;
+   width: 233px; 
+  height: 30px;
+   border:solid 1px #565656;
+  }
+  .submitb{
+    background-color: #ff7b6d;
+     border-radius: 50px;
+      width: 88px; 
+      height: 30px;
+       border:0;
+  }
+  .title-main{
+    font-size: 20px !important;
+  }
+
+#container {
+  display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+
+}
+
+  
+  
       /*footer section*/
   .footer-section {
     background-color: black;
@@ -371,36 +438,4 @@ html{
       width:50% !important;
     }
   }
-  /*@media screen and (max-width:500px) {
-  
-  .footer-section {
-    height: max-content;
-  }
-  
-  .footer-content img {
-    margin-top: 10px;
-  }
- 
-  .footer-nav {
-    margin-top: 10px;
-    
-  }
-  .fb-icon,
-  .insta-icon {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .privacy-policy-sec {
-    display: inline-block;
-    text-align: center;
-  }
-  .btn-ok {
-    width: 70px;
-    height: 30px;
-    margin-top: 10px;
-  }
-  .footer-logo{
-    width:100% !important;
-  }
-  }*/
  

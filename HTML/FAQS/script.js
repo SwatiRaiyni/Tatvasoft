@@ -6,6 +6,12 @@ function myFunction() {
       x.className = "topnav";
     }
   }
+  $(document).ready(function () {
+    $('#menu ul li a').click(function (ev) {
+        $('#menu ul li').removeClass('selected');
+        $(ev.currentTarget).parent('li').addClass('selected');
+    });
+});
   $(document).ready(function(){
     $("#demo1").on("hide.bs.collapse", function(){
       $("#btn1").html('<img src="assets/vector-smart-object-copy.png">');
@@ -46,7 +52,7 @@ function myFunction() {
     $("#demo6").on("hide.bs.collapse", function(){
       $("#btn6").html('<img src="assets/vector-smart-object-copy.png">');
     });
-    $("#demo6").on("show.bs.collapse", function(){
+    $("#demo6").on("show.bs.collapse.", function(){
       $("#btn6").html('<img src="assets/vector-smart-object.png"> ');
     });
     $("#demo7").on("hide.bs.collapse", function(){
