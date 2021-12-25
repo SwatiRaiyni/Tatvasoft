@@ -9,10 +9,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
     <link rel='stylesheet' href="./style.css">
+   
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    
 </head>
 
 <body>
-    <div class="wrapper">
+  
+      <div class="modal fade" id="ModalForm" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <!-- Login Form -->
+              <form action="">
+                <div class="modal-header">
+                  <h5 class="modal-title">Login to your account</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <input type="text" name="username" class="form-control" id="Username" placeholder="Email" autofocus>
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" name="password" class="form-control" id="Password" placeholder=" Password">
+                  </div>
+                  <div class="mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="remember" required>
+                      <label class="form-check-label" for="remember">Remember Me</label>
+                      
+                  </div>
+                </div>
+                <div class=" text-center">
+                    <button type="button"  class="blue-btn1">Login</a>
+                </div>
+               <center> <a href="#" class="float-center" >Forgot Password</a></center>
+                <p class="text-center">Don't have an account? <a href="#">Create an account</a></p> 
+            </form>
+          </div>
+        </div>
+      </div>
+<!--end-->
+
         <!-- header -->
         <header class="site-header">
             <div class="header-wrapper d-flex justify-content-between align-items-center">
@@ -32,7 +68,7 @@
                                             Cleaner</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" title="Prices">Prices</a>
+                                        <a class="nav-link" href="G:\TatvaSoft\HTML\Prices\index.html" title="Prices">Prices</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" title="Our Guarantee">Our Guarantee</a>
@@ -41,13 +77,13 @@
                                         <a class="nav-link" href="#" title="Blog">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" title="Contact us">Contact us</a>
+                                        <a class="nav-link" href="G:\TatvaSoft\HTML\Contact\index.html" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="#" title="Login">Login</a>
+                                        <a class="nav-link border-btn" href="#" title="Login" data-bs-toggle="modal" data-bs-target="#ModalForm">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="#" title="Become a Helper">Become a
+                                        <a class="nav-link border-btn" href="G:\TatvaSoft\HTML\Service Provider  Become-a-provider(6th- page)\index.html" title="Become a Helper">Become a
                                             Helper</a>
                                     </li>
                                 </ul>
@@ -177,7 +213,7 @@
                     </div>
                 </div>
             </section>
-            <img src="assests_homepage/blog-left-bg.png" style="float: left; width:80px; height: 900px;">
+         <!--   <img src="assests_homepage/blog-left-bg.png" style="float: left; width:80px; height: 900px;">-->
             
             <section class="blog-section">
                 <div class="container">
@@ -389,7 +425,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    
     <script type="text/javascript" src="./script.js"></script>
+   
 </body>
 
 </html>
