@@ -49,9 +49,10 @@ p {
 
 /* for background img and scroll */
 /* for form */
-a.scroll-link ,.yhl,.yhl1,.yhl2{ display: inline-block; position: relative; transition: all 0.3s; }
-a.scroll-link:hover , .yhl:hover ,.yhl1:hover,.yhl2:hover{ transform: translateY(15px); }
+a.scroll-link ,.yhl,.yhl1,.yhl2,.hero-image:hover{ display: inline-block; position: relative; transition: all 0.3s; }
+a.scroll-link:hover , .yhl:hover ,.yhl1:hover,.yhl2:hover,.hero-image:hover{ transform: translateY(15px); }
 .yhl:hover,.yhl1:hover,.yhl2:hover{opacity:0.5;  transform: scale(1.1);}
+.hero-image:hover{opacity:1;  transform: scale(1.1);}
 @keyframes moveToRight {
     0% {
       transform: translateX(0px);
