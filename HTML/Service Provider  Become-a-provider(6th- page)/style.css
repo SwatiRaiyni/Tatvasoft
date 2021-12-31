@@ -44,7 +44,7 @@ p {
 .select2-results__option { font-family: 'Roboto', sans-serif; font-size: 16px; }
 .custom-dropdown .select2-container { width: 46px !important; }
 .navbar-toggler { border: 2px solid #fff; padding: 2px 8px; }
-.navbar-toggler-icon { background-image: url('/assets/hamburger.svg'); }
+.navbar-toggler-icon { background-image: url('./assets/menu-icon.svg'); }
 .navbar-toggler:focus { box-shadow: none; }
 
 /* for background img and scroll */
