@@ -48,25 +48,26 @@
                                 <li class="nav-item line100  ">
                                     <a class="nav-link"><img src="assets/icon-notification.png"></a>
                                 </li>
+                                <li class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle dropdown1" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" >
+                                        <img src="assets/forma-1.png" alt="">
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                        <li>Welcome ,<br> Swati Raiyani!</li>
+                                        <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item active" href="#">My Dashboard</a></li>
+                                      <li><a class="dropdown-item" href="#"> My Settings</a></li>
+                                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                                    </ul>
+                                  
+                                </li>
+                               
                             </ul>
+                            
                         </div>
                     </nav>
                    
-                   <div class="custom-dropdown">
-                        <select class="country-dropdown">
-                            <option data-image="assets/forma-1.png" > <a class="dropdown-item" href="#">
-                                My Dashboard
-                            </a></option>
-                            <option data-image="assets/forma-1.png"><a class="dropdown-item" href="#">
-                                My Setting
-                            </a></option>
-                            <option  data-image="assets/forma-1.png"><a class="dropdown-item" href="#">
-                                Logout
-                            </a></option>
-                        </select>
-                    </div>
-                    
-                </div>
+            </div>
                 
             </div>
         </div>
@@ -79,13 +80,13 @@
                     <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b>Swati!</b> </h4>
                 </div>
                 <div class="modal-body">
-                    <a href="#dashboard">Dashboard</a>
-                    <a href="#newservicerequests">New Service Requests</a>
-                    <a href="#upcomingservice" >Upcoming Service</a>
-                    <a href="#serviceschedule">Service Schedule</a>
-                    <a href="#servicehistory">Service History</a>
-                    <a href="#myratings">My Ratings</a>
-                    <a href="#blockcustomer">Block Customer</a>
+                    <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
+                    <a href="#newservicerequests" class="" onclick="newservice();" role="button">New Service Requests</a>
+                    <a href="#upcomingservice" class="active" onclick="upcoming();" role="button">Upcoming Service</a>
+                    <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
+                    <a href="#servicehistory"  class="" onclick="history();" role="button">Service History</a>
+                    <a href="#myratings" class="" onclick="ratings();" role="button">My Ratings</a>
+                    <a href="#blockcustomer" class="" onclick="bookcustomer();" role="button">Block Customer</a>
                     <a href="#invoice">Invoices</a>
                     <a href="#mysetting">My Setting</a>
                     <a href="#logout">Logout</a>
@@ -98,37 +99,284 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!--End Model-->
+</div>
+<!--End Model-->
     
 
 
-<main>
+<main style="min-height:100vh;">
     <section id="section-home">
         <h1 class="title-main">Welcome, <span class="title-main1">Swati!</span></h1>
     </section>
   
     <section id="tab-section">
-        <div class="div-main container-fluild">
-            <div class="div-tab">
-                <a href="#dashboard">Dashboard</a>
-                <a href="#new service requests">New Service Requests</a>
-                <a href="#upcoming service" class="active" >Upcoming Service</a>
-                <a href="#service schedule">Service Schedule</a>
-                <a href="#service history">Service History</a>
-                <a href="#my ratings">My Ratings</a>
-                <a href="#bookcustomer">Block Customer</a>
+        <div class="div-main container-fluild" >
+            <div class="div-tab" >
+                <a href="#dashboard" id="dashboard1" class="" onclick="dashboard();" role="button">Dashboard</a>
+                <a href="#newservicerequests" id="newservice" class="" onclick="newservice();" role="button" >New Service Requests</a>
+                <a href="#upcomingservice" id="upcoming" class="active" onclick="upcoming();" role="button">Upcoming Service</a>
+                <a href="#serviceschedule" id="schedule" class="" onclick="schedule();" role="button">Service Schedule</a>
+                <a href="#servicehistory" id="history" class="" onclick="history();" role="button">Service History</a>
+                <a href="#myratings" id="ratings" class="" onclick="ratings();" role="button">My Ratings</a>
+                <a href="#bookcustomer" id="customer" class="" onclick="bookcustomer();" role="button">Block Customer</a>
             </div>
-            <div class="divContent table-responsive" >
-                <div class="service">
-                    <table class="table">
+<div class="content-section">
+            <div class="divContent" id="dashboard">
+               
+            </div>
+            <div class="divContent" id="serviceschedule">
+               
+
+            </div>
+            <div class="divContent" id="servicehistory">
+                <div>
+                    <p style="color: black;">Payment Status:
+                    <select name="mySelect" id="mySelect" onchange="setValue();">
+                        <option value="1" selected="">All</option>
+                        <option value="2"> All 1</option>
+                        <option value="3"> All 2</option>
+                        <option value="4">All 3</option>
+                        <option value="3"> All 4</option>
+                        <option value="4">All 5</option>
+                    </select>
+                    <span class="buttonaccept"><button   style="float: right;">Export</button></span> 
+
+                   
+                </p>
+                 </div>
+                <div>
+                    <table>
                         <thead>
                             <tr>
-                                <th scope="col">Service ID <img src="assets/forma-1_2.png"></th>
-                                <th scope="col">Service date <img src="assets/forma-1_2.png"></th>
-                                <th scope="col">Cutomer details <img src="assets/forma-1_2.png"></th>
-                                <th scope="col">Distance <img src="assets/forma-1_2.png"></th>
-                                <th scope="col">Actions</th>
+                                <th>Service ID <img src="assets/forma-1_2.png"></th>
+                                <th>Service date <img src="assets/forma-1_2.png"></th>
+                                <th>Cutomer details <img src="assets/forma-1_2.png"></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                               
+                            </tr>
+                           
+                            
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+            <div class="divContent" id="myratings">
+               
+            </div>
+            <div class="divContent" id="bookcustomer">
+                
+            </div>
+            <div class="divContent" id="newservicerequests">
+                <div>
+                    <p style="color: black;">Service area :
+                    <select name="mySelect" id="mySelect" onchange="setValue();">
+                        <option value="1" selected="">2 KM</option>
+                        <option value="2"> 5 KM</option>
+                        <option value="3"> 10 KM</option>
+                        <option value="4">15 KM</option>
+                        <option value="3"> 20 KM</option>
+                        <option value="4">25 KM</option>
+                    </select>
+                    <input type="checkbox"> <span> Include Pet at home</span>
+                </p>
+                 </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service ID <img src="assets/forma-1_2.png"></th>
+                                <th>Service date <img src="assets/forma-1_2.png"></th>
+                                <th>Cutomer details <img src="assets/forma-1_2.png"></th>
+                                <th>Distance <img src="assets/forma-1_2.png"></th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept"><button>Accept</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept"><button>Accept</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept"><button>Accept</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept"><button>Accept</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept"><button>Accept</button>
+                                </td>
+                            </tr>
+                           
+                            
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div>David Bough</div>
+                                    <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                                </td>
+                                <td>15 km</td>
+                                <td class="buttonaccept">
+                                    <button>Accept</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                <p style="color: black;">Size :
+                <select name="mySelect" id="mySelect" onchange="setValue();">
+                    <option value="1" selected="">10</option>
+                    <option value="2"> 20</option>
+                    <option value="3"> 50</option>
+                    <option value="4">100</option>
+                </select>
+            </p>
+             </div>
+            </div>
+            <div class="divContent" id="upcomingservice">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service ID <img src="assets/forma-1_2.png"></th>
+                                <th>Service date <img src="assets/forma-1_2.png"></th>
+                                <th>Cutomer details <img src="assets/forma-1_2.png"></th>
+                                <th>Distance <img src="assets/forma-1_2.png"></th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -280,11 +528,25 @@
                         </tbody>
                     </table>
                 </div>
+                <div>
+                <p style="color: black;">Size :
+                <select name="mySelect" id="mySelect" onchange="setValue();">
+                    <option value="1" selected="">10</option>
+                    <option value="2"> 20</option>
+                    <option value="3"> 50</option>
+                    <option value="4">100</option>
+                </select>
+            </p>
+             </div>
             </div>
-        </div>
-    </section>
 
+            
+
+</div>            
 </div>
+</section>
+
+
 </main>
 </div>
 
@@ -347,7 +609,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./script.js"></script>
 </body>
 
