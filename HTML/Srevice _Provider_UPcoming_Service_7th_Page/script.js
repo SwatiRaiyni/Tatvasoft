@@ -196,6 +196,8 @@
                 document.getElementById("ratings").classList.remove("active");
             }
         }
+      
+            
  
 /*function formatState(opt) {
 	if (!opt.id) {

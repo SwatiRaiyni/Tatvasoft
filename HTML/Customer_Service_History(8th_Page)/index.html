@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title> Customer > Service History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel='stylesheet' href="./style.css">
+</head>
+
+<body>
+   
+<!--for navbar-->
+<div class="wrapper">
+<!-- header -->
+<header class="site-header">
+        <div class="header-wrapper d-flex justify-content-between align-items-center">
+            <a href="#" title="Helper hand" class="logo-block">
+                <img src="assets/site-logo-large.png" alt="Helper hand logo">
+            </a>
+            <div class="header-right-block">
+                <div class="right-block-inner d-flex align-items-center">
+                    <nav class="navbar navbar-expand-lg align-items-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalnavbartoggle" data-bs-dismiss="modal">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                        <div class="collapse navbar-collapse" id="navbarNav" >
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book Now</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="G:\TatvaSoft\HTML\Prices\index.html" title="Prices">Prices and Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" title="Blog">Warranty</a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" title="Login" >Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="G:\TatvaSoft\HTML\Contact\index.html" title="Contact us">Contact</a>
+                                </li>
+                                
+                                <li class="nav-item line100  ">
+                                    <a class="nav-link notification">
+                                        <img src="assets/icon-notification.png">
+                                        <span class="badge">2</span>
+                                    </a>
+                                   
+                                </li>
+                                <li class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle dropdown1" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" >
+                                        <img src="assets/forma-1.png" alt="">
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                        <li>Welcome ,<br> Swati Raiyani!</li>
+                                        <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item active" href="#">My Dashboard</a></li>
+                                      <li><a class="dropdown-item" href="#"> My Settings</a></li>
+                                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                                    </ul>
+                                  
+                                </li>
+                               
+                            </ul>
+                            
+                        </div>
+                    </nav>
+                   
+            </div>
+                
+            </div>
+        </div>
+</header>
+<!--modal for tabs -->
+<div class="modal fade navbar-tmodel" id="exampleModalnavbartoggle" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b>Swati!</b> </h4>
+                </div>
+                <div class="modal-body tab">
+                    <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
+                    <a href="#servicehistory"  class="active" onclick="history();" role="button">Service History</a>
+                    <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
+                    <a href="#favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a>
+                    <a href="#invoices" class="" onclick="invoice()" role="button">Invoices</a>
+                    <a href="#notifications" class="" onclick="notification();" role="button">Notifications</a>
+                   
+                    <a href="#mysetting">My Setting</a>
+                    <a href="#logout">Logout</a>
+                </div>
+                <div class="modal-footer tab">
+                    <a href="#"> Book Now </a>
+                    <a href="G:\TatvaSoft\HTML\Prices\index.html">Prices & Services</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Blog</a>
+                    <a href="G:\TatvaSoft\HTML\Contact\index.html">Contact</a>
+                </div>
+            </div>
+        </div>
+</div>
+<!--End Model-->
+    
+
+
+<main style="min-height:100vh;">
+    <section id="section-home">
+        <h1 class="title-main">Welcome, <span class="title-main1">Swati!</span></h1>
+    </section>
+  
+    <section id="tab-section">
+        <div class="div-main container-fluild" >
+            <div class="div-tab" >
+                <a href="#dashboard" id="dashboard1" class="" onclick="dashboard();" role="button">Dashboard</a>
+                <a href="#servicehistory" id="history" class="active" onclick="history();" role="button">Service History</a>
+                <a href="#serviceschedule" id="schedule" class="" onclick="schedule();" role="button">Service Schedule</a>
+                <a href="#favouriteprones" id="favprons" class="" onclick="favprons();" role="button" >Favourite Prons</a>
+                <a href="#invoices" id="invoice" class="" onclick="invoice();" role="button">Invoices</a>
+                <a href="#notifications" id="notification" class="" onclick="notification();" role="button">Notifications</a>
+                
+            </div>
+<div class="content-section">
+            <div class="divContent" id="dashboard">
+               
+            </div>
+            <div class="divContent" id="serviceschedule">
+               
+
+            </div>
+            <div class="divContent" id="servicehistory">
+            
+
+                <div>
+                    <h2> Service History
+                    <span class="buttonaccept" ><button   style="float: right;">Export</button></span> 
+                </h2>
+                </div>
+                <div>
+                    <table  id="tblCustomers"  class="current-services">
+                        <thead>
+                            <tr>
+                                <th>Service Id<img src="assets/form-1_2.png"></th>
+                                <th>Service Date<img src="assets/form-1_2.png"></th>
+                                <th>Service Provider <img src="assets/form-1_2.png"></th>
+                                <th>Payment<img src="assets/form-1_2.png"></th>
+                                <th>Status<img src="assets/form-1_2.png"></th>
+                                <th>Rate SP<img src="assets/form-1_2.png"></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>31/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>15/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>10/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>28/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Canceled"> Cancelled </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>15/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                           
+                            
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>11/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Canceled"> Cancelled </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>31/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>10/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Completed"> Completed</button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>05/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Canceled"> Cancelled </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>01/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Canceled"> Cancelled </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>323436</td>
+                                <td>
+                                    <div><img src="assets/calculator.png"><b>01/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Canceled"> Cancelled </button>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="RateSP"> Rate SP </button>
+                                 </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <p style="color: black;">Size :
+                    <select name="mySelect" id="mySelect" onchange="setValue();">
+                        <option value="1" selected="">10</option>
+                        <option value="2"> 20</option>
+                        <option value="3"> 50</option>
+                        <option value="4">100</option>
+                    </select>
+                    <input type="button" id="btnGetCount" value="entries total record" onclick = "CountRows()" />
+                </p>
+                 </div>
+               
+            </div>
+            <div class="divContent" id="favouriteprones">
+               
+            </div>
+            <div class="divContent" id="invoices">
+                
+            </div>
+            <div class="divContent" id="notifications">
+               
+            </div>
+
+            
+
+</div>            
+</div>
+</section>
+
+
+</main>
+</div>
+
+<!--footer section-->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 footer-widget">
+                    <a href="#" title="Helper Hand">
+                        <img src="assets/site-logo.png" alt="Helper Hand">
+                    </a>
+                </div>
+                <div class="col-lg-8 footer-widget">
+                    <ul class="footer-navigation d-flex justify-content-center">
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\Home_Page\index.html" title="Home">Home</a>
+                        </li>
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\About\index.html" title="About">About</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Testimonials">Testimonials</a>
+                        </li>
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\FAQS\index.html" title="FAQs">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Insurance Policy">Insurance Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Impressum">Impressum</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 footer-widget">
+                    <ul class="social-media-list d-flex justify-content-end">
+                        <li>
+                            <a href="#" target="_blank" title="Facebook">
+                                <img src="assets/facebook.png" alt="Facebook">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" title="Instagram">
+                                <img src="assets/ic-instagram.png" alt="Instagram">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container text-center">
+            <p>©2018 Helperland. All rights reserved.     Terms and Conditions  |   <a href="#" title="Privacy Policy">Privacy Policy</a></p>
+            
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
+<div class="modal fade navbar-tmodel" id="exampleModalRateSP" tabindex="-1"
+aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal-dialog modal-dialog-center">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="td-rating">
+                <div class="rating-user"><img src="./static/images/icon-cap.png" alt="">
+                </div>
+                <div class="rating-info">
+                    <div class="info-name">Lyum Watson</div>
+                    <div class="info-ratings">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
+                        4
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-heading">
+                Rate Your Service Provider
+            </div>
+            <hr>
+            <div class="m-form">
+                <form action="#">
+                    <div class="m-ratings">
+                        <p>On Time Arrival</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="m-ratings">
+                        <p>Friendy</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="m-ratings">
+                        <p>Quality of Service</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback">Feedback on Service Provider</label>
+                        <textarea name="" id="" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="m-button">
+                         <button>Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+</div>
+<!--End Model-->
