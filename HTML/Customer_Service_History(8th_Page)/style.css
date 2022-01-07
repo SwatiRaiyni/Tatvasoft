@@ -140,55 +140,27 @@ p {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
+    width:100% !important;
     border: 1px solid #ddd;
     table-layout: auto;
 }
 th, td {
     text-align: left;
     padding: 8px;
+    
 }
 th{
     background-color:#e1e1e1 !important;
     color: #646464;
+    
     font-size: 16px;
     border-bottom: 1px solid #e1e1e1 !important;
     
 }
-@media screen and (max-width:767px) {
-    table{
-        border:  1px solid white;
-    }
-    .current-services tr {
-        display: block;
-        box-shadow: 0 0 6px rgb(0 0 0 / 25%);
-    }
-.current-services tbody tr {
-    margin-bottom: 35px;
-}
-.current-services tbody td+td {
-    border-top: 1px solid #e1e1e1;
-}
-td{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.abc{
-    display: flex;
-}
-.current-services tbody td {
-    display: block!important;
-    padding: 15px 0!important;
-}
 
-.buttoncenter{
-    text-align: center;
-}
-th{
-    display: none;
-}
-  
-}
+
+
+
 .td-rating {
     display: flex;
     align-items: center;
@@ -222,6 +194,29 @@ th{
     box-shadow: none;
     border: none;
     margin-top: 8px;
+}
+.Reschedule{
+    width: 100px;
+    font-size: 16px;
+    background-color: #146371;
+    color: white;
+    border-radius: 17px;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+}
+.cancel{
+    width:80px;
+    font-size: 16px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 17px;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    
 }
 .Canceled{
     width: 83px;
@@ -332,14 +327,14 @@ th{
 .divContent{
     overflow: auto;
 }
-.tab a:hover{
+#exampleModalnavbartoggle .tab a:hover{
     color: #1d7a8c;
 }
 
 .buttonaccept button{
     width: 80px;
     font-size: 16px;
-    background-color: #146371;;
+    background-color: #146371;
     color: white;
     border-radius: 17px;
     padding: 8px 10px;
@@ -358,13 +353,258 @@ th{
     border: none;
     margin-top: 8px;
 }
+
+
+/* for customer dashboard */
+ .add-button {
+    margin-bottom: 10px;
+    float: right;
+} .add-button {
+    position: relative;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+ .btn-primary {
+    background: #1d7a8c;
+    border: none!important;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff!important;
+    transition: all .3s ease;
+    padding: 11px 25px;
+}
+ 
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+   
+    cursor: pointer;
+   
+    border: 1px solid transparent;
+    border-radius: 50px;
+}
+.title-filter h3 {
+    max-width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20px;
+    display: inline-block;
+    color: #646464;
+}
+
+
+/*modal for tabs with navbar*/ 
+#exampleModalnavbartoggle .modal-dialog{
+    float: right;
+    width: 250px;
+} 
+#exampleModalnavbartoggle .modal-content{
+    width: auto;
+    height: auto;
+    padding: 1px;
+}
+#exampleModalnavbartoggle  .modal-body,#exampleModalnavbartoggle .modal-footer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:flex-start;
+}
+#exampleModalnavbartoggle .modal-body a,#exampleModalnavbartoggle  .modal-footer a{
+    text-decoration: none;
+    padding: 5px;
+    color: #646464;
+    font-size: 16px;
+    background-color: white;
+}
+#exampleModalnavbartoggle .modal-header{
+    border: none;
+    border-bottom: 1px solid gray;
+}
+#exampleModalnavbartoggle .modal-header h4{
+    font-size: 16px;
+}
+#exampleModalnavbartoggle .modal-footer{
+    border-top: 1px solid gray;
+}
+#exampleModalnavbartoggle .modal-footer>*{
+    margin: 0;
+}
+
+/* modal for service request */
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #777777;
+}
+.blue-btn1 {
+    display: inline-block; background-color: #1d7a8c; border-radius: 27px; border: 1px solid #FFFFFF; height:45px; color: #fff !important; text-decoration: none; min-width: 150px; font-size: 18px; transition: all 0.3s ease;
+}
+/* Modal for ratings*/
+#exampleModalRateSP .modal-content{
+    width: 450px;
+}
+#exampleModalRateSP .modal-dialog{
+    max-width: 450px;
+}
+#exampleModalRateSP hr{
+    margin-top: 2px;
+}
+#exampleModalRateSP .modal-body{
+    margin-top: 10px;
+}
+.fa-star{
+    color: rgb(156, 156, 6);
+}
+
+.m-ratings{
+    display: flex;
+}
+.m-ratings p{
+    width: 130px;
+}
+.m-ratings .info-ratings{
+    margin-left: 5px;
+}
+.m-button {
+    margin-top: 10px;
+}
+.m-heading{
+    margin-top: 15px;
+    font-size: 20px;
+}
+.m-button button{
+    border: none;
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 25px;
+    background-color: #1d7a8c;
+    color: white;
+}
+/* complete */
+#dashboard,#favouriteprones,#serviceschedule,#invoices,#notifications{
+    display: none;
+}
+  /* for pagination */
+  .dataTables_wrapper .dataTables_paginate .paginate_button{
+    color: #777777 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: #146371 !important;
+    color:white !important;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color:white !important;
+  }
+  .current{
+    background: #146371 !important;
+    color:#AAAAAA !important;
+  }
+
+.paginate_button{
+    padding: 8px 15px!important;
+    border: 1px solid #AAAAAA!important;
+    border-radius: 50%!important;
+    margin: 0 2.5px;
+    color: #777777!important;
+}
+#tblCustomers_length label{
+    margin-top: 15px;
+}
+
+#tblCustomers_length label select{
+    margin: 0 5px;
+}
+
+#tblCustomers_info{
+    margin-top: 7px;
+    margin-left: 7px;
+}
+#dashboardforpagination_length label{
+    margin-top: 15px;
+}
+
+#dashboardforpagination_length label select{
+    margin: 0 5px;
+}
+
+#dashboardforpagination_info{
+    margin-top: 7px;
+    margin-left: 7px;
+}
+
+@media screen and (max-width:767px) {
+    table{
+        border: 1px solid white;
+        width: 90% !important;
+    }
+    .current-services tr {
+         display: block ; 
+        box-shadow: 0 0 6px rgb(0 0 0 / 25%);
+    }
+.current-services tbody tr {
+    margin-bottom: 35px;
+}
+.current-services tbody td+td {
+    border-top: 1px solid #e1e1e1;
+}
+td{
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block !important;
+}
+/* .abc{
+    display: flex;
+}  */
+table.dataTable td{
+    display: block !important;
+
+}
+.current-services tbody td {
+    display: block !important;
+    padding: 15px 0 !important;
+}
+
+.buttoncenter{
+    text-align: center;
+}
+th{
+    display: none;
+}
+.medium-title {
+    font-size: 19px !important;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.add-button {
+    float: none;
+    margin-bottom: 20px;
+}
+  
+}
+@media screen and (max-width:1300px) {
+    #tab-section{
+        width:95% !important;
+    }
+
+}
 @media screen and (max-width:991px) {
     #tab-section{
         padding: 30px 0;
         width: 90%;
         margin: 0 auto;
     }
-   
     .divContent{
         margin-left: 0px;
         padding-left: 0px;
@@ -373,69 +613,6 @@ th{
         height:100%;
     }
     .div-tab{
-        display: none;
+        display: none !important;
     }
 }
-@media screen and (max-width:1700px) {
-    #tab-section{
-        padding: 30px 0;
-        width: 90%;
-        margin: 0 auto;
-    }
-    
-    .divContent{
-        margin-left: 0px;
-        padding-left: 0px;
-    }
-    .div-main{
-        height: 100%;
-    }
-    
-}
-
-
-
-/*modal for tabs with navbar*/ 
- .modal-dialog{
-    float: right;
-    width: 250px;
-}
-.modal-content{
-    width: auto;
-    height: auto;
-    padding: 1px;
-}
-.modal-body, .modal-footer{
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:flex-start;
-}
-.modal-body a, .modal-footer a{
-    text-decoration: none;
-    padding: 5px;
-    color: #646464;
-    font-size: 16px;
-    background-color: white;
-}
-.modal-header{
-    border: none;
-    border-bottom: 1px solid gray;
-}
-.modal-header h4{
-    font-size: 16px;
-}
-.modal-footer{
-    border-top: 1px solid gray;
-}
-.modal-footer>*{
-    margin: 0;
-}
-/* complete */
-
-
-#dashboard,#favouriteprones,#serviceschedule,#invoices,#notifications{
-    display: none;
-}
- 

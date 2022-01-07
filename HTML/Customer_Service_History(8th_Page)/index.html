@@ -6,16 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title> Customer > Service History</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"
+    />
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
+    ></script> 
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/af-2.3.7/r-2.2.9/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/af-2.3.7/r-2.2.9/datatables.min.js"></script> -->
+ 
     <link rel='stylesheet' href="./style.css">
 </head>
 
 <body>
-   
+
 <!--for navbar-->
 <div class="wrapper">
 <!-- header -->
@@ -108,8 +124,175 @@
             </div>
         </div>
 </div>
+<!--End Modal-->
+<!--Modal for Service Details--> 
+<div class="modal fade" id="ModalServiceDetails" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          
+          
+            <div class="modal-header">
+              <h5 class="modal-title">Service Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+               <h5>05/10/2021 08:00 - 11:30 </h5>
+               <p><b>Duration</b> : 3.5 Hrs</p>
+                <hr>
+                <p><b>Service Id</b>:8485</p>
+                <p><b>Extras</b>:Inside cabinets</p>
+                <p><b>Net Amount:</b><span class="singlefont"><i class="fa fa-eur"></i>63</span></p>
+                <hr>
+                <p><b>Service Address</b> :Koenigstrasse 112, 99897 Tambach-Dietharz</p>
+                <p><b>Billing Address</b> : Same as cleaning Service</p>
+                <p><b>Phone</b> : +49 9955648797</p>
+                <p><b>Email</b> :patel2128@gmail.com</p>
+                <hr>
+                <p><b>Comments</b></p>
+                <p>I don't have pets at home</p>
+                <hr>
+                <button class="Reschedule"> Reschedule </button>
+                <button class="cancel"> cancel </button>
+              </div>
+             </div>
+        </div>
+    </div>
+</div>
+<!--end-->
+<!--Modal for Rescheule Request-->
+<div class="modal fade" id="RescheduleServiceRequest" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Reschedule Services Request</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="#">
+                <p><b>Select New Date & Time</b></p>
+                <div class="row">
+                    <div  class="col-sm-6">
+                       <div class="form-group">
+                          <input type="date" class="form-control1 w200">
+                       </div>
+                    </div>
+                    <div  class="col-sm-6">
+                        <div class="form-group">
+                            <input type="time" class="form-control1 w200">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class=" text-center">
+                    <button type="button"  class="blue-btn1">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!--Modal End-->
+<!--Modal for Cancel Service Request-->
+<div class="modal fade" id="CancelServiceRequest" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Cancel Service Request</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="#">
+                <p><b>Why you want to cancel the service request?</b></p>
+                <textarea rows="5" class="form-control" placeholder="why do you want to cancel service requests?"></textarea>
+                <hr>
+                <div class=" text-center">
+                    <button type="button"  class="blue-btn1">Cancel Now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!--Modal End-->
+<!--Modal for Rating in service history tab-->
+<div class="modal fade navbar-tmodel" id="exampleModalRateSP" tabindex="-1"
+aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal-dialog modal-dialog-center">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="td-rating">
+                <div class="rating-user"><img src="assets/forma-1_1.png" alt="">
+                </div>
+                <div class="rating-info">
+                    <div class="info-name">Swati Raiyani</div>
+                    <div class="info-ratings">
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
+                        4
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-heading">
+                Rate Your Service Provider
+            </div>
+            <hr>
+            <div class="m-form">
+                <form action="#">
+                    <div class="m-ratings">
+                        <p>On Time Arrival</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="m-ratings">
+                        <p>Friendy</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="m-ratings">
+                        <p>Quality of Service</p> 
+                        <div class="info-ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback">Feedback on Service Provider</label>
+                        <textarea name="" id="" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div >
+                         <button class="blue-btn1" type="button">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+</div>
 <!--End Model-->
-    
+<!--end-->  
 
 
 <main style="min-height:100vh;">
@@ -129,7 +312,417 @@
                 
             </div>
 <div class="content-section">
-            <div class="divContent" id="dashboard">
+            <div  class="divContent" id="dashboard">
+                <div class="row">
+                    <div class="col-sm-6 title-filter">
+                        <h3 class="medium-title"> Current Service Request </h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary add-button" role="button" routerlink="/book-service" title="Add New Service Request" href="#">
+                            Add New Service Request</a>
+                    </div>
+                    
+                </div>
+                <div>
+                    <table  id="dashboardforpagination" class="current-services ">
+                        <thead>
+                            <tr>
+                                <th>Service Id<img src="assets/form-1_2.png"></th>
+                                <th>Service Date<img src="assets/form-1_2.png"></th>
+                                <th>Service Provider <img src="assets/form-1_2.png"></th>
+                                <th>Payment<img src="assets/form-1_2.png"></th>
+                                <th>Action<img src="assets/form-1_2.png"></th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal" >323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"   data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>31/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>15/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>10/03/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                               
+                               
+                            </tr>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>28/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>15/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                               
+                            </tr>
+                           
+                            
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>11/02/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a>323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png"  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>31/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a>323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>10/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a  data-bs-toggle="modal"
+                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436 </a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>05/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a>323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>01/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td><a>323436</a></td>
+                                <td>
+                                    <div><img src="assets/calculator.png  data-bs-toggle="modal"
+                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>01/01/2018</b></div>
+                                    <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                                </td>
+                                <td>
+                                    <div class="td-rating">
+                                        <div class="rating-user"><img src="assets/forma-1_1.png"></div>
+                                        <div class="rating-info">
+                                            <div class="info-name">Lyum Watson</div>
+                                            <div class="info-ratings">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
+                                </td>
+                                <td class="buttoncenter">
+                                    <button class="Reschedule"  data-bs-toggle="modal"
+                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
+                                    <button class="cancel" data-bs-toggle="modal"
+                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                
             </div>
             <div class="divContent" id="serviceschedule">
@@ -137,15 +730,20 @@
 
             </div>
             <div class="divContent" id="servicehistory">
-            
-
-                <div>
-                    <h2> Service History
-                    <span class="buttonaccept" ><button   style="float: right;">Export</button></span> 
-                </h2>
+                <div class="row">
+                    <div class="col-sm-6 title-filter">
+                        <h3 class="medium-title"> Service History </h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary add-button" style="float: right;" routerlink="/book-service" title="Add New Service Request" href="#">
+                            Export</a>
+                    </div>
+                    
                 </div>
+
+                
                 <div>
-                    <table  id="tblCustomers"  class="current-services">
+                    <table  id="tblCustomers"  class="current-services ">
                         <thead>
                             <tr>
                                 <th>Service Id<img src="assets/form-1_2.png"></th>
@@ -165,7 +763,7 @@
                                     <div><img src="assets/layer-712.png">12:00 - 18:00</div>
                                 </td>
                                 <td>
-                                    <div class="td-rating">
+                                    <div class="td-rating" >
                                         <div class="rating-user"><img src="assets/forma-1_1.png"></div>
                                         <div class="rating-info">
                                             <div class="info-name">Lyum Watson</div>
@@ -174,7 +772,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -187,7 +785,8 @@
                                     <button class="Completed"> Completed </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -207,7 +806,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -220,7 +819,8 @@
                                     <button class="Completed"> Completed </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -240,7 +840,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -253,7 +853,8 @@
                                     <button class="Completed"> Completed </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -273,7 +874,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -286,7 +887,8 @@
                                     <button class="Canceled"> Cancelled </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                                
@@ -307,7 +909,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -320,7 +922,8 @@
                                     <button class="Completed"> Completed </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -342,7 +945,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -355,7 +958,8 @@
                                     <button class="Canceled"> Cancelled </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -375,7 +979,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -408,7 +1012,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -421,7 +1025,8 @@
                                     <button class="Completed"> Completed</button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -441,7 +1046,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -454,7 +1059,8 @@
                                     <button class="Canceled"> Cancelled </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -474,7 +1080,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -487,7 +1093,8 @@
                                     <button class="Canceled"> Cancelled </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
@@ -507,7 +1114,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star-o"></span>
                                                 4
                                             </div>
                                         </div>
@@ -520,25 +1127,15 @@
                                     <button class="Canceled"> Cancelled </button>
                                 </td>
                                 <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
+                                    <button class="RateSP" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
                                  </td>
                                
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <p style="color: black;">Size :
-                    <select name="mySelect" id="mySelect" onchange="setValue();">
-                        <option value="1" selected="">10</option>
-                        <option value="2"> 20</option>
-                        <option value="3"> 50</option>
-                        <option value="4">100</option>
-                    </select>
-                    <input type="button" id="btnGetCount" value="entries total record" onclick = "CountRows()" />
-                </p>
-                 </div>
-               
+              
             </div>
             <div class="divContent" id="favouriteprones">
                
@@ -621,83 +1218,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"
+    ></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+    <!--for service history-->
+    <script>
+      $(document).ready(function () {
+        $("#tblCustomers").DataTable();
+      });
+    </script>
+
+    <script>
+        const dt1 = new DataTable("#tblCustomers", {
+        dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+        responsive: false,
+        pagingType: "full_numbers",
+        language: {
+            paginate: {
+            first: "<img src='assets/pagination-first.png' alt='first'/>",
+            previous: "<img src='assets/pagination-left.png' alt='previous' />",
+            next: '<img src="assets/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+            last: "<img src='assets/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+        },
+        buttons: ["excel"],
+        columnDefs: [{ orderable: false, targets: 5 }],
+    });
+    </script>
+
+<script>
+    $(document).ready(function () {
+      $("#dashboardforpagination").DataTable();
+    });
+  </script>
+
+  <script>
+      const dt2 = new DataTable("#dashboardforpagination", {
+      dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+      responsive: true,
+      pagingType: "full_numbers",
+      language: {
+          paginate: {
+          first: "<img src='assets/pagination-first.png' alt='first'/>",
+          previous: "<img src='assets/pagination-left.png' alt='previous' />",
+          next: '<img src="assets/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+          last: "<img src='assets/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+          },
+          info: "Total Record: _MAX_",
+          lengthMenu: "Show_MENU_Entries",
+      },
+      buttons: ["excel"],
+      columnDefs: [{ orderable: false, targets: 4 }],
+  });
+ 
+  </script>
+
     <script type="text/javascript" src="./script.js"></script>
 </body>
 
 </html>
-<div class="modal fade navbar-tmodel" id="exampleModalRateSP" tabindex="-1"
-aria-labelledby="exampleModalLabel2" aria-hidden="true">
-<div class="modal-dialog modal-dialog-center">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="td-rating">
-                <div class="rating-user"><img src="./static/images/icon-cap.png" alt="">
-                </div>
-                <div class="rating-info">
-                    <div class="info-name">Lyum Watson</div>
-                    <div class="info-ratings">
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star-o"></span>
-                        4
-                    </div>
-                </div>
-            </div>
-
-            <div class="m-heading">
-                Rate Your Service Provider
-            </div>
-            <hr>
-            <div class="m-form">
-                <form action="#">
-                    <div class="m-ratings">
-                        <p>On Time Arrival</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="m-ratings">
-                        <p>Friendy</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="m-ratings">
-                        <p>Quality of Service</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="feedback">Feedback on Service Provider</label>
-                        <textarea name="" id="" class="form-control" rows="2"></textarea>
-                    </div>
-                    <div class="m-button">
-                         <button>Submit</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        
-    </div>
-</div>
-</div>
-<!--End Model-->

@@ -15,8 +15,8 @@
 </head>
 
 <body>
-  
-<div class="modal fade" id="ModalForm" tabindex="-1" aria-hidden="true">
+<!--Modal for login--> 
+<div class="modal fade" id="ModalFormlogin" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
               <!-- Login Form -->
@@ -41,13 +41,38 @@
                 <div class=" text-center">
                     <button type="button"  class="blue-btn1">Login</a>
                 </div>
-               <center style="margin-top: 20px;" > <a href="#" class="float-center"  >Forgot Password</a></center>
+               <center style="margin-top: 20px;" > <a class="float-center" role="button" data-bs-target="#forgotpassword" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a></center>
                 <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="G:\TatvaSoft\HTML\Registration\index.html">Create an account</a></p> 
             </form>
           </div>
         </div>
 </div>
 <!--end-->
+<!--Modal for forgot password-->
+<div class="modal fade" id="forgotpassword" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Forgot Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="#">
+                <div class="mb-3 form-group icon-textbox">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+                <div class=" text-center">
+                <button class="blue-btn1 mb-3" type="submit">Send</button>
+            </div>
+                <div class="text-center mb-2"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#ModalFormlogin" data-bs-dismiss="modal">Login Now</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!--Modal End-->
+
 
         <!-- header -->
         <header class="site-header">
@@ -80,7 +105,7 @@
                                         <a class="nav-link" href="G:\TatvaSoft\HTML\Contact\index.html" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="#" title="Login" data-bs-toggle="modal" data-bs-target="#ModalForm">Login</a>
+                                        <a class="nav-link border-btn" href="#" title="Login" data-bs-toggle="modal" data-bs-target="#ModalFormlogin">Login</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="G:\TatvaSoft\HTML\Service Provider  Become-a-provider(6th- page)\index.html" title="Become a Helper">Become a

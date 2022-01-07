@@ -140,7 +140,7 @@ p {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
+    width: 100% !important;
     border: 1px solid #ddd;
     table-layout: auto;
 }
@@ -157,9 +157,11 @@ th{
     font-size: 16px;
     border-bottom: 1px solid #e1e1e1 !important;
 }
+
 @media screen and (max-width:767px) {
     table{
         border:  1px solid white;
+        width: 90% !important;
     }
     .current-services tr {
         display: block;
@@ -382,4 +384,64 @@ th{
 } 
 #dashboard,#myratings,#serviceschedule,#servicehistory,#bookcustomer{
     display: none;
+}
+ /* for pagination */
+ .dataTables_wrapper .dataTables_paginate .paginate_button{
+    color: #777777 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: #146371 !important;
+    color:white !important;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color:white !important;
+  }
+  .current{
+    background: #146371 !important;
+    color:#AAAAAA !important;
+  }
+
+.paginate_button{
+    padding: 8px 15px!important;
+    border: 1px solid #AAAAAA!important;
+    border-radius: 50%!important;
+    margin: 0 2.5px;
+    color: #777777!important;
+}
+#mytable_length label{
+    margin-top: 15px;
+}
+
+#mytable_length label select{
+    margin: 0 5px;
+}
+
+#mytable_info{
+    margin-top: 7px;
+    margin-left: 7px;
+}
+#mytable1_length label{
+    margin-top: 15px;
+}
+
+#mytable1_length label select{
+    margin: 0 5px;
+}
+
+#mytable1_info{
+    margin-top: 7px;
+    margin-left: 7px;
+}
+#mytable2_length label{
+    margin-top: 15px;
+}
+
+#mytable2_length label select{
+    margin: 0 5px;
+}
+
+#mytable2_info{
+    margin-top: 7px;
+    margin-left: 7px;
 }
