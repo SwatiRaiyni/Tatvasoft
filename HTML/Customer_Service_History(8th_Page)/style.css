@@ -241,6 +241,11 @@ th{
     margin-top: 8px;
 
 }
+.m-20{
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+
+}
 
   
 
@@ -492,7 +497,7 @@ hr {
     color: white;
 }
 /* complete */
-#dashboard,#favouriteprones,#serviceschedule,#invoices,#notifications{
+#dashboard,#favouriteprones,#serviceschedule,#invoices,#notifications,#mySettings{
     display: none;
 }
   /* for pagination */

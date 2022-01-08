@@ -1,5 +1,33 @@
+function mysettings(){
+    document.getElementById("mySettings").style.display="block";
+    document.getElementById("serviceschedule").style.display="none";
+    document.getElementById("servicehistory").style.display="none";
+    document.getElementById("favouriteprones").style.display="none";
+    document.getElementById("invoices").style.display="none";
+    document.getElementById("notifications").style.display="none";
+    document.getElementById("dashboard").style.display="none";
+    if(document.getElementById("dashboard1").classList.contains("active")){
+        document.getElementById("dashboard1").classList.remove("active");
+    }
+    if(document.getElementById("history").classList.contains("active")){
+        document.getElementById("history").classList.remove("active");
+    }
+    if(document.getElementById("schedule").classList.contains("active")){
+        document.getElementById("schedule").classList.remove("active");
+    }
+    if(document.getElementById("favprons").classList.contains("active")){
+        document.getElementById("favprons").classList.remove("active");
+    }
+    if(document.getElementById("invoice").classList.contains("active")){
+        document.getElementById("invoice").classList.remove("active");
+    }
+    if(document.getElementById("notification").classList.contains("active")){
+        document.getElementById("notification").classList.remove("active");
+    }
+}
 function dashboard(){
         document.getElementById("dashboard").style.display="block";
+        document.getElementById("mySettings").style.display="none";
         document.getElementById("serviceschedule").style.display="none";
         document.getElementById("servicehistory").style.display="none";
         document.getElementById("favouriteprones").style.display="none";
@@ -24,6 +52,7 @@ function dashboard(){
 }
 function history(){
     document.getElementById("servicehistory").style.display="block";
+    document.getElementById("mySettings").style.display="none";
     document.getElementById("dashboard").style.display="none";
     document.getElementById("favouriteprones").style.display="none";
     document.getElementById("serviceschedule").style.display="none";
@@ -49,6 +78,7 @@ function history(){
 
 function schedule(){
     document.getElementById("serviceschedule").style.display="block";
+    document.getElementById("mySettings").style.display="none";
     document.getElementById("dashboard").style.display="none";
     document.getElementById("favouriteprones").style.display="none";
     document.getElementById("servicehistory").style.display="none";
@@ -74,6 +104,7 @@ function schedule(){
 }
 function favprons(){
         document.getElementById("favouriteprones").style.display="block";
+        document.getElementById("mySettings").style.display="none";
         document.getElementById("dashboard").style.display="none";
         document.getElementById("serviceschedule").style.display="none";
         document.getElementById("servicehistory").style.display="none";
@@ -98,6 +129,7 @@ function favprons(){
     }
     function invoice(){
         document.getElementById("invoices").style.display="block";
+        document.getElementById("mySettings").style.display="none";
         document.getElementById("favouriteprones").style.display="none";
         document.getElementById("dashboard").style.display="none";
         document.getElementById("serviceschedule").style.display="none";
@@ -122,6 +154,7 @@ function favprons(){
 }
 function notification(){
         document.getElementById("notifications").style.display="block";
+        document.getElementById("mySettings").style.display="none";
         document.getElementById("invoices").style.display="none";
         document.getElementById("dashboard").style.display="none";
         document.getElementById("notifications").style.display="none";
