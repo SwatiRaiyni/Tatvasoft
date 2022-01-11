@@ -37,9 +37,17 @@
             <a href="#" title="Helper hand" class="logo-block">
                 <img src="assets/site-logo-large.png" alt="Helper hand logo">
             </a>
+            <li class="nav-item line100 d-b">
+                <a class="nav-link notification">
+                    <img src="assets/icon-notification.png">
+                    <span class="badge">2</span>
+                </a>
+            </li>
             <div class="header-right-block">
                 <div class="right-block-inner d-flex align-items-center">
                     <nav class="navbar navbar-expand-lg align-items-center">
+                        
+                       
                     <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalnavbartoggle" data-bs-dismiss="modal">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -71,9 +79,9 @@
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                         <li>Welcome ,<br> Swati Raiyani!</li>
                                         <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item active" href="#">My Dashboard</a></li>
-                                      <li><a class="dropdown-item" href="#"> My Settings</a></li>
-                                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                                      <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
+                                      <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+                                      <li><a class="dropdown-item" href="G:\TatvaSoft\HTML\Home_Page\index.html">Log out</a></li>
                                     </ul>
                                   
                                 </li>
@@ -90,6 +98,7 @@
 </header>
 <!--modal for tabs -->
 <div class="modal fade navbar-tmodel" id="exampleModalnavbartoggle" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    
         <div class="modal-dialog modal-dialog-center">
             <div class="modal-content">
                 <div class="modal-header">
@@ -103,9 +112,9 @@
                     <a href="#servicehistory"  class="" onclick="history();" role="button">Service History</a>
                     <a href="#myratings"  class="" onclick="ratings();" role="button">My Ratings</a>
                     <a href="#blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
-                    <a href="#invoice">Invoices</a>
-                    <a href="#mysetting">My Setting</a>
-                    <a href="#logout">Logout</a>
+                    
+                    <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
+                    <a href="G:\TatvaSoft\HTML\Home_Page\index.html">Logout</a>
                 </div>
                 <div class="modal-footer tab">
                     <a href="G:\TatvaSoft\HTML\Prices\index.html">Prices & Services</a>
@@ -113,12 +122,136 @@
                     <a href="#">Blog</a>
                     <a href="G:\TatvaSoft\HTML\Contact\index.html">Contact</a>
                 </div>
+                <div class="modal-footer tab footer-widget">
+                    <ul class="social-media-list d-flex justify-content-center">
+                        <li>
+                            <a href="#" target="_blank" title="Facebook">
+                                <img src="assets/facebook.png" alt="Facebook">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" title="Instagram">
+                                <img src="assets/ic-instagram.png" alt="Instagram">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 </div>
 <!--End Model-->
+<!--Modal for cancel service request-->
+<div class="modal fade" id="ServiceCancelModal" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-7 modal-section-body">
+                                <div class="row">
+                                    <p class="m-head"><b>Service Details</b></p>
+                                    <p class="m-time">07/10/2021 08:00 -11:00 </p>
+                                    <p>Duration: 3 Hrs </p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Service Id: 8488</b></p>
+                                    <p>Extras:</p>
+                                    <p>Total Payment: <span class="m-currency">56,25 €</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Customer Name: Gaurang Patel.</b></p>
+                                    <p>Service Address: Koenigstrasse 112,99897 Tambach-Dietharz</p>
+                                    <p>Distance: 296,76</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Comments</b></p>
+                                    <p><span class="fa fa-times-circle-o"></span> I dont't have pets at home</p>
+                                </div>
+                                <hr>
+                                <div class="row modal-button">
+                                    <div class="col">
+                                        <button class="modal-button-cancel"><i class="fa fa-times"></i> Cancel</button>
+                                        <button class="modal-button-complete"><i class="fa fa-check"></i>
+                                            Complete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5 modal-section-map">
+                                <iframe allowfullscreen="" frameborder="0"
+                                    src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxzZgCD_hvkcRTC-2Pt6bXt0&amp;key=AIzaSyAag-Mf1I5xbhdVHiJmgvBsPfw7mCqwBKU"></iframe>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
+<!--complete-->
+<!--Modal for Accept Service Request-->
 
+<div class="modal fade" id="ServiceAcceptModal" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-7 modal-section-body">
+                                <div class="row">
+                                    <p class="m-head"><b>Service Details</b></p>
+                                    <p class="m-time">07/10/2021 08:00 -11:00 </p>
+                                    <p>Duration: 3 Hrs </p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Service Id: 8488</b></p>
+                                    <p>Extras:</p>
+                                    <p>Total Payment: <span class="m-currency">56,25 €</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Customer Name: Gaurang Patel.</b></p>
+                                    <p>Service Address: Koenigstrasse 112,99897 Tambach-Dietharz</p>
+                                    <p>Distance: 296,76</p>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <p class="m-head"><b>Comments</b></p>
+                                    <p><span class="fa fa-times-circle-o"></span> I dont't have pets at home</p>
+                                </div>
+                                <hr>
+                                <div class="row modal-button">
+                                    <div class="col">
+                                        
+                                        <button class="modal-button-Accept"><i class="fa fa-check"></i>
+                                            Accept</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5 modal-section-map">
+                                <iframe allowfullscreen="" frameborder="0"
+                                    src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxzZgCD_hvkcRTC-2Pt6bXt0&amp;key=AIzaSyAag-Mf1I5xbhdVHiJmgvBsPfw7mCqwBKU"></iframe>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!--complete-->
 
 <main style="min-height:100vh;">
     <section id="section-home">
@@ -135,31 +268,344 @@
                 <a href="#servicehistory" id="history" class="" onclick="history();" role="button">Service History</a>
                 <a href="#myratings" id="ratings" class="" onclick="ratings();" role="button">My Ratings</a>
                 <a href="#bookcustomer" id="customer" class="" onclick="bookcustomer();" role="button">Block Customer</a>
+                
             </div>
 <div class="content-section">
-            <div class="divContent" id="dashboard">
-               
+            <div class="divContent" id="mySettings"><!--my settings tab start-->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#MyDetails" type="button" role="tab" aria-controls="home" aria-selected="true">My Details</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#changePassword" type="button" role="tab" aria-controls="profile" aria-selected="false">Change Password</button>
+                    </li>
+                    
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="MyDetails" role="tabpanel" aria-labelledby="home-tab">
+                        <P><b> Account Status : </b> Active </p>
+                        <h6><b>Basic Details</b></h6>
+                        <hr>
+                        <div class="row m-20">
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>First name</label>
+                                    <input type="text" class="form-control" placeholder="Swati">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Last name</label>
+                                    <input type="text" class="form-control" placeholder="Raiyani">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Swati@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-20">
+                            <div class="col-sm-4 m-20">
+                                <label>Mobile Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                    <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" class="form-control" placeholder="03/09/2001">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Nationality</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>German</option>
+                                        <option value="1">American</option>
+                                        <option value="2">Indian</option>
+                                        <option value="3">Canadian</option>
+                                      </select>
+                                </div>
+                            </div>
+                        </div>
+                        <label> Gender </label>
+                        <div class="row ">
+                        <div class="form-check col" style="margin-left:20px;">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                              Male
+                            </label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
+                              Female
+                            </label>
+                        </div>
+                        <div class="form-check col">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                            <label class="form-check-label" for="exampleRadios3">
+                              Rather not to say
+                            </label>
+                        </div>
+                        </div>
+                        <label> Select Avatar</label>
+                        
+                        <div class="form-group">
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-female.png">
+                            </div>
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-car.png">
+                            </div>
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-hat.png">
+                            </div>
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-iron.png">
+                            </div>
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-male.png">
+                            </div>
+                            <div class="columnAvatar">
+                                <img class="avatar" src="assets/avatar-ship.png">
+                            </div>
+                        </div>
+                    </select>
+                        
+                        <h6 style="margin-top:190px;"><b>My Address</b></h6>
+                        <hr>
+                        <div class="row m-20">
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Street Name</label>
+                                    <input type="text" class="form-control" placeholder="Koenigstrasse">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>House Number</label>
+                                    <input type="text" class="form-control" placeholder="22">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 m-20">
+                                <div class="form-group">
+                                    <label>Postal code</label>
+                                    <input type="email" class="form-control" placeholder="993499">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="email" class="form-control" placeholder="Tambach-Dietharz">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="m-20">
+                            <button class="Reschedule"> Save </button>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="changePassword" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="form-group m-20">
+                            <label>Old Password</label>
+                            <input type="password" class="form-control" placeholder="old password ">
+                        </div>
+                        <div class="form-group m-20">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" placeholder="new password">
+                        </div>
+                        <div class="form-group m-20">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm password">
+                        </div>
+                        <div class="m-20">
+                            <button class="Reschedule"> Save </button>
+                        </div>
+                    </div>
+                   
+                  </div>
             </div>
+            <!--End mysettings tab-->
+            <!--dashboard strts-->
+            <div class="divContent" id="dashboard">
+                <div class="row">
+                <div class="col title-filter">
+                    <span style="color: black;">Service area :
+                        <select name="mySelect" id="mySelect" onchange="setValue();">
+                            <option value="1" selected="">2 KM</option>
+                            <option value="2"> 5 KM</option>
+                            <option value="3"> 10 KM</option>
+                            <option value="4">15 KM</option>
+                            <option value="3"> 20 KM</option>
+                            <option value="4">25 KM</option>
+                        </select></span>
+                </div>
+                <div class="col">
+                    <input type="checkbox"> <span> Include Pet at home</span>
+                </div>
+                
+            </div> 
+            <div>
+                <table class="current-services" id="mytable3"> 
+                    <thead>
+                        <tr>
+                            <th>Service ID <img src="assets/forma-1_2.png"></th>
+                            <th>Service date <img src="assets/forma-1_2.png"></th>
+                            <th>Cutomer details <img src="assets/forma-1_2.png"></th>
+                            <th>Payment <img src="assets/forma-1_2.png"></th>
+                            <th>Time Conflict <img src="assets/forma-1_2.png"></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept"><button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept"><button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png" >12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept"><button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept"><button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept"><button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                       
+                        
+                        <tr>
+                            <td>323436</td>
+                            <td>
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </td>
+                            <td>
+                                <div>David Bough</div>
+                                <div><img src="assets/layer-719.png">Musterstrabe 5,12345 Bonn</div>
+                            </td>
+                            <td> <i class="fa fa-eur"></i>56,25</td>
+                            <td></td>
+                            <td class="buttonaccept">
+                                <button data-bs-toggle="modal"
+                                data-bs-target="#ServiceAcceptModal"
+                                data-bs-dismiss="modal">Accept</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <!--dashboard ends-->
+            <!--service schedule starts-->
             <div class="divContent" id="serviceschedule">
                
 
             </div>
+            <!--service schedule ends-->
+            <!--service history starts-->
             <div class="divContent" id="servicehistory">
-                <div>
-                    <p style="color: black;">Payment Status:
-                    <select name="mySelect" id="mySelect" onchange="setValue();">
-                        <option value="1" selected="">All</option>
-                        <option value="2"> All 1</option>
-                        <option value="3"> All 2</option>
-                        <option value="4">All 3</option>
-                        <option value="3"> All 4</option>
-                        <option value="4">All 5</option>
-                    </select>
-                    <span class="buttonaccept"><button   style="float: right;">Export</button></span> 
-
-                   
-                </p>
-                 </div>
+                
+                 <div class="row">
+                    <div class="col title-filter">
+                        <p class="medium-title"> Payment Status:
+                            <select name="mySelect" id="mySelect" onchange="setValue();">
+                                <option value="1" selected="">All</option>
+                                <option value="2"> All 1</option>
+                                <option value="3"> All 2</option>
+                                <option value="4">All 3</option>
+                                <option value="3"> All 4</option>
+                                <option value="4">All 5</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="col">
+                       <div class="buttonaccept"> <button class="btn btn-primary " style="float: right;" routerlink="/book-service" title="Add New Service Request" href="#">
+                            Export</button></div>
+                    </div>
+                    
+                </div>
                 <div>
                     <table  class="current-services" id="mytable">
                         <thead>
@@ -250,28 +696,140 @@
                 </div>
                
             </div>
+            <!--service history ends-->
+            <!--Myratings section starts-->
             <div class="divContent" id="myratings">
-               
+                <div class="card m-20" style="width: auto; box-shadow: 0 0 6px rgb(0 0 0 / 25%);">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="card-title">8318</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Gaurang Patel</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span>ratings</span>
+                                <div class="td-rating" >
+                                    <div class="rating-info">
+                                        <div class="info-ratings">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
+                                            Very good
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <hr>
+                    <p>Customer Comments</p>
+                    </div> 
+                </div>
+                <div class="card" style="width: auto; box-shadow: 0 0 6px rgb(0 0 0 / 25%);">
+                    <div class="card-body m-20">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="card-title">7216</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Gaurang Patel</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <div><img src="assets/calculator.png"><b>09/04/2018</b></div>
+                                <div><img src="assets/layer-712.png">12:00 - 18:00</div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span>ratings</span>
+                                <div class="td-rating">
+                                    <div class="rating-info">
+                                        <div class="info-ratings">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
+                                            Very good
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <hr>
+                    <p>Customer Comments</p>
+                    <p> Excellent work done by the provider i am very happy and would like to receive the services of the same provider.</p>
+                    </div> 
+                </div>
             </div>
+            <!--My ratings ends-->
+            <!--block customer start-->
             <div class="divContent" id="bookcustomer">
-                
+                <div class="row m-20" >
+                    <div class="col-sm-4 m-20">
+                      <div class="card">
+                        <div class="card-body text-center">
+                         <div class="td-rating" style="justify-content: center;">  <div class="rating-user"> <img src="assets/forma-1_1.png"></div></div>
+                          <h5 class="card-title">Swati Raiyani</h5>
+                         <button class="cancel">Block</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 m-20">
+                        <div class="card">
+                          <div class="card-body text-center">
+                           <div class="td-rating" style="justify-content: center;">  <div class="rating-user"> <img src="assets/forma-1_1.png"></div></div>
+                            <h5 class="card-title">Kavan Patel</h5>
+                           <button class="cancel">Block</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 m-20">
+                        <div class="card">
+                          <div class="card-body text-center">
+                           <div class="td-rating" style="justify-content: center;">  <div class="rating-user"> <img src="assets/forma-1_1.png"></div></div>
+                            <h5 class="card-title">Gurang Patel</h5>
+                           <button class="cancel">Block</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row m-20">
+                        <div class="col-sm-4 m-20">
+                            <div class="card">
+                              <div class="card-body text-center">
+                               <div class="td-rating" style="justify-content: center;">  <div class="rating-user"> <img src="assets/forma-1_1.png"></div></div>
+                                <h5 class="card-title">Keyur Nakrani</h5>
+                               <button class="cancel">Block</button>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
             </div>
+            <!--block customer ends-->
+            <!--New service request starts-->
             <div class="divContent" id="newservicerequests">
+                
+                <div class="row">
+                    <div class="col title-filter">
+                        <span style="color: black;">Service area :
+                            <select name="mySelect" id="mySelect" onchange="setValue();">
+                                <option value="1" selected="">2 KM</option>
+                                <option value="2"> 5 KM</option>
+                                <option value="3"> 10 KM</option>
+                                <option value="4">15 KM</option>
+                                <option value="3"> 20 KM</option>
+                                <option value="4">25 KM</option>
+                            </select></span>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox"> <span> Include Pet at home</span>
+                    </div>
+                    
+                </div> 
                 <div>
-                    <p style="color: black;">Service area :
-                    <select name="mySelect" id="mySelect" onchange="setValue();">
-                        <option value="1" selected="">2 KM</option>
-                        <option value="2"> 5 KM</option>
-                        <option value="3"> 10 KM</option>
-                        <option value="4">15 KM</option>
-                        <option value="3"> 20 KM</option>
-                        <option value="4">25 KM</option>
-                    </select>
-                    <input type="checkbox"> <span> Include Pet at home</span>
-                </p>
-                 </div>
-                <div>
-                    <table class="current-services" id="mytable1" > 
+                    <table class="current-services" id="mytable1"> 
                         <thead>
                             <tr>
                                 <th>Service ID <img src="assets/forma-1_2.png"></th>
@@ -295,7 +853,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
-                                <td class="buttonaccept"><button>Accept</button>
+                                <td class="buttonaccept"><button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                             <tr>
@@ -310,7 +870,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
-                                <td class="buttonaccept"><button>Accept</button>
+                                <td class="buttonaccept"><button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                             <tr>
@@ -325,7 +887,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
-                                <td class="buttonaccept"><button>Accept</button>
+                                <td class="buttonaccept"><button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                             <tr>
@@ -340,7 +904,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
-                                <td class="buttonaccept"><button>Accept</button>
+                                <td class="buttonaccept"><button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                             <tr>
@@ -355,7 +921,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
-                                <td class="buttonaccept"><button>Accept</button>
+                                <td class="buttonaccept"><button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                            
@@ -373,7 +941,9 @@
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td></td>
                                 <td class="buttonaccept">
-                                    <button>Accept</button>
+                                    <button data-bs-toggle="modal"
+                                    data-bs-target="#ServiceAcceptModal"
+                                    data-bs-dismiss="modal">Accept</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -381,9 +951,12 @@
                 </div>
                
             </div>
+            <!--new service request ends-->
+            <!--upcoming service starts-->
             <div class="divContent" id="upcomingservice">
                 <div>
-                    <table class="current-services" id="mytable2">
+                     <table class="current-services" id="mytable2"> 
+                       
                         <thead>
                             <tr>
                                 <th>Service ID <img src="assets/forma-1_2.png"></th>
@@ -407,7 +980,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel"><button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -422,7 +997,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel"><button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -437,7 +1014,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel"><button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -452,7 +1031,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel"><button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -467,7 +1048,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel"><button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -482,8 +1065,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel">
-                                    <button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -498,8 +1082,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel">
-                                    <button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -514,8 +1099,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel">
-                                    <button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -530,8 +1116,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel">
-                                    <button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                             <tr>
@@ -546,8 +1133,9 @@
                                 </td>
                                 <td> <i class="fa fa-eur"></i>56,25</td>
                                 <td>15 km</td>
-                                <td class="buttoncancel">
-                                    <button>Cancel</button>
+                                <td class="buttoncancel"><button  data-bs-toggle="modal"
+                                    data-bs-target="#ServiceCancelModal"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -555,7 +1143,7 @@
                 </div>
                
             </div>
-
+            <!--upcoming service ends-->
             
 
 </div>            
@@ -564,7 +1152,7 @@
 
 
 </main>
-</div>
+</div><!--ends wrapper class-->
 
 <!--footer section-->
 <footer class="site-footer">
@@ -622,10 +1210,8 @@
         </div>
     </div>
 </footer>
-
+<!--footer section end-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
@@ -667,7 +1253,7 @@
       $("#mytable1").DataTable();
     });
   </script>
-  <!--for service history-->
+  <!--for service Request-->
   <script>
       const dt1 = new DataTable("#mytable1", {
       dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
@@ -684,10 +1270,10 @@
           lengthMenu: "Show_MENU_Entries",
       },
       buttons: ["excel"],
-      columnDefs: [{ orderable: false, targets: 4}],
+      columnDefs: [{ orderable: false, targets: 5}],
   });
   </script>
-   <!--for upcoming service-->
+   <!-- for upcoming service-->
    <script>
     $(document).ready(function () {
       $("#mytable2").DataTable();
@@ -711,7 +1297,32 @@
     buttons: ["excel"],
     columnDefs: [{ orderable: false, targets: 5}],
 });
-</script>
+</script> 
+<!--for dashboard-->
+<script>
+    $(document).ready(function () {
+      $("#mytable3").DataTable();
+    });
+  </script>
+   <script>
+    const dt3 = new DataTable("#mytable3", {
+    dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+        first: "<img src='assets/pagination-first.png' alt='first'/>",
+        previous: "<img src='assets/pagination-left.png' alt='previous' />",
+        next: '<img src="assets/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+        last: "<img src='assets/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Record: _MAX_",
+        lengthMenu: "Show_MENU_Entries",
+    },
+    buttons: ["excel"],
+    columnDefs: [{ orderable: false, targets: 5}],
+});
+</script> 
     <script type="text/javascript" src="./script.js"></script>
    
 </body>

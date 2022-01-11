@@ -38,6 +38,10 @@ p {
     padding-left: 9px !important;
     padding-right:9px !important;
 }
+.d-b{
+    display: none;
+}
+
 .notification {
 
     color: white;
@@ -64,6 +68,9 @@ p {
 .dropdown1{
     margin-left: 20px;
     margin-right: 80px;
+}
+ul{
+    list-style-type: none;
 }
 /* Responsive */
 
@@ -92,7 +99,9 @@ p {
 .site-header .header-wrapper .header-right-block .navbar .nav-item .nav-link:not(.border-btn) { line-height: 1.2; font-size: 22px; }
 .navbar-expand-lg .navbar-nav .nav-link.border-btn { font-size: 22px; border-radius: 0; border: none; padding: 0; height: 100%; line-height: 1.2; min-width: 100%; }
 .site-header .header-wrapper a.logo-block img { max-width: 100px; }
-
+.d-b{
+    display: block !important;
+}
 
 }
 @media (max-width:767px) {
@@ -135,6 +144,14 @@ p {
         
     }
 }
+.title-filter  {
+    max-width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20px;
+    display: inline-block;
+    color: #646464;
+} 
 /* table section */
 
 table {
@@ -176,9 +193,13 @@ th{
 td{
     margin-left: 20px;
     margin-right: 20px;
+    display:block !important;
 }
-.abc{
+/*.abc{
     display: flex;
+}*/
+table.dataTable td{
+    display:block !important;
 }
 .current-services tbody td {
     display: block!important;
@@ -276,7 +297,7 @@ th{
 .divContent{
     overflow: auto;
 }
-.tab a:hover{
+#exampleModalnavbartoggle .tab a:hover{
     color: #1d7a8c;
 }
 .buttonaccept button{
@@ -321,68 +342,187 @@ th{
         display: none;
     }
 }
-@media screen and (max-width:1700px) {
+@media screen and (max-width:1300px) {
     #tab-section{
-        padding: 30px 0;
-        width: 90%;
-        margin: 0 auto;
-    }
     
-    .divContent{
-        margin-left: 0px;
-        padding-left: 0px;
+        width: 95%;
     }
-    .div-main{
-        height: 100%;
-    }
-    
 }
 
 
 
 /*modal for tabs with navbar*/ 
- .modal-dialog{
+#exampleModalnavbartoggle .modal-dialog{
     float: right;
     width: 250px;
 }
-.modal-content{
+#exampleModalnavbartoggle .modal-content{
     width: auto;
     height: auto;
     padding: 1px;
 }
-.modal-body, .modal-footer{
+#exampleModalnavbartoggle .modal-body,#exampleModalnavbartoggle .modal-footer{
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items:flex-start;
 }
-.modal-body a, .modal-footer a{
+#exampleModalnavbartoggle .footer-widget{
+    justify-content: center !important;
+    align-items: center !important;
+}
+#exampleModalnavbartoggle .modal-body a,#exampleModalnavbartoggle .modal-footer a{
     text-decoration: none;
     padding: 5px;
     color: #646464;
     font-size: 16px;
     background-color: white;
 }
-.modal-header{
+#exampleModalnavbartoggle .modal-header{
     border: none;
     border-bottom: 1px solid gray;
 }
-.modal-header h4{
+#exampleModalnavbartoggle .modal-header h4{
     font-size: 16px;
 }
-.modal-footer{
+#exampleModalnavbartoggle .modal-footer{
     border-top: 1px solid gray;
 }
-.modal-footer>*{
+/* #exampleModalnavbartoggle .modal-footer>*{
     margin: 0;
+} */
+/* Modal for cancel service and Accept servicerequest */
+.modal-section-map iframe{
+    height: 100%;
+    width: 100%;
 }
+.modal-section-body div p{
+    margin-top: 2px;
+    margin-bottom: 0;
+    font-size: 18px;
+}
+.modal-section-body .m-time{
+    font-size: 26px;
+}
+.modal-section-body .fa-times-circle-o{
+    color: rgb(255, 0, 0);
+}
+.modal-button{
+    padding-top: 7px;
+}
+.modal-button button{
+    width: 130px;
+    border-radius: 25px;
+    padding: 8px 10px; 
+    color: white;
+    border: none;
+}
+.modal-button button i{
+    margin-right: 5px;
+}
+.modal-button-cancel{
+   background-color: #ff6b6b; 
+}
+.modal-button-Accept{
+    background-color:green;
+}
+.modal-button-complete{
+    background-color: #348588;
+}
+
+.modal-section-body .m-currency{
+    font-size: 32px;
+    color: #348588;
+    font-weight: 700;
+}
+.modal-section-body hr{
+    margin: 6px 0;
+}
+.m-head{
+    font-weight: 500;
+}
+
+#ServiceCancelModal .modal-content,#ServiceAcceptModal .modal-content{
+    width: 1000px;
+}
+#ServiceCancelModal .modal-dialog,#ServiceAcceptModal .modal-dialog{
+    max-width: 1000px;
+}
+#ServiceCancelModal .modal-header,#ServiceAcceptModal .modal-header {
+    border-bottom: 0;
+}
+.cancel{
+    width:80px;
+    font-size: 16px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 17px;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    
+}
+.m-20{
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+
+}
+.td-rating {
+    display: flex;
+    align-items: center;
+}
+.td-rating .rating-user {
+    border: 1px solid  #AAAAAA;
+    opacity: 1;
+    border-radius: 50%;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+}
+.fa-star{
+    color: rgb(156, 156, 6);
+}
+/* for my settings */
+ select {
+    width: auto;
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+.Reschedule{
+    width: 100px;
+    font-size: 16px;
+    background-color: #146371;
+    color: white;
+    border-radius: 17px;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+}
+
+.columnAvatar {
+    float: left;
+    cursor: pointer;
+    padding: 5px;
+}
+.columnAvatar .avatar {
+    height: 85px;
+    border-radius: 85px;
+}
+.avatar:hover{
+    border:2px solid #1d7a8c;
+}
+
 /* complete */
 
 #newservicerequests{
     display: none;
 } 
-#dashboard,#myratings,#serviceschedule,#servicehistory,#bookcustomer{
+#dashboard,#myratings,#serviceschedule,#servicehistory,#bookcustomer,#invoices,#notification,#mySettings{
     display: none;
 }
  /* for pagination */
@@ -442,6 +582,18 @@ th{
 }
 
 #mytable2_info{
+    margin-top: 7px;
+    margin-left: 7px;
+}
+#mytable3_length label{
+    margin-top: 15px;
+}
+
+#mytable3_length label select{
+    margin: 0 5px;
+}
+
+#mytable3_info{
     margin-top: 7px;
     margin-left: 7px;
 }
