@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>Book-Now</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
+    <link rel='stylesheet' href="./style.css">
+</head>
+
+<body>
+    <!--for navbar-->
+<div class="wrapper">
+        <!-- header -->
+        <header class="site-header">
+            <div class="header-wrapper d-flex justify-content-between align-items-center">
+                <a href="#" title="Helper hand" class="logo-block">
+                    <img src="assets/logo-large.png" alt="Helper hand logo">
+                </a>
+                <div class="header-right-block">
+                    <div class="right-block-inner d-flex align-items-center">
+                        <nav class="navbar navbar-expand-lg align-items-center">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book Now</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn1" href="G:\TatvaSoft\HTML\Prices\index.html" title="Prices">Prices & services</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" title="Our Guarantee">Warranty</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" title="Blog">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="G:\TatvaSoft\HTML\Contact\index.html" title="Contact us">Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="G:\TatvaSoft\HTML\Home_Page\index.html" title="Login" >Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="G:\TatvaSoft\HTML\Service Provider  Become-a-provider(6th- page)\index.html" title="Become a Helper">Become a
+                                            Helper</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                       
+                    </div>
+                </div>
+            </div>
+        </header><!--navbar ends header ends-->
+        <section class="backgroung-imgsection">
+            <img src="assets/book-service-banner.jpg" id="responsive" >
+        </section>
+        <section style="min-height:200vh;" >
+            <p class="title-main">Set up your cleaning service</p>
+            <div class="underline-design ">
+              <div class="line line1"></div>
+              <img src="assets/forma-1-copy-5.png" alt=" ">
+              <div class="line line2"></div>
+            </div>
+        
+        <section class="d-f">
+            
+            
+              <div id="pills-tabContent" class="tab-content">
+                <ul class="nav nav-pills mb-3 flex-nowrap" id="pills-tab" >
+                    <li class="nav-item" role="button" id="pills-tab1" onclick="setupservice()">
+                      <button class="nav-link active nav-flex" id="setupservice"  type="button" >
+                         <img src="assets/setup-service-white.png" id="imgsetupservice"> <p id="forsetup" style="color: white;">Setup Service</p>
+                         
+                      </button>
+                    </li>
+                    <li class="nav-item" role="button" id="pills-tab2" onclick="scheduleplan()">
+                      <button class="nav-link nav-flex" id="schedule1"  type="button" >
+                         <img src="assets/schedule.png" id="imgschedule"> <p id="schedulep">Schedule & plan</p>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="button" id="pills-tab3" onclick="details()">
+                      <button class="nav-link nav-flex" id="details1"  type="button">
+                         <img src="assets/details.png" id="details"><p id="detailsp"> Your Details</p>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="button" id="pills-tabs4" onclick="payment()">
+                        <button class="nav-link nav-flex" id="payment1"  type="button" >
+                           <img src="assets/payment.png" id="payment"><p id="paymentp"> Make Payments</p>
+                        </button>
+                      </li>
+                    
+                  </ul>
+                  <form action="#" >
+                <div id="pills-setupservice">
+                    <label class="form-label"><b>Enter Postal Code</b></label>
+                    <input type="text" class="form-control w-230" placeholder="Enter Postal Code">
+                    <input type="button" class="btncheckavailability" value="Check Availability" onclick="scheduleplan()" >
+                </div><!--ends check availability-->
+                <div id="pills-scheduleplan">
+                    
+                        <div class="row w-100">
+                            <div class="col-sm-12 col-lg-6 m-20">
+                                <label class="form-label"><b>When do you need the cleanner?</b></label>
+                                <div class="row">
+                                    <div class="col-sm-6  m-20">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 m-20">
+                                        <select name="Times" id="Times" class="form-control ">
+                                            <option>8:00</option>
+                                            <option>8:30</option>
+                                            <option>9:00</option>
+                                            <option>9:30</option><option>10:00</option>
+                                            <option>11:30</option>
+                                            <option>12:00</option>
+                                            <option>12:30</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6 m-20">
+                                <label class="form-label"><b>How long do you need your cleanner to stay?</b></label>
+                                <select name="Times" id="Times" class="form-control m-20">
+                                    <option>3 Hrs</option>
+                                    <option>3.5 Hrs</option>
+                                    <option>4 Hrs</option>
+                                    <option>4.5 Hrs</option><option>5 Hrs</option>
+                                    <option>5.5 Hrs</option>
+                                    <option>6 Hrs</option>
+                                    <option>6.5 Hrs</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <label><b>Extra Services</b></label>
+                        
+                        <div id="custom-checkboxes">
+                            <div class="checkbox">
+                              <input type="checkbox" name="insideCabinet" id="insideCabinetCheck" class="htmlcheckbox" onclick="onInsideCabinet();">
+                              <label for="insideCabinetCheck" onclick="onInsideCabinet();"><img src="assets/3.png" id="insideCabinetImg" alt=""></label>
+                              <p>inside cabinets</p>
+                            </div>
+    
+                            <div class="checkbox">
+                              <input type="checkbox" id="insideFridgeCheck" name="insideFridge" class="htmlcheckbox" onclick="onInsideFridge();">
+                              <label for="insideFridgeCheck"><img src="assets/5.png" id="insideFridgeImg" alt="" onclick="onInsideFridge();"></label>
+                              <p>inside Fridge</p>
+                            </div>
+    
+                            <div class="checkbox">
+                              <input type="checkbox" name="insideOven" id="insideOvenCheck" class="htmlcheckbox" onclick="onInsideOven();">
+                              <label for="insideOvenCheck" onclick="onInsideOven();"><img src="assets/4.png" id="insideOvenImg" alt=""></label>
+                              <p>inside Oven</p>
+                            </div>
+    
+                            <div class="checkbox">
+                              <input type="checkbox" id="laundryCheck" name="laundry" class="htmlcheckbox" onclick="onLaundry();">
+                              <label for="laundryCheck" onclick="onLaundry();"><img src="assets/2.png" id="laundryImg" alt=""></label>
+                              <p>Laundry Wash & Dry</p>
+                            </div>
+    
+                            <div class="checkbox">
+                              <input type="checkbox" id="interiorCheck" name="interior" class="htmlcheckbox" onclick="onInterior();">
+                              <label for="interiorCheck" onclick="onInterior();"><img src="assets/1.png" id="interiorImg" alt=""></label>
+                              <p>interior Windows</p>
+                            </div>
+                          </div>
+    
+                        <hr>
+                        <label><b>Comments</b></label>
+                        <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
+                        <input type="checkbox" >I have pets at home
+                        <hr>
+                        <input type="button" class="btncontinue" value="Continue"  onclick="details()">
+
+                </div><!--Ends schedule and plan-->
+                <div id="pills-Details" >
+                    <p><b>Enter Your contact details,so we can serve you in better way!</b></p>
+                    <!-- <div id="addresses">
+                     <div class="forborder">
+                        <div class="d-flex">
+                            <input type="radio" class="forradio" id="address1">
+                            <div class="dfw">
+                                <p><b>Address:</b> Koenigstrasse 112,Tambach-Dietharz 99897</p>
+                                <p><b>Phone Number:</b>9955648797</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forborder mt-20">
+                        <div class="d-flex">
+                            <input type="radio" class="forradio" id="address2">
+                            <div class="dfw">
+                                <p><b>Address:</b> Koenigstrasse 112,Tambach-Dietharz 99897</p>
+                                <p><b>Phone Number:</b>9955648797</p>
+                            </div>
+                        </div>
+                    </div> 
+                </div> -->
+                <div id="addresses" >
+                    <div class="forborder mt-20">
+                      <input type="radio" name="address" id="address1">
+                      <label for="address1">
+                        <p><b>Address:</b> street 2 40, Troisdorf 53844</p>
+                        <p><b>Phone number:</b> 8200035128</p>
+                      </label>
+                    </div>
+                    <div class="forborder mt-20">
+                      <input type="radio" name="address" id="address2">
+                      <label for="address2">
+                        <p><b>Address:</b> street 2 40, Troisdorf 53844</p>
+                        <p><b>Phone number:</b> 8200035128</p>
+                      </label>
+                    </div>
+                  
+                  </div>
+                 
+                    <input type="button" class="btnaddnewadd" value="+ Add New Address" id="addnewadd" onclick="btnaddnewadd()">
+                     <div id="formadd" class="forborder mt-20 border">
+                        <div class="row mt-20 ml-20">
+                            <div class="col-sm-6">
+                                <label>Street Name</label>
+                                <input type="text" class="form-control" placeholder="Street Name" id="addStreetname">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>House Number</label>
+                                <input type="number" class="form-control" placeholder="House Number" id="addHouseno">
+                            </div>
+                        </div>
+                        <div class="row mt-20 ml-20">
+                            <div class="col-sm-6">
+                                <label>Postal code</label>
+                                <input type="number" class="form-control" placeholder="99897" id="addPostalcode">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>City</label>
+                                <input type="text" class="form-control" placeholder="Tambatch Dietharz" id="addCity">    
+                            </div>
+                        </div>
+                        <div class="row mt-20 ml-20">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                    <input type="text" class="form-control" placeholder="Phone Number" id="addPhoneno" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <input type="button" value="save" class="btnsave" onclick="save()">
+                            <input type="button" value="cancel" class="btncancel"  onclick="btncancel()">
+                        </div>
+                    </div> 
+                    <!-- <div id="addresses">
+                        <div>
+                          <input type="radio" name="address" id="address1">
+                          <label for="address1">
+                            <p><b>Address:</b> street 2 40, Troisdorf 53844</p>
+                            <p><b>Phone number:</b> 8200035128</p>
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" name="address" id="address2">
+                          <label for="address2">
+                            <p><b>Address:</b> street 2 40, Troisdorf 53844</p>
+                            <p><b>Phone number:</b> 8200035128</p>
+                          </label>
+                        </div>
+                        <div class="d-flex">
+                            <input type="button" value="save" class="btnsave" onclick="save()">
+                            <input type="button" value="cancel" class="btncancel" id="btncancel" onclick="btncancel()">
+                        </div>
+                    </div> -->
+                    <p class="mt-20"><b>Your favourite service Provider</b></p>
+                    <hr>
+                    <p>You can choose your favourite service provider from the below list</p>
+                    <div class="td-rating">
+                        <div class="rating-user"><img src="assets/forma-1-copy-19.png"></div>
+                    </div>
+                    <p>Sundip Patel</p>
+                    <input type="button" value="select" class="btnaddnewadd1">
+                    <hr>
+                    <input type="button" class="btncontinue" value="Continue" onclick="payment()">
+
+                </div><!--ends your details-->
+                <div  id="pills-payment" >
+                    <p>Pay Securely with Helperland payment gateway!</p>
+                    <label>promo code(optional)</label>
+                    <div>
+                        <input type="number" class="form-control w-230" placeholder="promo code(optional)">
+                        <input type="button" class="btnaddnewadd" value="Apply">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="number"  class="form-control w-230" placeholder="card-number" >
+                    </div>
+                    <hr>
+                    <div class="d-flex">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              I accepted <span style="color:#1D7A8C">terms and conditions</span> , the <span style="color: #1D7A8C;">privacy policy</span>. 
+                              I confirm that Helperland start to execute the contract before the expiry of the withdrawal period and I lose my right of withdrawal 
+                              as a consumer with full performance of the contract.  
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <input type="submit" class="btncontinue" value="Complete Booking">
+                </div><!--ends payment tabs-->
+            </form>
+              </div>
+              <div  class="rightside">
+              <div class="card w-200">
+                <div class="card-header">
+                  Payment Summary
+                </div>
+                <div class="card-body">
+                  
+                  <p class="card-text">01/01/2018 @ 4:00 pm</p>
+                  <p class="card-text">1 bed ,1 bath</p>
+                  <p><b>Duration</b></p>
+                  <p>Basic<span style="float: right;">3 Hrs</span></p>
+                  <p>Inside cabinets<span style="float: right;">30 mins</span></p>
+                  <hr>
+                  <p><b>Total Service Time<span style="float: right;">3.5 Hrs</span></b></p>
+                  <hr>
+                  <p>per Cleaning<span style="float: right;">$87</span></p>
+                  <p>Discount<span style="float: right;">-$27</span></p>
+                  <hr>
+                  <h6 class="payment"><b>Total Payment<span class="paymentsub">$63</span></b></h6>
+                  <br>
+                  <h6>Effective Price<span style="float: right;">$50.4</span></h6>
+                  <p>You will save 20% according to...</p>
+                </div>
+                <div class="card-footer" data-bs-toggle="modal" data-bs-target="#staticBackdrop" role="button">
+                    <p><img src="assets/smiley.png">  See What is always include</p>
+                </div>
+                </div>
+
+                <div class="rightsecondpart">
+                <h6 class="onlyone"><b>Questions?</b></h6>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What's include in a cleaning?
+                        </button>
+                    </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          Bedroom,Living room & Common area, Bathrooms,Kitchen and Extras
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                              Which Helperland professional will come to my place?
+                          </button>
+                      </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date of your request, we work to assign the best professional available.Like working with a specific pro? Add them to your Pro Team from the mobile app and they'll be requested first for all future bookings.You will receive an email with details about your professional prior to your appointment.
+                        </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                              Can I skip or rescheule bookings?
+                          </button>
+                      </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            You can reschedule any booking for free at least 24 hours in advance of the scheduled start time. If you need to skip a booking within the minimum commitment, we’ll credit the value of the booking to your account. You can use this credit on future cleanings and other Helperland services.
+                        </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                              Test tatva
+                          </button>
+                      </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            tatva
+                          </div>
+                        </div>
+                      </div>
+                </div> <!--ends accordition-->
+               <div class="onlyone"><a href="G:\TatvaSoft\HTML\FAQS\index.html"  style="font-weight:bold;">For More Help</a></div>
+                </div><!--ends right second part-->
+            </div><!--Ends right side-->
+            </section>
+    </section>
+<!--Modal for payment summary-->
+    <div class="hidepaymentsummary" >
+  <div class="centerbtn"><button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Payment Summary
+      </button></div>  
+      
+     
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Payment Summary</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">01/01/2018 @ 4:00 pm</p>
+                <p class="modal-text">1 bed ,1 bath</p>
+                <p><b>Duration</b></p>
+                <p>Basic<span style="float: right;">3 Hrs</span></p>
+                <p>Inside cabinets<span style="float: right;">30 mins</span></p>
+                <hr>
+                <p><b>Total Service Time<span style="float: right;">3.5 Hrs</span></b></p>
+                <hr>
+                <p>per Cleaning<span style="float: right;">$87</span></p>
+                <p>Discount<span style="float: right;">-$27</span></p>
+                <hr>
+                <h6 class="payment"><b>Total Payment<span class="paymentsub">$63</span></b></h6>
+                <br>
+                <h6>Effective Price<span style="float: right;">$50.4</span></h6>
+                <p>You will save 20% according to...</p>
+            </div>
+            <div class="modal-footer" data-bs-toggle="modal" data-bs-target="#staticBackdrop" role="button">
+                <p><img src="assets/smiley.png">  See What is always include</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+<!--Ends Modal-->
+<!--modal for what we include-->
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">What we include in cleaning?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><b>Bedroom and Living Room</b></p>
+                    <ul class="no-bullets">
+                        <li><img src="assets/included.png" class="rotate">Dust all accessible surface</li>
+                        <li><img src="assets/included.png" class="rotate"> Wipe down all mirrors and glass fixtures</li>
+                        <li><img src="assets/included.png" class="rotate">Clean all floor surfaces</li>
+                        <li><img src="assets/included.png" class="rotate">Take out garbage and recycling</li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <p><b>Bathrooms</b></p>
+                        <ul class="no-bullets">
+                            <li><img src="assets/included.png" class="rotate">Wash and sanitize the toilet, shower, tub, sink</li>
+                            <li><img src="assets/included.png" class="rotate">Dust all accessible surfaces</li>
+                            <li><img src="assets/included.png" class="rotate"> Wipe down all mirrors and glass fixtures</li>
+                            <li><img src="assets/included.png" class="rotate">Clean all floor surfaces</li>
+                            <li><img src="assets/included.png" class="rotate">Take out garbage and recycling</li>
+                        </ul>
+                </div>
+                <div class="col-sm-4">
+                    <p><b>Kitchens</b></p>
+                        <ul class="no-bullets" >
+                            <li><img src="assets/included.png" class="rotate">Dust all accessible surfaces</li>
+                            <li><img src="assets/included.png" class="rotate"> Empty sink and load up dishwasher</li>
+                            <li><img src="assets/included.png" class="rotate">Wipe down exterior of stove, oven and fridge</li>
+                            <li><img src="assets/included.png" class="rotate"> Clean all floor surfaces</li>
+                            <li><img src="assets/included.png" class="rotate">Take out garbage and recycling</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!--end modal-->
+        <section class="our-news-letter">
+            <div class="container text-center">
+                <a href="#" class="scroll-top"><img src="assets/forma-1.png" alt="up-arrow"></a>
+                <h2>GET OUR NEWSLETTER</h2>
+                <div class="form-row d-flex justify-content-center align-items-center">
+                    <div class="form-group">
+                        <label for="email" style="display: none;">YOUR EMAIL</label>
+                        <input type="text" placeholder="YOUR EMAIL" id="email" class="form-control">
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="red-btn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div><!--wrapper class ends-->
+
+
+
+<!--footer section-->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 footer-widget">
+                    <a href="#" title="Helper Hand">
+                        <img src="assets/footer-logo.png" alt="Helper Hand">
+                    </a>
+                </div>
+                <div class="col-lg-8 footer-widget">
+                    <ul class="footer-navigation d-flex justify-content-center">
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\Home_Page\index.html" title="Home">Home</a>
+                        </li>
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\About\index.html" title="About">About</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Testimonials">Testimonials</a>
+                        </li>
+                        <li>
+                            <a href="G:\TatvaSoft\HTML\FAQS\index.html" title="FAQs">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Insurance Policy">Insurance Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Impressum">Impressum</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 footer-widget">
+                    <ul class="social-media-list d-flex justify-content-end">
+                        <li>
+                            <a href="#" target="_blank" title="Facebook">
+                                <img src="assets/ic-facebook.png" alt="Facebook">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" title="Instagram">
+                                <img src="assets/ic-instagram.png" alt="Instagram">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container text-center">
+            <p>©2018 Helperland. All rights reserved.     Terms and Conditions  |   <a href="#" title="Privacy Policy">Privacy Policy</a></p>
+            
+        </div>
+    </div>
+</footer>
+<!--footer section end-->
+    
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+            <script type="text/javascript" src="./script.js"></script>
+    </body>
+        
+    </html>

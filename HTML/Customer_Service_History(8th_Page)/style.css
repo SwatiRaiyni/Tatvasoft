@@ -17,6 +17,9 @@ p {
 .container {
      max-width: 1262px; padding: 0 50px; width: 100%; 
 }
+#pills-Details , #pills-payment , #pills-scheduleplan{
+    display: none !important;
+}
 
 /* navbar */
 /* Nav bar section */
