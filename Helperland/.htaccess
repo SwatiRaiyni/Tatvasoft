@@ -1,0 +1,21 @@
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteBase /Helperland/
+
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteRule ^ index.php [QSA,L]
+# </IfModule>
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine on  
+  RewriteCond %{REQUEST_FILENAME} !-f 
+  RewriteCond %{REQUEST_FILENAME} !-d 
+  RewriteRule ^(.*)$ View/$1
+  RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+  RewriteRule ^ /%1 [NC,L,R]
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^ %{REQUEST_URI}.php [NC,L]
+ 
+
+</IfModule>
