@@ -1,5 +1,5 @@
 <?php
-  $base_url = "http://localhost/Helperland/";
+  $base_url = "http://localhost/TatvaSoft/Helperland/";
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,16 +79,16 @@
  
              <!--for form-->
               <div class="c-form">
-                <form autocomplete="off" action="http://localhost/Helperland/?controller=Contact&function=ContactUs" method="post">
+                <form autocomplete="off" enctype="multipart/form-data" action="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=ContactUs" method="post">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="firstname" placeholder="Firstname" type="text"
-                                    autofocus />
+                                    autofocus require/>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="lastname" placeholder="Lastname" type="text"
-                                    autofocus />
+                                    autofocus require/>
                             </div>
                         </div>
                         <div class="row">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="email" placeholder="Email address" type="email"
-                                     />
+                                    require />
                             </div>
                         </div>
                         <div class="row">
@@ -120,7 +120,7 @@
                                     rows="7" name="comment" ></textarea>
                             </div>
                         </div>
-                        
+                                                
                     </div>
                     <div class="submitbtn">
                         <button name="submit" type="submit">Submit</button>

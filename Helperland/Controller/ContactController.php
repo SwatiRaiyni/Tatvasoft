@@ -22,23 +22,25 @@ class ContactController
         // print_r ($_POST);
         // exit;
         if (isset($_POST)) {
-            $base_url = "http://localhost/Helperland/contact";
-            $mobile =  $_POST['number'];
-            $email = $_POST['email'];
-            $subject = $_POST['sub'];
+             $base_url = "http://localhost/TatvaSoft/Helperland/contact";
+             $mobile =  $_POST['number'];
+             $email = $_POST['email'];
+             $subject = $_POST['sub'];
              $message = $_POST['comment'];
-            $name = $_POST['firstname'] . " " . $_POST['lastname'];
-            $array = [
-                'name' => $name,
-                'email'=> $email,
-                'mobile' => $mobile,
-                 'sub' => $subject,
-                 'msg'=> $message,
-            ];
-            $result = $this->model->Contactus($array);
-            $_SESSION['firstname'] = $results[0];
-            header('Location:' . $base_url);
             
+             $name = $_POST['firstname'] . " " . $_POST['lastname'];
+             $array = [
+                 'name' => $name,
+                 'email'=> $email,
+                 'msg'=> $message,
+                 'mobile' => $mobile,
+                  'sub' => $subject
+                  
+             ];
+             $result = $this->model->Contactus($array);
+             $_SESSION['firstname'] = $results[0];
+             header('Location:' . $base_url);
+           
         }
     }
     

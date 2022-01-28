@@ -26,7 +26,7 @@ class ContactModel
          $email = $array['email'];
           $sub = $array['sub'];
          $mobile = $array['mobile'];
-          $msg = $array['message'];
+          $msg = $array['msg'];
             $sql = "INSERT INTO contactus (Name , Email , Subject , PhoneNumber , Message)
             VALUES ('$name' ,'$email','$sub','$mobile','$msg')";
             $result =mysqli_query($this->conn, $sql);
