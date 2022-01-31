@@ -40,27 +40,27 @@
 
   <!--for form-->
   <div class="c-form">
-    <form action="#" method="post" accept-charset="utf-8">
+    <form action="http://localhost/TatvaSoft/Helperland/?controller=Register&function=Registration" method="post" accept-charset="utf-8">
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     <input class="form-control" name="firstname" placeholder="Firstname" type="text"
-                        required autofocus />
+                        />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     <input class="form-control" name="lastname" placeholder="Lastname" type="text"
-                        required autofocus />
+                         />
                 </div>
             </div>
             <div class="row">
                
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     <input class="form-control" name="email" placeholder="Email address" type="email"
-                        required />
+                        />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                    
-                    <input type="number" class="form-control" id="inlineFormInputGroup"
+                    <input type="number" name="number" class="form-control" id="inlineFormInputGroup"
                              placeholder="Mobile number">
                  </div>
             </div>
@@ -68,11 +68,11 @@
                
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     <input class="form-control" name="password" placeholder="password" type="password"
-                        required />
+                        />
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     
-                    <input type="confirm password" class="form-control" name="confirm password"
+                    <input type="password" class="form-control" name="confirmpassword"
                              placeholder="Confirm password">
                  </div>
             </div>

@@ -25,7 +25,7 @@
                     <button type="button"  class="blue-btn1">Login</a>
                 </div>
                <center style="margin-top: 20px;" > <a class="float-center" role="button" data-bs-target="#forgotpassword" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a></center>
-                <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="registration.php">Create an account</a></p> 
+                <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="registrationuser.php">Create an account</a></p> 
             </form>
           </div>
         </div>

@@ -38,8 +38,6 @@ class ContactModel
                 $_SESSION['message'] = "Your Account is not Created Please Try Again.";
             }
             return $_SESSION['message'];
-
-            
     }
 
 }

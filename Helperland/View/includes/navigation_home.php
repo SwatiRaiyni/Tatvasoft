@@ -26,13 +26,13 @@
                                         <a class="nav-link" href="#" title="Blog">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="./contact.php" title="Contact us">Contact us</a>
+                                        <a class="nav-link" href="contact.php" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="#" title="Login" data-bs-toggle="modal" data-bs-target="#ModalFormlogin">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="G:\TatvaSoft\HTML\Service Provider  Become-a-provider(6th- page)\index.html" title="Become a Helper">Become a
+                                        <a class="nav-link border-btn" href="ServiceProviderRegister.php" title="Become a Helper">Become a
                                             Helper</a>
                                     </li>
                                 </ul>
