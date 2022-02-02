@@ -3,10 +3,10 @@
               <div class="footer-content d-flex flex-wrap justify-content-center justify-content-md-between">
                   <div class="footer-logo"><img src="./assets/images/site-logo.png" alt=""></div>
                   <div class=" footer-nav d-flex flex-sm-column flex-md-row  justify-content-center ">
-                      <a class="nav-link " href="homepage.php">Home</a>
-                      <a class="nav-link " href="about.php ">About</a>
+                      <a class="nav-link " href="<?= $base_url.'?controller=Contact&function=HomePage'?>">Home</a>
+                      <a class="nav-link " href="<?= $base_url.'?controller=Contact&function=about'?> ">About</a>
                       <a class="nav-link " href="# ">Testimonials</a>
-                      <a class="nav-link " href="faq.php ">faqs</a>
+                      <a class="nav-link " href="<?= $base_url.'?controller=Contact&function=faq'?> ">faqs</a>
                       <a class="nav-link " href="# ">Insurance Policy</a>
                       <a class="nav-link " href="# ">Impressum</a>
                   </div>

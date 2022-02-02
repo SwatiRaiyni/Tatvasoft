@@ -21,12 +21,12 @@
         
       </div> 
       
-      <a href="G:\TatvaSoft\HTML\Service Provider  Become-a-provider(6th- page)\index.html" class="acti rounded-pill border-1 rp" >Become a helper</a>
-      <a href="homepage.php" class="acti rounded-pill border-1 rp3">Login</a>
-      <a href="contact.php">Contact</a>
+      <a href="<?= $base_url.'?controller=Contact&function=spr'?>" class="acti rounded-pill border-1 rp" >Become a helper</a>
+      <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" class="acti rounded-pill border-1 rp3">Login</a>
+      <a href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
       <a href="#about">Blog</a>
       <a href="#contact">Warranty</a>
-      <a href="price.php" class="rounded-pill border-1 rp ">Prices & Services</a>
+      <a href="<?= $base_url.'?controller=Contact&function=price'?>" class="rounded-pill border-1 rp ">Prices & Services</a>
       <a href="#home" class="acti rounded-pill border-1 rp1">Book Now</a>
       <a href="javascript:void(0);"  class="icon" onclick="myFunction()">&#9776;</a>
 </div>
@@ -84,22 +84,22 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="firstname" placeholder="Firstname" type="text"
-                                    autofocus require/>
+                                    autofocus required/>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="lastname" placeholder="Lastname" type="text"
-                                    autofocus require/>
+                                    autofocus required/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 
                                <input type="number" name="number" class="form-control" id="inlineFormInputGroup"
-                                        placeholder="Mobile number">
+                                        placeholder="Mobile number" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 <input class="form-control" name="email" placeholder="Email address" type="email"
-                                    require />
+                                    required />
                             </div>
                         </div>
                         <div class="row">

@@ -5,16 +5,32 @@ class ContactController
     {
         include('Model/ContactModel.php');
         $this->model = new ContactModel();
-        
-        // session_start();
-        // $_SESSION['error'] = '';
     }
-    public function HomePage()
-    {
-        // echo "in";
-        // exit;
+    public function HomePage(){
         include("./View/homepage.php");
     }
+    public function price(){
+        include("./View/price.php");
+    }
+    public function faq(){
+        include("./View/faq.php");
+    }
+    public function about(){
+        include("./View/about.php");
+    }
+    public function registercustomer(){
+        include("./View/registrationuser.php");
+    }
+    public function spr(){
+        include("./View/ServiceProviderRegister.php");
+    }
+    public function customerdashboard(){
+        include("./View/customerdashboard.php");
+    }
+    public function spdashboard(){
+        include("./View/spdashboard.php");
+    }
+
     public function ContactUs()
     {
         // echo "inside";
@@ -42,6 +58,7 @@ class ContactController
              header('Location:' . $base_url);
            
         }
+        include("./View/contact.php");
     }
     
     

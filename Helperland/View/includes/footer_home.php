@@ -10,16 +10,16 @@
                     <div class="col-lg-8 footer-widget">
                         <ul class="footer-navigation d-flex justify-content-center">
                             <li>
-                                <a href="homepage.php" title="Home">Home</a>
+                                <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" title="Home">Home</a>
                             </li>
                             <li>
-                                <a href="about.php" title="About">About</a>
+                                <a href="<?= $base_url.'?controller=Contact&function=about'?>" title="About">About</a>
                             </li>
                             <li>
                                 <a href="#" title="Testimonials">Testimonials</a>
                             </li>
                             <li>
-                                <a href="faq.php" title="FAQs">FAQs</a>
+                                <a href="<?= $base_url.'?controller=Contact&function=about'?>" title="FAQs">FAQs</a>
                             </li>
                             <li>
                                 <a href="#" title="Insurance Policy">Insurance Policy</a>

@@ -1,6 +1,10 @@
-<?php include('includes/header_home.php'); ?>
+<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
+
 <?php include('Includes_all_modal/Modalhome.php'); ?>
+<?php include('includes/header_home.php'); ?>
+
 <?php include('includes/navigation_home.php'); ?>
+
 <main>
     <section class="hero-banner-section" style="background-image: url(./assets/images/hero-banner.jpg);">
                 <div class="container">

@@ -1,31 +1,33 @@
 <!--Modal for login--> 
+<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <div class="modal fade" id="ModalFormlogin" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
               <!-- Login Form -->
-              <form action="">
+              <form action="<?=$base_url.'?controller=Register&function=login' ?>" method="post">
+              <input type="hidden" name="userType" >
                 <div class="modal-header">
                   <h5 class="modal-title">Login to your account</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <div class="mb-3">
-                    <input type="text" name="username" class="form-control" id="Username" placeholder="Email" autofocus>
+                    <input type="text" name="email" class="form-control" id="Username" placeholder="Email" required autofocus/>
                   </div>
                   <div class="mb-3">
-                    <input type="password" name="password" class="form-control" id="Password" placeholder=" Password">
+                    <input type="password" name="password" class="form-control" id="Password" placeholder=" Password" required/>
                   </div>
                   <div class="mb-3">
-                      <input class="form-check-input" type="checkbox" value="" id="remember" required>
+                      <input class="form-check-input" type="checkbox" value="" id="remember" required/>
                       <label class="form-check-label" for="remember">Remember Me</label>
                       
                   </div>
                 </div>
                 <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Login</a>
+                    <button type="submit"  class="blue-btn1">Login</a>
                 </div>
                <center style="margin-top: 20px;" > <a class="float-center" role="button" data-bs-target="#forgotpassword" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a></center>
-                <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="registrationuser.php">Create an account</a></p> 
+                <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="<?= $base_url.'?controller=Contact&function=registercustomer'?>">Create an account</a></p> 
             </form>
           </div>
         </div>

@@ -20,36 +20,30 @@ class RegisterModel
     //         die('Connection Failed');
     //     }
     }
+    public function validation($array){
+        $email=$array['email'];
+        $qry = "select * from user1 where  email='$email'";
+        $result = mysqli_query($this->conn, $qry);
+        if(mysqli_num_rows($result) > 0){
+            return mysqli_fetch_assoc($result);
+        }
+        else{
+            return [];
+        }
+    }
     public function Registration($array)
     {
-       
         $firstname =  $array['firstname'];
         $lastname =  $array['lastname'];
         $email = $array['email'];
         $number = $array['number'];
         $password = $array['password'];
         $confirmpassword = $array['confirmpassword'];
-
-        // function checkUser($firstname , $email){
-        //     $stamt = $this->conn()->prepare('select firstname from user1 where firstname=? OR email = ?;');
-        //     if(!$stamt->execute(array($firstname , $email))){
-        //         $stamt = null;
-        //         echo ("already Register");
-        //     }
-        //     $resultCheck;
-        //     if($stamt->rowCount() > 0 ){
-        //         $resultCheck = false;
-
-        //     }
-        //     else{
-        //         $resultCheck = true;
-        //     }
-        //     return $resultCheck;
-        // }
-        //  function setUser($firstname,$lastname,$email,$number,$password,$confirmpassword){
-            $sql = "INSERT INTO user1 ( firstname , lastname , email , number,password,confirmpassword)
-            VALUES ( '$firstname','$lastname','$email','$number','$password','$confirmpassword')";
+        $userType = $array['userType'];
+             $sql = "INSERT INTO user1 ( userType,firstname , lastname , email , number,password,confirmpassword)
+            VALUES ( '$userType','$firstname','$lastname','$email','$number','$password','$confirmpassword')";
             $result = mysqli_query($this->conn, $sql);
+
             return $result;
            
             if ($result = 'yes') {
@@ -58,11 +52,20 @@ class RegisterModel
                 $_SESSION['message'] = "Your Account is not Created Please Try Again.";
             }
             return $_SESSION['message'];
-        // }
-        
+    }
+    public function login($array){
+        $email = $array['email'];
+        $password = $array['password'];
+        $sql= "select * from user1 where email='$email' and password='$password'";
+        $result = mysqli_query($this->conn, $sql);
+        if(mysqli_num_rows($result) > 0){
+            return mysqli_fetch_assoc($result);
+            
+        }
+        else{
+            return [];
+        }
 
     }
-
-
 }
 ?>

@@ -1,3 +1,9 @@
+<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
+<?php 
+$msg='';
+if(isset($_GET['parameter'])){$msg= $_GET['parameter'] ;  }?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +23,7 @@
         <!-- header -->
         <header class="site-header">
             <div class="header-wrapper d-flex justify-content-between align-items-center">
-                <a href="#" title="Helper hand" class="logo-block">
+                <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" title="Helper hand" class="logo-block">
                     <img src="./assets/images/site-logo-large.png" alt="Helper hand logo">
                 </a>
                 <div class="header-right-block">
@@ -33,7 +39,7 @@
                                             Cleaner</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="price.php" title="Prices">Prices</a>
+                                        <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" title="Our Guarantee">Our Guarantee</a>
@@ -42,13 +48,13 @@
                                         <a class="nav-link" href="#" title="Blog">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.php" title="Contact us">Contact us</a>
+                                        <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="homepage.php" title="Login" >Login</a>
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=HomePage'?>" title="Login" >Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="ServiceProviderRegister.php" title="Become a Helper">Become a
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=spr'?>" title="Become a Helper">Become a
                                             Helper</a>
                                     </li>
                                 </ul>
@@ -69,7 +75,7 @@
             </div>
         </header>
         <main>
-           <!-- <section class="hero-banner-section"  style="background-image: url(./assets/images/group-18.png);">-->
+          
                 <section id="section-home" style="background-image: url(./assets/images/spregister.png);">
                     <div class="hero-image" >
                         <div id="form">
@@ -77,23 +83,26 @@
                                 <div class="text-center">
                                     <span >Register as Helper!</span>
                                 </div>
-                                <form action="http://localhost/TatvaSoft/Helperland/?controller=Register&function=Registration" method="post">
+                                <form  action="http://localhost/TatvaSoft/Helperland/?controller=Register&function=Registration"   method="post">
+                                    <input type="hidden" name="userType" value="Service_Provider">
                                     <div class="row">
                                         <div class="">
                                             <input class="form-control" name="firstname" placeholder="First name" type="text"
-                                                required autofocus />
+                                                required autofocus min="2" max="30"/>
+                                           
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="">
                                             <input class="form-control" name="lastname" placeholder="Last name" type="text"
-                                                required />
+                                             required autofocus/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="">
                                             <input class="form-control" name="email" placeholder="Email Address" type="email"
-                                                required />
+                                                required autofocus/>
+                                                <span class="text-danger hide_email">Already Exist!</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -103,7 +112,7 @@
                                                     <div class="input-group-text">+46</div>
                                                 </div>
                                                 <input type="number" class="form-control" id="inlineFormInputGroup"
-                                                    placeholder="Phone number" name="number">
+                                                    placeholder="Phone number" name="number" required autofocus/>
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +125,7 @@
                                     <div class="row">
                                         <div class="">
                                             <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password" type="text"
-                                                required />
+                                               required autofocus/>
                                         </div>
                                     </div>
                                     <div class="form-elements">
@@ -136,7 +145,7 @@
                                         <img src="./assets/images/layer-20.png" alt="">
                                     </div>    
                                     <div class="get-started text-center row">
-                                        <button>Get Started <img src="./assets/images/shape-2.png" alt=""></button>
+                                        <button type="submit">Get Started <img src="./assets/images/shape-2.png" alt=""></button>
                                     </div>
                                 </form>
                             </div>
@@ -150,16 +159,10 @@
                 </div>
 
             </section>
-            <!--<img src="./assets/images/blog-left-bg.png" alt=" " style="float:left; position:relative; width:219px; height:1000px;">-->
-           <!-- <div class="left-img">
-                <img src="./assets/images/blog-left-bg.png" alt="">
-            </div>
-            <div class="right-img">
-                <img src="./assets/images/forma-1_2.png" alt="">
-                <img src="./assets/images/forma-1_5.png" alt="">
-                <img src="./assets/images/forma-1_4.png" alt="">
-            </div>-->
+           
             <!--for three cards-->
+            <input type="hidden" id="msg" value="<?php if(isset($msg)){echo $msg;}  ?>">
+          
             <h2 class="text-center title-main1">How it works</h2>
             <div>
                 
@@ -212,6 +215,7 @@
                         <div class="form-group">
                             <label for="email" style="display: none;">YOUR EMAIL</label>
                             <input type="text" placeholder="YOUR EMAIL" id="email" class="form-control">
+                            
                         </div>
                         <div class="btn-wrapper">
                             <button class="red-btn">Submit</button>
@@ -229,9 +233,9 @@
                 <div class="footer-logo"><img src="./assets/images\site-logo.png" alt=""></div>
                 <div class=" footer-nav d-flex flex-sm-column flex-md-row  justify-content-center ">
                     <a class="nav-link " href="#">Home</a>
-                    <a class="nav-link " href="about.php ">About</a>
+                    <a class="nav-link " href="<?= $base_url.'?controller=Contact&function=about'?> ">About</a>
                     <a class="nav-link " href="# ">Testimonials</a>
-                    <a class="nav-link " href="faq.php ">faqs</a>
+                    <a class="nav-link " href="<?= $base_url.'?controller=Contact&function=faq'?> ">faqs</a>
                     <a class="nav-link " href="# ">Insurance Policy</a>
                     <a class="nav-link " href="# ">Impressum</a>
                 </div>
@@ -260,6 +264,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script type="text/javascript" src="./assets/js/ServiceProviderRegister.js"></script>
+        <script>
+        // $(document).ready(function(){
+        //     $('.hide_email').hide();
+        // });
+        var msg = $('#msg').val();
+        if(msg != ''){
+            alert(msg);
+        }
+        </script>
 </body>
     
 </html>

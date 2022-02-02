@@ -17,7 +17,7 @@
                                             Cleaner</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="price.php" title="Prices">Prices</a>
+                                        <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" title="Our Guarantee">Our Guarantee</a>
@@ -26,13 +26,13 @@
                                         <a class="nav-link" href="#" title="Blog">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.php" title="Contact us">Contact us</a>
+                                        <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="#" title="Login" data-bs-toggle="modal" data-bs-target="#ModalFormlogin">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="ServiceProviderRegister.php" title="Become a Helper">Become a
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=spr'?>" title="Become a Helper">Become a
                                             Helper</a>
                                     </li>
                                 </ul>
