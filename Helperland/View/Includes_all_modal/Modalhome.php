@@ -1,16 +1,22 @@
 <!--Modal for login--> 
+
 <?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <div class="modal fade" id="ModalFormlogin" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
               <!-- Login Form -->
               <form action="<?=$base_url.'?controller=Register&function=login' ?>" method="post">
+              
+             
+               
+            
               <input type="hidden" name="userType" >
                 <div class="modal-header">
                   <h5 class="modal-title">Login to your account</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                
                   <div class="mb-3">
                     <input type="text" name="email" class="form-control" id="Username" placeholder="Email" required autofocus/>
                   </div>
@@ -18,7 +24,7 @@
                     <input type="password" name="password" class="form-control" id="Password" placeholder=" Password" required/>
                   </div>
                   <div class="mb-3">
-                      <input class="form-check-input" type="checkbox" value="" id="remember" required/>
+                      <input class="form-check-input" type="checkbox" value="" id="remember"/>
                       <label class="form-check-label" for="remember">Remember Me</label>
                       
                   </div>
@@ -42,9 +48,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#">
+            <form action="<?= $base_url.'?controller=Register&function=forgotpassword'?>" method="post">
+               
+             
                 <div class="mb-3 form-group icon-textbox">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required/>
                 </div>
                 <div class=" text-center">
                 <button class="blue-btn1 mb-3" type="submit">Send</button>
@@ -59,4 +67,5 @@
 <!--Modal End-->
 
 
-     
+
+ 

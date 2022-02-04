@@ -1,3 +1,5 @@
+
+
 <?php
   $base_url = "http://localhost/TatvaSoft/Helperland/";
 ?>
@@ -80,6 +82,7 @@
              <!--for form-->
               <div class="c-form">
                 <form autocomplete="off" enctype="multipart/form-data" action="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=ContactUs" method="post">
+               
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
@@ -118,6 +121,11 @@
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <textarea style="resize:vertical;" class="form-control" placeholder="Message..."
                                     rows="7" name="comment" ></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 modal-body1">
+                                <input class="form-control" type="file" name="file" id="formFile">
                             </div>
                         </div>
                                                 

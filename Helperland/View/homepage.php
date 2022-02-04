@@ -1,11 +1,27 @@
-<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
-
+<?php session_start();  $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <?php include('Includes_all_modal/Modalhome.php'); ?>
 <?php include('includes/header_home.php'); ?>
+<?php include('includes/navigation_home.php'); 
+ 
+if(isset($_SESSION['status1'])){
+    //alert($_SESSION['status1']);
+    echo "<script> alert('Password change SuccessFully!');
+    </script>";
+    unset($_SESSION['status1']);
+}
 
-<?php include('includes/navigation_home.php'); ?>
+if(isset($_SESSION['status2'])){
+    //alert($_SESSION['status1']);
+    echo "<script> alert('Pls register First'); 
+    </script> " ;
+    unset($_SESSION['status2']);
+}
+?>
 
 <main>
+<form action="<?=$base_url.'?controller=Register&function=login' ?>" method="post">
+        
+              
     <section class="hero-banner-section" style="background-image: url(./assets/images/hero-banner.jpg);">
                 <div class="container">
                     <h1>Do not feel like housework?</h1>

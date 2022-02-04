@@ -13,11 +13,11 @@ class ContactModel
       
       //   Create Connection
          $this->conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
-      
+     
       // Checking Connection
-    //     if($conn -> connect_error) {
-    //         die('Connection Failed');
-    //     }
+      //  if($conn -> connect_error) {
+        //     die('Connection Failed');
+         //}
     }
 
     public function ContactUs($array)
@@ -27,12 +27,13 @@ class ContactModel
           $sub = $array['sub'];
          $mobile = $array['mobile'];
           $msg = $array['msg'];
-            $sql = "INSERT INTO contactus (Name , Email , Subject , PhoneNumber , Message)
-            VALUES ('$name' ,'$email','$sub','$mobile','$msg')";
+          $filename = $array['filename'];
+            $sql = "INSERT INTO contactus (Name , Email , Subject , PhoneNumber , Message,FileName)
+            VALUES ('$name' ,'$email','$sub','$mobile','$msg','$filename')";
             $result =mysqli_query($this->conn, $sql);
             return $result;
            
-            if ($result = 'yes') {
+            if ($result == 'true') {
                 $_SESSION['message'] = "Message Has Been Sent Succesfully";
             } else {
                 $_SESSION['message'] = "Your Account is not Created Please Try Again.";

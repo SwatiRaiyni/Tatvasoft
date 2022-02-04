@@ -1,9 +1,5 @@
+<?php session_start();?>
 <?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
-<?php 
-$msg='';
-if(isset($_GET['parameter'])){$msg= $_GET['parameter'] ;  }?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +47,7 @@ if(isset($_GET['parameter'])){$msg= $_GET['parameter'] ;  }?>
                                         <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=HomePage'?>" title="Login" >Login</a>
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=HomePage&parameter=login'?>" title="Login" >Login</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=spr'?>" title="Become a Helper">Become a
@@ -81,10 +77,28 @@ if(isset($_GET['parameter'])){$msg= $_GET['parameter'] ;  }?>
                         <div id="form">
                             <div class="form">
                                 <div class="text-center">
-                                    <span >Register as Helper!</span>
+                                    <span>Register as Helper!</span>
                                 </div>
+                                <?php if(isset($_SESSION['status2'])){?>
+                                    
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Hey!</strong> <?php  echo $_SESSION['status2']; ?> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <?php   
+                                    unset($_SESSION['status2']);}
+                                    ?>
+                                    <?php if(isset($_SESSION['status3'])){?>
+                                    
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Hey!</strong> <?php  echo $_SESSION['status3']; ?> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <?php   
+                                    unset($_SESSION['status3']);}
+                                    ?>
                                 <form  action="http://localhost/TatvaSoft/Helperland/?controller=Register&function=Registration"   method="post">
-                                    <input type="hidden" name="userType" value="Service_Provider">
+                                    <input type="hidden" name="userType" value="2">
                                     <div class="row">
                                         <div class="">
                                             <input class="form-control" name="firstname" placeholder="First name" type="text"
@@ -100,9 +114,7 @@ if(isset($_GET['parameter'])){$msg= $_GET['parameter'] ;  }?>
                                     </div>
                                     <div class="row">
                                         <div class="">
-                                            <input class="form-control" name="email" placeholder="Email Address" type="email"
-                                                required autofocus/>
-                                                <span class="text-danger hide_email">Already Exist!</span>
+                                            <input class="form-control" name="email" placeholder="Email Address" type="email" require/>
                                         </div>
                                     </div>
                                     <div class="row">

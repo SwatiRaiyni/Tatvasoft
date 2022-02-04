@@ -1,3 +1,11 @@
+<?php 
+session_start();
+$name=$_SESSION['name'];
+?>
+
+
+
+<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +42,7 @@
 <!-- header -->
 <header class="site-header">
         <div class="header-wrapper d-flex justify-content-between align-items-center">
-            <a href="#" title="Helper hand" class="logo-block">
+            <a href="?controller=Contact&function=HomePage" title="Helper hand" class="logo-block">
                 <img src="./assets/images/site-logo-large.png" alt="Helper hand logo">
             </a>
             <li class="nav-item line100 d-b">
@@ -77,11 +85,11 @@
                                         <img src="./assets/images/personforma-1.png" alt="">
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                        <li>Welcome ,<br> Swati Raiyani!</li>
+                                        <li>Welcome ,<br> <?php echo $name;?></li>
                                         <li><hr class="dropdown-divider"></li>
                                       <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
                                       <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
-                                      <li><a class="dropdown-item" href="#">Log out</a></li>
+                                      <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
                                     </ul>
                                   
                                 </li>
@@ -102,7 +110,7 @@
         <div class="modal-dialog modal-dialog-center">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b>Swati!</b> </h4>
+                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $name;?></b> </h4>
                 </div>
                 <div class="modal-body tab">
                     <a href="#dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
@@ -114,7 +122,7 @@
                     <a href="#blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
                     
                     <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
-                    <a href="">Logout</a>
+                    <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                 </div>
                 <div class="modal-footer tab">
                     <a href="">Prices & Services</a>
@@ -255,7 +263,7 @@
 
 <main style="min-height:100vh;">
     <section id="section-home">
-        <h1 class="title-main">Welcome, <span class="title-main1">Swati!</span></h1>
+        <h1 class="title-main">Welcome, <span class="title-main1"><?php echo $name;?></span></h1>
     </section>
   
     <section id="tab-section">

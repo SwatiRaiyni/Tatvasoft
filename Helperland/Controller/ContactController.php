@@ -8,6 +8,7 @@ class ContactController
     }
     public function HomePage(){
         include("./View/homepage.php");
+
     }
     public function price(){
         include("./View/price.php");
@@ -30,19 +31,29 @@ class ContactController
     public function spdashboard(){
         include("./View/spdashboard.php");
     }
-
+    public function resetpassword(){
+        include("./View/resetpassword.php");
+    }
+    public function conta(){
+        include("./View/contact.php");
+    }
+    public function logout()
+    {   session_start();
+      
+        session_destroy();
+         header('Location: http://localhost/TatvaSoft/Helperland');
+        
+    }
     public function ContactUs()
     {
-        // echo "inside";
-        // echo "<pre>";
-        // print_r ($_POST);
-        // exit;
-        if (isset($_POST)) {
+       
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
              $base_url = "http://localhost/TatvaSoft/Helperland/contact";
              $mobile =  $_POST['number'];
              $email = $_POST['email'];
              $subject = $_POST['sub'];
              $message = $_POST['comment'];
+             $filename=$_FILES["file"]["name"];
             
              $name = $_POST['firstname'] . " " . $_POST['lastname'];
              $array = [
@@ -50,12 +61,16 @@ class ContactController
                  'email'=> $email,
                  'msg'=> $message,
                  'mobile' => $mobile,
-                  'sub' => $subject
+                  'sub' => $subject,
+                  'filename' =>$filename
                   
              ];
+            
+                
              $result = $this->model->Contactus($array);
-             $_SESSION['firstname'] = $results[0];
-             header('Location:' . $base_url);
+           //  $_SESSION['firstname'] = $results[0];
+             //header('Location:' . $base_url);
+          
            
         }
         include("./View/contact.php");
