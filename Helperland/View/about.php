@@ -3,30 +3,18 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/5602f8a8c9.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
 <title> About</title>
 <link rel="stylesheet" href="./assets/css/about.css">
+<link rel="stylesheet" href="./assets/css/headerall.css">
 </head>
 <body>
 <!--for nav bar-->
-  <div class="topnav" id="myTopnav">
-    <div class="dropdown">
-        <div class="dropbtn" >
-            <img src="./assets/images/site-logo-large.png" class="white_logo_transparent_background-copy-6">
-        </div>
-        
-      </div> 
-      
-      <a href="<?= $base_url.'?controller=Contact&function=spr'?>" class="acti rounded-pill border-1 rp" >Become a helper</a>
-      <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" class="acti rounded-pill border-1 rp3">Login</a>
-      <a href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
-      <a href="#about">Blog</a>
-      <a href="#contact">Warranty</a>
-      <a href="<?= $base_url.'?controller=Contact&function=price'?>" class="rounded-pill border-1 rp ">Prices & Services</a>
-      <a href="#home" class="acti rounded-pill border-1 rp1">Book Now</a>
-      <a href="javascript:void(0);"  class="icon" onclick="myFunction()">&#9776;</a>
-      </div>
+<?php include('includes/headerall.php'); ?>
       <!--navbar complete-->
            <img src="./assets/images/about.png" id="responsive" >
              <h2 class="title-main1">A Few Words about Us</h2>

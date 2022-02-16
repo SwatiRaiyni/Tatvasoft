@@ -122,11 +122,12 @@ class RegisterController{
             $result = $this->model->login($array);
             if(count($result)>0){ 
                 if($result['UserTypeId'] == 1){
-                    $_SESSION['name']=$result['FirstName'];
+              
+                   $_SESSION['userdata']=$result;
                     header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
                 }
                 elseif($result['UserTypeId'] == 2){
-                     $_SESSION['name']=$result['FirstName'];
+                  $_SESSION['userdata']=$result;
                     header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
                 }
             }
@@ -166,8 +167,8 @@ class RegisterController{
       }
     }//end forgot password function
     public function getpassword(){
-      if (isset($_POST['submit'])) {//echo '<pre>'; print_r($_POST); die;
-      // if(isset($_POST['token'])){
+      if (isset($_POST['submit'])) {
+     
          
             $token=$_POST['token'];
             $password = $_POST['password'];
@@ -177,7 +178,7 @@ class RegisterController{
               'token' => $token,
               'password'=> $password,
               'confirmpassword' => $confirmpassword
-            ]; //echo '<pre>'; print_r($_GET['token']); die;
+            ];
           
             $result = $this->model->getpassword($array);
           
@@ -188,15 +189,13 @@ class RegisterController{
             }
             else{
               echo "fail";
-            }}
-     // echo '<pre>'; print_r($result); die;
-    // }
+            }
+          }
+        
+     
       }
   }//end getpassword function
 }
-
-
-
 
 
 

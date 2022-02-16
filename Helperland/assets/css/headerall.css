@@ -1,0 +1,151 @@
+#headerall{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #525252;
+    padding: 0!important;
+    z-index: 1000;
+    /* font-size: 0.7rem!important; */
+}
+#headerall .nav-item{
+    margin: auto 0;
+    font-size: 17px;
+}
+
+#headerall .nav-item .rounded-pill{
+    border: 1px solid #FFFFFF80;
+    font-size: 17px;
+    line-height: 40px;
+    padding: 0 20px;
+    margin: auto 5px;
+}
+
+#headerall .nav-link{
+    margin: 0 20px;
+    color:white !important;
+}
+
+#logo-faq{
+    height: 54px;
+    margin: 6px 0 4px 15px;
+}
+
+.greenlink{
+    background-color:#29626D;
+}
+
+
+@media screen and (max-width:1026px) {
+  #headerall .nav-item .rounded-pill{
+      padding:12px;
+      line-height: 28px;
+  }
+  .nav-pills .nav-item{
+      padding: 0!important;
+  }
+ 
+}
+@media screen and (max-width:992px){
+  #faq-nav{
+      display: flex!important;
+      flex-direction: column;
+      align-items: flex-start;
+      
+  }
+  #headerall .nav-item .rounded-pill{
+      line-height: 18px;
+      border: 0 !important;
+      background-color: #ffffff00;
+      padding: 0.5rem 0px;
+      margin: 0 20px ;
+      font-weight: 600;
+  }
+#headerall .collapse{
+  min-width: 175px;
+  width: max-content;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  background-color: #525252ee;
+}
+
+  #faq-nav .nav-item{
+      margin: 10px;
+      
+  }
+ 
+}
+
+/*modal for tabs with navbar*/ 
+#exampleModalnavbartoggle .modal-dialog{
+    float: right;
+    width: 250px;
+    height: 100vh;
+    margin: -1px !important;
+    background-color: white;
+}
+#exampleModalnavbartoggle .modal-content{
+    width: auto;
+    border: 0px;
+    padding: 1px;
+}
+#exampleModalnavbartoggle .modal-body,#exampleModalnavbartoggle .modal-footer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:flex-start;
+    border-bottom: 1px solid gray;
+}
+#exampleModalnavbartoggle .footer-widget{
+    justify-content: center !important;
+    align-items: center !important;
+   
+
+}
+#exampleModalnavbartoggle .footer-widget a{
+    padding: 10px;
+}
+#exampleModalnavbartoggle .modal-body a,#exampleModalnavbartoggle .modal-footer a{
+    text-decoration: none;
+    padding: 5px;
+    color: #646464;
+    font-size: 16px;
+    background-color: white;
+    
+}
+#exampleModalnavbartoggle .modal-header{
+    border: none;
+    border-bottom: 1px solid gray;
+}
+#exampleModalnavbartoggle .modal-header h4{
+    font-size: 16px;
+}
+@media screen and (min-width:576px) {
+    #exampleModalnavbartoggle .modal-dialog{
+        margin: -1px !important;
+    
+}}
+
+.dpm{
+    width: 200px;
+    position: fixed !important;
+    top: 60px !important;
+    left: auto !important;
+    right: 0px !important;
+    z-index: 1000000;
+    
+}
+.notification{
+    position: relative;
+}
+.badge{
+    position: absolute;
+    top:0;
+    right: 0;
+    background-color: red;
+    border-radius: 50%;
+}
+.line100{
+    padding: 0px !important;
+}

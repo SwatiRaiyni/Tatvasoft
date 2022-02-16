@@ -108,3 +108,10 @@ jQuery(document).ready(function() {
  jQuery(window).scroll(function () {
    fixed_header();
 });
+
+
+const url=new URLSearchParams(window.location.search);
+if(url=="loginmodal=true"){
+    document.getElementById("homelogin").click();
+}
+

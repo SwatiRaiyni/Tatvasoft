@@ -21,21 +21,23 @@
 <form action="<?= $base_url.'?controller=Register&function=getpassword'?>" method="post" accept-charset="utf-8">
 
 <input type="hidden" class="form-control" placeholder="Password" name="token" value=<?php if(isset($_GET['token'])){ echo $_GET['token']; }?> />
-    
+
     <center>
     
     <div  class="col-sm-4" style="margin:100px 0px 20px 0px;">
        <div class="form-group">
            <label>New Password</label>
-          <input type="text" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" id="myInput" placeholder="Password" name="password" required>
        </div>
     </div>
     <div  class="col-sm-4">
         <div class="form-group">
             <label>Confirm Password</label>
-            <input type="text" class="form-control" placeholder="Confirm Password" name="confirmpassword">
+            <input type="password" class="form-control" id="myInput1" placeholder="Confirm Password" name="confirmpassword" required>
         </div>
     </div>
+    
+    
 </center>
 <div class="text-center" style="margin:20px 0px;">
     <button type="submit" name="submit" class="blue-btn1">save</a>

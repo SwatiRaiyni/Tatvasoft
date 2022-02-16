@@ -19,7 +19,7 @@ if(isset($_SESSION['status2'])){
 ?>
 
 <main>
-<form action="<?=$base_url.'?controller=Register&function=login' ?>" method="post">
+<form action="<?= $base_url.'?controller=Register&function=login' ?>" method="post">
         
               
     <section class="hero-banner-section" style="background-image: url(./assets/images/hero-banner.jpg);">
@@ -33,7 +33,7 @@ if(isset($_SESSION['status2'])){
                         <li><img src="./assets/images/ic-check.png">secure online payment method</li>
                     </ul>
                     <div class="btn-wrapper text-center">
-                        <a href="#" title="Let's Book a Cleaner" class="blue-btn">Book a Helper!</a>
+                        <a href="<?= $base_url.'?controller=Book&function=BookNow'?>" title="Let's Book a Cleaner" class="blue-btn">Book a Helper!</a>
                     </div>
                     <div class="step-wrapper">
                         <div class="row justify-content-center flex-wrap">
@@ -283,3 +283,16 @@ if(isset($_SESSION['status2'])){
 
 
 <?php include('includes/footer_home.php'); ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    
+    <script type="text/javascript" src="./assets/js/homepage.js"></script>
+
+
+
+ 
+</body>
+
+</html>

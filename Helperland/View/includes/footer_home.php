@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-2 footer-widget">
-                        <a href="#" title="Helper Hand">
+                        <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" title="Helper Hand">
                             <img src="./assets/images/site-logo.png" alt="Helper Hand">
                         </a>
                     </div>
@@ -20,7 +20,7 @@
                                 <a href="#" title="Testimonials">Testimonials</a>
                             </li>
                             <li>
-                                <a href="<?= $base_url.'?controller=Contact&function=about'?>" title="FAQs">FAQs</a>
+                                <a href="<?= $base_url.'?controller=Contact&function=faq'?>" title="FAQs">FAQs</a>
                             </li>
                             <li>
                                 <a href="#" title="Insurance Policy">Insurance Policy</a>
@@ -49,20 +49,9 @@
         </div>
         <div class="footer-bottom">
             <div class="container text-center">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nunc libero, ac malesuada ligula aliquam ac. <a href="#" title="Privacy Policy">Privacy Policy</a></p>
+                <p>©2018 Helperland. All rights reserved. Terms and Conditions | <a href="#" title="Privacy Policy">Privacy Policy</a></p>
                 <a href="#" class="yellow-btn ok-btn">OK!</a>
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    
-    <script type="text/javascript" src="./assets/js/homepage.js"></script>
-
-
-
- 
-</body>
-
-</html>
+   

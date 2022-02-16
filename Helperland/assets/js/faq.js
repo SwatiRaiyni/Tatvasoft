@@ -1,18 +1,19 @@
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  }
+
  
-   $(document).ready(function () {
-     $('#menu ul li a').click(function (ev) {
-         $('#menu ul li').removeClass('selected');
-         $(ev.currentTarget).parent('li').addClass('selected');
-     });
- });
+  
+ function customer(){
+  document.getElementById('customerfaq').style.display="block";
+  document.getElementById('spfaq').style.display="none";
+  document.getElementById('customer').classList.add("selected");
+   document.getElementById('sp').classList.remove("selected");
+
+}
+function serviceprovider(){
+document.getElementById('customerfaq').style.display="none";
+  document.getElementById('spfaq').style.display="block";
+  document.getElementById('sp').classList.add("selected");
+   document.getElementById('customer').classList.remove("selected");
+}
   $(document).ready(function(){
     $("#demo1").on("hide.bs.collapse", function(){
       $("#btn1").html('<img src="assets/images/vector-smart-object-copy.png">');

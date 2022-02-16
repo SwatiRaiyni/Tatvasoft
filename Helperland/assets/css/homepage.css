@@ -24,6 +24,25 @@ p {
     display: inline-block; background-color: #1d7a8c; border-radius: 27px; border: 1px solid #FFFFFF; height:45px; color: #fff !important; text-decoration: none; min-width: 150px; font-size: 18px; transition: all 0.3s ease;
 }
 
+.line100{
+    border-right:1px solid #e1e1e1!important;
+    border-left:1px solid #e1e1e1!important;
+    padding-left: 9px !important;
+    padding-right:9px !important;
+}
+.notification {
+
+    color: white !important;
+    text-decoration: none !important;
+    position: relative !important;
+    border-radius: 2px !important;
+  }
+ .dropdown1{
+    margin-left: 20px;
+    margin-right: 80px;
+}
+
+
 /*banner section*/
 .hero-banner-section a.scroll-link { display: inline-block; position: relative; transition: all 0.3s; }
 .hero-banner-section a.scroll-link:hover { transform: translateY(10px); }

@@ -1,10 +1,12 @@
 <?php
+
 class ContactController
-{
+{  
     function __construct()
-    {
+    {   
         include('Model/ContactModel.php');
         $this->model = new ContactModel();
+        
     }
     public function HomePage(){
         include("./View/homepage.php");
@@ -29,7 +31,7 @@ class ContactController
         include("./View/customerdashboard.php");
     }
     public function spdashboard(){
-        include("./View/spdashboard.php");
+       include("./View/spdashboard.php");
     }
     public function resetpassword(){
         include("./View/resetpassword.php");
@@ -45,7 +47,8 @@ class ContactController
         
     }
     public function ContactUs()
-    {
+    {  //session_destroy();
+        session_start();
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
              $base_url = "http://localhost/TatvaSoft/Helperland/contact";
@@ -66,10 +69,17 @@ class ContactController
                   
              ];
             
-                
-             $result = $this->model->Contactus($array);
-           //  $_SESSION['firstname'] = $results[0];
-             //header('Location:' . $base_url);
+              if(!preg_match('/^[0-9]{10}+$/', $array['mobile'])){
+               
+               $_SESSION['msg1'] = "invalid moblie";
+
+               header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
+              }
+                else{
+            $result = $this->model->Contactus($array);
+            
+            header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
+            }
           
            
         }

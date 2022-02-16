@@ -8,16 +8,16 @@ class ContactModel
 
         $db_host = "localhost";
         $db_user = "root";
-        $db_password = "swati";
-        $db_name = "helperland";
+        $db_password = "";
+        $db_name = "helperland1";
       
       //   Create Connection
          $this->conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
-     
-      // Checking Connection
-      //  if($conn -> connect_error) {
-        //     die('Connection Failed');
-         //}
+        //  if ($this->conn) {
+        //     echo "Connected!";
+        //   } else {
+        //     echo "Connection Failed";
+        //   }
     }
 
     public function ContactUs($array)
@@ -33,12 +33,12 @@ class ContactModel
             $result =mysqli_query($this->conn, $sql);
             return $result;
            
-            if ($result == 'true') {
-                $_SESSION['message'] = "Message Has Been Sent Succesfully";
-            } else {
-                $_SESSION['message'] = "Your Account is not Created Please Try Again.";
-            }
-            return $_SESSION['message'];
+            // if ($result == 'true') {
+            //     $_SESSION['message'] = "Message Has Been Sent Succesfully";
+            // } else {
+            //     $_SESSION['message'] = "Your Account is not Created Please Try Again.";
+            // }
+            // return $_SESSION['message'];
     }
 
 }

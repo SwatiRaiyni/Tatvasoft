@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
     
     <link rel='stylesheet' href="./assets/css/homepage.css">
+    <link rel='stylesheet' href="./assets/css/headerall.css">
    
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
     

@@ -1,6 +1,14 @@
 <?php 
 session_start();
-$name=$_SESSION['name'];
+
+
+if(isset($_SESSION['userdata'])){
+$userdata=$_SESSION['userdata'];}
+else{
+        header('Location:'.  'http://localhost/TatvaSoft/Helperland/?controller=Contact&function=HomePage');
+}
+
+
 ?>
 
 
@@ -62,7 +70,7 @@ $name=$_SESSION['name'];
                         <div class="collapse navbar-collapse" id="navbarNav" >
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" title="Prices">Prices and Services</a>
+                                    <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices and Services</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" title="Blog">Warranty</a>
@@ -72,7 +80,7 @@ $name=$_SESSION['name'];
                                     <a class="nav-link" href="#" title="Login" >Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" title="Contact us">Contact</a>
+                                    <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact</a>
                                 </li>
                                 <li class="nav-item line100">
                                     <a class="nav-link notification">
@@ -85,7 +93,7 @@ $name=$_SESSION['name'];
                                         <img src="./assets/images/personforma-1.png" alt="">
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                        <li>Welcome ,<br> <?php echo $name;?></li>
+                                        <li>Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
                                         <li><hr class="dropdown-divider"></li>
                                       <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
                                       <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
@@ -110,7 +118,7 @@ $name=$_SESSION['name'];
         <div class="modal-dialog modal-dialog-center">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $name;?></b> </h4>
+                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $userdata['FirstName'];?></b> </h4>
                 </div>
                 <div class="modal-body tab">
                     <a href="#dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
@@ -263,7 +271,7 @@ $name=$_SESSION['name'];
 
 <main style="min-height:100vh;">
     <section id="section-home">
-        <h1 class="title-main">Welcome, <span class="title-main1"><?php echo $name;?></span></h1>
+        <h1 class="title-main">Welcome, <span class="title-main1"><?php echo $userdata['FirstName'];?></span></h1>
     </section>
   
     <section id="tab-section">
