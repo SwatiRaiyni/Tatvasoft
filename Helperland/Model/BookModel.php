@@ -123,11 +123,16 @@ class BookModel
        $srextra1 = mysqli_query($this->conn, $srextra);
 
         if ($qry1 &&  $add1 && $srextra1) {
-             echo json_encode("yes");
+            $res['status'] = 'yes';
+            $res['id'] = $last_id;
         } 
         else{
-            echo json_encode("no");
+            $res['status'] = 'no';
+            $res['id'] = 0;
         }
+
+        echo json_encode($res);
+
     
     }
 

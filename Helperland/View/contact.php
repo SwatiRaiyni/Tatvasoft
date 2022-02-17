@@ -98,7 +98,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                                 
-                               <input type="number" name="number" class="form-control" id="inlineFormInputGroup"
+                               <input type="tel" minlength="10" maxlength="10" name="number" class="form-control" id="inlineFormInputGroup"
                                         placeholder="Mobile number" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
@@ -119,20 +119,23 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 modal-body1">
                                 <textarea style="resize:vertical;" class="form-control" placeholder="Message..."
                                     rows="7" name="comment" ></textarea>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 modal-body1">
-                                <input class="form-control" type="file" name="file" id="formFile">
+                        
+                        <div class="mb-3 row ">
+                            <div class="col-lg-12 col-md-12 col-sm-12 submitbtn">
+                                <input  type="file" class="form-control-lg" name="file" id="formFile">
                             </div>
                         </div>
+                      
                                                 
-                    </div>
+                   
                     <div class="submitbtn">
                         <button name="submit" type="submit">Submit</button>
+                    </div>
                     </div>
                 </form>
               </div>

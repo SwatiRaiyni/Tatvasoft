@@ -460,6 +460,9 @@ function form4(){
 }
       
 function save(){
+  document.getElementById("formadd").style.display="none";
+  document.getElementById("addnewadd").style.display="block";
+
         var addStreetname =document.getElementById("addStreetname").value;
         var addHouseno=document.getElementById("addHouseno").value;
         var addPostalcode=document.getElementById("addPostalcode").value;
@@ -516,8 +519,10 @@ function completebooking(){
     data :data ,
     dataType:'json',
     success :function(data){
-      if(data == "yes"){
-        swal("Good job!", "booking successful", "success");
+      
+      if(data.status == "yes"){
+        var id = data.id;
+        swal("Good job!", "booking successful : "+id, "success");
         
       }
       else{

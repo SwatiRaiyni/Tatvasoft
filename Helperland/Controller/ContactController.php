@@ -43,7 +43,8 @@ class ContactController
     {   session_start();
       
         session_destroy();
-         header('Location: http://localhost/TatvaSoft/Helperland');
+        
+         header('Location: http://localhost/TatvaSoft/Helperland/');
         
     }
     public function ContactUs()
@@ -56,8 +57,9 @@ class ContactController
              $email = $_POST['email'];
              $subject = $_POST['sub'];
              $message = $_POST['comment'];
-             $filename=$_FILES["file"]["name"];
-            
+             $filename= $_FILES["file"]["name"];
+             $path = './assets/images/forcontact/'.$filename;
+             move_uploaded_file($_FILES['file']['tmp_name'], $path);
              $name = $_POST['firstname'] . " " . $_POST['lastname'];
              $array = [
                  'name' => $name,
@@ -70,16 +72,13 @@ class ContactController
              ];
             
               if(!preg_match('/^[0-9]{10}+$/', $array['mobile'])){
-               
-               $_SESSION['msg1'] = "invalid moblie";
-
-               header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
+                $_SESSION['msg1'] = "invalid moblie";
+                header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
               }
                 else{
-            $result = $this->model->Contactus($array);
-            
-            header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
-            }
+                    $result = $this->model->Contactus($array);
+                    header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
+                }
           
            
         }

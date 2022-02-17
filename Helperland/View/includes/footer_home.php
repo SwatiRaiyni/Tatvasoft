@@ -49,7 +49,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container text-center">
-                <p>©2018 Helperland. All rights reserved. Terms and Conditions | <a href="#" title="Privacy Policy">Privacy Policy</a></p>
+                <p>©2021 Helperland. All rights reserved. Terms and Conditions | <a href="#" title="Privacy Policy">Privacy Policy</a></p>
                 <a href="#" class="yellow-btn ok-btn">OK!</a>
             </div>
         </div>

@@ -1,40 +1,23 @@
-<?php session_start();?>
+
 <?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-
-    <title> RegisterUser</title>
-    <link rel="stylesheet" href="./assets/css/registration.css">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/5602f8a8c9.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
+<title> RegisterUser</title>
+<link rel="stylesheet" href="./assets/css/headerall.css">
+<link rel="stylesheet" href="./assets/css/registration.css">
 </head>
 <body>
-<!--Nav bar-->
-  <div class="topnav" id="myTopnav">
-    <div class="dropdown">
-        <div class="dropbtn" >
-            <img src="./assets/images/site-logo-large.png" class="white_logo_transparent_background-copy-6">
-        </div>
-        
-      </div> 
-      
-      <a href="<?= $base_url.'?controller=Contact&function=spr'?>" class="acti rounded-pill border-1 rp" >Become a helper</a>
-      <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" class="acti rounded-pill border-1 rp3">Login</a>
-      <a href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
-      <a href="#about">Blog</a>
-      <a href="#contact">Warranty</a>
-      <a href="<?= $base_url.'?controller=Contact&function=price'?>" class="rounded-pill border-1 rp ">Prices & Services</a>
-      <a href="#home" class="acti rounded-pill border-1 rp1">Book Now</a>
-      <a href="javascript:void(0);"  class="icon" onclick="myFunction()">&#9776;</a>
-</div>
 
+<?php include('includes/headerall.php'); ?>
 
 <!--for heading-->
 <h1>Create an account</h1>
@@ -52,28 +35,27 @@
         <input type="hidden" name="userType" value="1">
 
         <div class="modal-body">
-                <?php if(isset($_SESSION['status'])){?>
-               <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> 
-                <strong>Hey!</strong> <?php  echo $_SESSION['status']; ?> 
-                </div>
-                
-                <?php   
-                unset($_SESSION['status']);}
-                ?>
-                 <?php if(isset($_SESSION['status1'])){?>
-               <div class="alert alert-success alert-dismissible" role="alert">
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> 
-                <strong>Hey!</strong> <?php  echo $_SESSION['status1']; ?> 
-                </div>
-                
-                <?php   
-                unset($_SESSION['status1']);}
-                ?>
+       
+                                    
+                    <?php if(isset($_SESSION['status'])){?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Hey!</strong> <?php  echo $_SESSION['status']; ?> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php   
+                        unset($_SESSION['status']);}
+                    ?>
+
+                    <?php if(isset($_SESSION['status1'])){?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Hey!</strong> <?php  echo $_SESSION['status1']; ?> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php   
+                        unset($_SESSION['status1']);}
+                    ?>
+
+                 
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 modal-body1" >
                     <input class="form-control" name="firstname" placeholder="Firstname" type="text"
@@ -123,7 +105,7 @@
         <div class="form-elements1">
            
             <label class="form-elements1-label" for="flexCheckDefault1">
-                Already register? <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>" > Login now </a>
+                Already register? <a href="<?= $base_url.'?loginmodal=true'?>" > Login now </a>
             </label> 
         </div>
     </form>

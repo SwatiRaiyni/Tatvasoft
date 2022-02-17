@@ -34,8 +34,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav align-items-center">
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book a
-                                            Cleaner</a>
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?loginmodal=true'?>" title="Book a Cleaner">Book Now</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices</a>
@@ -46,89 +45,57 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" title="Blog">Blog</a>
                                     </li>
-
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact us</a>
                                     </li>
-
-                                
-        <li class="nav-item">
-        <a class="nav-link border-btn"  href="<?= $base_url.'?controller=Contact&function=HomePage'?>">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
-      </li>
-    
-      
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?loginmodal=true'?>">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
                         <div class="custom-dropdown">
-                            
                             <select class="country-dropdown">
                                 <option value="India" data-image="./assets/images/india.svg">India</option>
                                 <option value="Australia" data-image="./assets/images/australia.svg">Australia</option>      
                                 <option value="United States" data-image="./assets/images/united-states.svg">United States</option>
-                                
                             </select>
-                        
                         </div>
                     </div>
                 </div>
             </div>
 </header>
-
-
-
-
 <div class="modal fade navbar-tmodel" id="exampleModalnavbartoggle" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    
-        <div class="modal-dialog modal-dialog-center">
-            <div class="modal-content">
-            
-           
-
-                <div class="modal-header">
-
-              
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                </div>
-            
-                <div class="modal-footer tab">
+    <div class="modal-dialog modal-dialog-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer tab">
+                    <a href="<?= $base_url.'?loginmodal=true'?>" title="Book a Cleaner">Book Now</a>
                     <a href="<?= $base_url.'?controller=Contact&function=price'?>">Prices & Services</a>
                     <a href="#">Warranty</a>
                     <a href="#">Blog</a>
                     <a href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
-                <a class="nav-link  nav-padding "  href="<?= $base_url.'?controller=Contact&function=HomePage'?>">Login</a>
-                 <a class="nav-link  nav-padding " href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
-
-                 
-                </div>
-                <div class=" tab footer-widget d-flex justify-content-center">
-                   
-                        
-                            <a href="#" target="_blank" title="Facebook">
-                                <img src="./assets/images/facebook.png" alt="Facebook">
-                            </a>
-                        
-                            <a href="#" target="_blank" title="Instagram">
-                                <img src="./assets/images/ic-instagram.png" alt="Instagram">
-                            </a>
-                      
-                    
-                </div>
-
+                    <a class="nav-link  nav-padding "  href="<?= $base_url.'?loginmodal=true'?>">Login</a>
+                    <a class="nav-link  nav-padding " href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
+            </div>
+            <div class=" tab footer-widget d-flex justify-content-center">
+                   <a href="#" target="_blank" title="Facebook">
+                        <img src="./assets/images/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#" target="_blank" title="Instagram">
+                        <img src="./assets/images/ic-instagram.png" alt="Instagram">
+                    </a>
             </div>
         </div>
+    </div>
 </div>
-
-
-
-
-        <main>
-          
-                <section id="section-home" style="background-image: url(./assets/images/spregister.png);">
+<main>
+<section id="section-home" style="background-image: url(./assets/images/spregister.png);">
                     <div class="hero-image" >
                         <div id="form">
                             <div class="form">
@@ -325,22 +292,14 @@
             </footer>
     </div>
     <div class="container-fluid privacy-policy-sec">
-      <p class="text-center">©2018 Helperland. All rights reserved. Terms and Conditions <span class="privacy"> | Privacy Policy</span></p>
+      <p class="text-center">©2021 Helperland. All rights reserved. Terms and Conditions <span class="privacy"> | Privacy Policy</span></p>
     </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script type="text/javascript" src="./assets/js/ServiceProviderRegister.js"></script>
-        <script>
-        // $(document).ready(function(){
-        //     $('.hide_email').hide();
-        // });
-        var msg = $('#msg').val();
-        if(msg != ''){
-            alert(msg);
-        }
-        </script>
+        
 </body>
     
 </html>
