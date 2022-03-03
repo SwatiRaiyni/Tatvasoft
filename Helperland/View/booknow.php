@@ -86,7 +86,7 @@
                                            
                                     </div>
                                     <div class="col-sm-6 m-20">
-                                      <input type="time" class="form-control" id="time" name="time" required />
+                                      <input type="time" class="form-control" id="datetime" name="time" required />
                                     </div>
                                 </div>
                             </div>

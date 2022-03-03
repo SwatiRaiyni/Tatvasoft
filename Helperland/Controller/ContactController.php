@@ -13,6 +13,7 @@ class ContactController
 
     }
     public function price(){
+    
         include("./View/price.php");
     }
     public function faq(){
@@ -41,8 +42,9 @@ class ContactController
     }
     public function logout()
     {   session_start();
-      
-        session_destroy();
+        unset($_SESSION['userdata']);
+        $_SESSION['isloggedin'] = 'FALSE';
+       // session_destroy();
         
          header('Location: http://localhost/TatvaSoft/Helperland/');
         

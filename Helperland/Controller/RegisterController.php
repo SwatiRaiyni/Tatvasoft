@@ -11,7 +11,7 @@ class RegisterController{
     public function Registration()
     {
          if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          $firstname = $_POST['firstname'];
+                      $firstname = $_POST['firstname'];
                       $lastname=  $_POST['lastname']; 
                       $email = $_POST['email'];
                       $number = $_POST['number'];
@@ -124,6 +124,7 @@ class RegisterController{
                 if($result['UserTypeId'] == 1){
               
                    $_SESSION['userdata']=$result;
+                   
                     header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
                 }
                 elseif($result['UserTypeId'] == 2){

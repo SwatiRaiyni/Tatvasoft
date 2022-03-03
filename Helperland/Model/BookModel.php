@@ -82,6 +82,15 @@ class BookModel
         // $oven = $name['oven'];
         // $laundry = $name['laundry'];
         $serviceStartDate = $array['serviceStartDate'];
+
+        //$datetime = date('Y-m-d H:i:s');
+        //$date = date('Y-m-d', strtotime($datetime));
+        //$time = date('H:i:s', strtotime($datetime));
+
+
+       // $serviceStartDate = $serviceStartDate.' '.date('H:i:s');
+        $serviceStartTime = $array['serviceStartTime']; 
+        $serviceStartDate1 = $serviceStartDate.' '.$array['serviceStartTime']; 
         $serviceHours = $array['serviceHours'];
         $extraHours = $array['extraHours'];
         $subTotal = $array['subTotal'];
@@ -95,15 +104,15 @@ class BookModel
         $sql = "INSERT INTO servicerequest(UserId,ServiceId,ServiceStartDate,ZipCode,ServiceHourlyRate,ServiceHours,
         ExtraHours,SubTotal,
         TotalCost,Comments,
-        PaymentDue,PaymentDone,HasPets,	CreatedDate,ModifiedDate,HasIssue) VALUES('{$userdata['UserId']}',
-        $rand,'$serviceStartDate','$postalcode',
+        PaymentDue,PaymentDone,HasPets,HasIssue,Status) VALUES('{$userdata['UserId']}',
+        $rand,'$serviceStartDate1','$postalcode',
         25,'$serviceHours','$extraHours','$subTotal',
-        '$totalCost','$comments',$paymentDue,true,$havepets,curdate(),curdate(),false)";
+        '$totalCost','$comments',$paymentDue,true,$havepets,false,1)";
         $qry1 =  mysqli_query($this->conn, $sql); 
         if ($qry1) {
             $last_id = mysqli_insert_id($this->conn);
           } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            echo "Error: " . $sql . "<br>" . mysqli_error($this->conn);
           }
 
 

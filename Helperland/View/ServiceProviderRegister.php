@@ -292,7 +292,7 @@
             </footer>
     </div>
     <div class="container-fluid privacy-policy-sec">
-      <p class="text-center">©2021 Helperland. All rights reserved. Terms and Conditions <span class="privacy"> | Privacy Policy</span></p>
+      <p class="text-center">©2021 Helperland. All rights reserved. Terms and Conditions <span style="color:#6EABEF; ">Privacy Policy</span></p>
     </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

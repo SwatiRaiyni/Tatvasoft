@@ -121,6 +121,9 @@
 #exampleModalnavbartoggle .modal-header h4{
     font-size: 16px;
 }
+#exampleModalnavbartoggle .tab a:hover{
+    color: #1d7a8c;
+}
 @media screen and (min-width:576px) {
     #exampleModalnavbartoggle .modal-dialog{
         margin: -1px !important;

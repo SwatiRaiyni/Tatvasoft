@@ -1,14 +1,3 @@
-<?php 
-session_start();
-if(isset($_SESSION['userdata'])){
-$userdata=$_SESSION['userdata'];
-}
-
-?>
-<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
-
-
-
 <nav id="headerall"  class="navbar navbar-expand-lg ">
             
       <a href="<?= $base_url.'?controller=Contact&function=HomePage'?>"><img src="./assets/images/site-logo-large.png" id="logo-faq"  alt=""></a>
@@ -32,14 +21,6 @@ $userdata=$_SESSION['userdata'];
         <li class="nav-item">
           <a class="nav-link nav-padding" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
         </li>
-        <?php if(!isset($_SESSION['userdata'])){ ?>
-        <li class="nav-item">
-          <a class="nav-link border rounded-pill nav-padding greenlink"  href="<?= $base_url.'?loginmodal=true'?>">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link border border-1 rounded-pill nav-padding greenlink" href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
-        </li>
-        <?php }else{ ?>
         <li class="nav-item line100">
           <a class="nav-link notification">
              <img src="./assets/images/icon-notification.png">
@@ -53,14 +34,12 @@ $userdata=$_SESSION['userdata'];
           <ul class="dropdown-menu dropdown-menu-dark dpm" aria-labelledby="dropdownMenuButton2">
             <li class="dropdown-item">Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
             <li><hr class="dropdown-divider"></li>
-            <!-- <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
-            <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li> -->
             <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
             <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
             <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
          </ul>
        </li>
-     <?php }?>
+     
     </ul>
   </div>
 </nav>
@@ -73,29 +52,12 @@ $userdata=$_SESSION['userdata'];
         <div class="modal-dialog modal-dialog-center">
             <div class="modal-content">
               <div class="modal-header">
-                <?php  if(isset($_SESSION['userdata'])){ ?>
-                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $userdata['FirstName'];?></b> </h4><?php } ?>
+               
+                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $userdata['FirstName'];?></b> </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-             <?php   if(isset($_SESSION['userdata'])){
-                if($_SESSION['userdata']['UserTypeId']==2){?>
+            
                 <div class="modal-body tab">
-                    <a href="#dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
-                    <a href="#newservicerequests" class="" onclick="newservice();" role="button">New Service Requests</a>
-                    <a href="#upcomingservice"   class="active" onclick="upcoming();" role="button">Upcoming Service</a>
-                    <a href="#serviceschedule" class="" onclick="schedule();" role="button">Service Schedule</a>
-                    <a href="#servicehistory"  class="" onclick="history();" role="button">Service History</a>
-                    <a href="#myratings"  class="" onclick="ratings();" role="button">My Ratings</a>
-                    <a href="#blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
-                    <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
-                    <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
-                </div>
-                <?php } elseif($_SESSION['userdata']['UserTypeId']==1){?>
-                <div class="modal-body tab">
-                    <!-- <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a> -->
-                    <!-- <a href="#servicehistory"  class="active" onclick="history();" role="button">Service History</a> -->
-                    <!-- <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a> -->
-                    <!-- <a href="#favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a> -->
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=servicehistory"  class="active" onclick="history();" role="button">Service History</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
@@ -103,22 +65,15 @@ $userdata=$_SESSION['userdata'];
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=invoice" class="" onclick="invoice()" role="button">Invoices</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=notiftcation" class="" onclick="notification();" role="button">Notifications</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
-                    <!-- <a href="#invoices" class="" onclick="invoice()" role="button">Invoices</a> -->
-                    <!-- <a href="#notifications" class="" onclick="notification();" role="button">Notifications</a> -->
-                    <!-- <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a> -->
                     <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                 </div>
-                <?php  }}?>
+               
                 <div class="modal-footer tab">
                     <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book Now </a>
                     <a href="<?= $base_url.'?controller=Contact&function=price'?>">Prices & Services</a>
                     <a href="#">Warranty</a>
                     <a href="#">Blog</a>
                     <a href="<?= $base_url.'?controller=Contact&function=ContactUs'?>">Contact</a>
-                    <?php if(!isset($_SESSION['userdata'])){ ?>
-                      <a class="nav-link  nav-padding " href="<?= $base_url.'?loginmodal=true'?>">Login</a>
-                      <a class="nav-link  nav-padding " href="<?= $base_url.'?controller=Contact&function=spr'?>">Become a Helper</a>
-                    <?php } ?>
                 </div>
                 <div class=" tab footer-widget d-flex justify-content-center">
                   <a href="#" target="_blank" title="Facebook">

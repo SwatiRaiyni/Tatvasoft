@@ -1,5 +1,4 @@
-
-  let button = document.getElementById("backtotop");
+let button = document.getElementById("backtotop");
 window.onscroll= function(){
   fun();
 };  

@@ -59,8 +59,8 @@ $userdata=$_SESSION['userdata'];}
                                             <ul class="dropdown-menu dropdown-menu-dark dpm" aria-labelledby="dropdownMenuButton2">
                                             <li class="dropdown-item">Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
-                                            <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+                                            <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
+                                            <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
                                             <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
                                             </ul>
                                         </li>
@@ -108,13 +108,13 @@ $userdata=$_SESSION['userdata'];}
                     </div>
                     <?php } elseif($_SESSION['userdata']['UserTypeId']==1){?>
                     <div class="modal-body tab">
-                        <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
-                        <a href="#servicehistory"  class="active" onclick="history();" role="button">Service History</a>
-                        <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
-                        <a href="#favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a>
-                        <a href="#invoices" class="" onclick="invoice()" role="button">Invoices</a>
-                        <a href="#notifications" class="" onclick="notification();" role="button">Notifications</a>
-                        <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=servicehistory"  class="active" onclick="history();" role="button">Service History</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=invoice" class="" onclick="invoice()" role="button">Invoices</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=notiftcation" class="" onclick="notification();" role="button">Notifications</a>
+                        <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
                         <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                     </div>
                     <?php  }}?>

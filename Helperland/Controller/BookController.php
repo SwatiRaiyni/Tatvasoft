@@ -83,6 +83,7 @@ class BookController
             // $oven = $_POST['oven'];
             // $laundry = $_POST['laundry'];
             $serviceStartDate = $_POST['serviceStartDate'];
+            $serviceStartTime = $_POST['serviceStartTime'];
             $serviceHours = $_POST['serviceHours'];
             $extraHours = $_POST['extraHours'];
             $subTotal = $_POST['subTotal'];
@@ -96,6 +97,7 @@ class BookController
                     'postalcode' => $postalcode,
                     
                     'serviceStartDate'=> $serviceStartDate,
+                    'serviceStartTime' => $serviceStartTime,
                     'serviceHours'=> $serviceHours,
                     'extraHours' => $extraHours,
                     'subTotal' => $subTotal,

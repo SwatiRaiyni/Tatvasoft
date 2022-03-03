@@ -170,8 +170,8 @@ document.getElementById("date_picker").onchange = function(){
   document.getElementById("summary").innerHTML=date ;
   document.getElementById("summaryp").innerHTML=date ;
 }
-document.getElementById("time").onchange = function(){
-  var time=document.getElementById("time").value;
+document.getElementById("datetime").onchange = function(){
+  var time=document.getElementById("datetime").value;
   document.getElementById("summary1").innerHTML=time ;
   document.getElementById("summaryp1").innerHTML=time ;
 }
@@ -376,6 +376,17 @@ function form1(){
   }
 }
 function form2(){
+  var date_picker=document.getElementById("date_picker").value;
+  var datetime=document.getElementById("datetime").value;
+  if(date_picker == "" || datetime == ""){
+    swal({
+      title: "Alert!",
+      text: "pls Enter date and time First to continue...",
+      icon: "warning",
+      dangerMode: true,
+    });
+    
+  }else{
   $.ajax({
     url:'http://localhost/TatvaSoft/Helperland/?controller=Book&function=tabtwo',
     method: 'POST',
@@ -401,6 +412,7 @@ function form2(){
     }
 
   });
+}
 }
 
 function form3(){
@@ -428,11 +440,10 @@ function form3(){
     }
 
   });
-
-
-
-
 }
+
+
+
 function form4(){
   var id1=document.querySelector('input[name=address]:checked'); 
    if(id1){
@@ -501,6 +512,7 @@ function completebooking(){
   var extrahour = 0;
   data.postalcode = document.getElementById("postalcode").value;
   data.serviceStartDate = document.getElementById("date_picker").value;
+  data.serviceStartTime = document.getElementById("datetime").value;
   data.extraHours = extrahour;
   data.serviceHours = parseFloat(document.getElementById("duration").value) -  data.extraHours ;
   data.subTotal = parseFloat(extrahour) + parseFloat(data.serviceHours);
@@ -510,7 +522,7 @@ function completebooking(){
   data.havepets = document.getElementById("havepet").checked;
   data.paymentDone = true;
   data.addressId = $('#addresses div input[type=radio]:checked').val();
-  console.log(data.addressId);
+ // console.log(data.addressId);
 
   $.ajax({
     type : 'POST',

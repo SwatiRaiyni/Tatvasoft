@@ -36,7 +36,7 @@ class RegisterModel
         $confirmpassword = $array['confirmpassword'];
         $userType = $array['userType'];
        
-             $sql = "INSERT INTO user(FirstName,LastName , Email ,Password , Mobile,UserTypeId)
+            $sql = "INSERT INTO user(FirstName,LastName , Email ,Password , Mobile,UserTypeId)
             VALUES ( '$firstname','$lastname','$email','$password','$number','$userType')";
              
              $result = mysqli_query($this->conn, $sql);

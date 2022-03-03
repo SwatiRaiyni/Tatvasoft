@@ -1,14 +1,14 @@
 <?php 
 session_start();
+$base_url='http://localhost/TatvaSoft/Helperland/';
 if(isset($_SESSION['userdata'])){
-
-$userdata=$_SESSION['userdata'];}
+    $userdata=$_SESSION['userdata'];}
 else{
-    header('Location:'.  'http://localhost/TatvaSoft/Helperland/?controller=Contact&function=HomePage');
+    header('Location:'. 'http://localhost/TatvaSoft/Helperland/?controller=Contact&function=HomePage');
 }
-
 ?>
-<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +16,18 @@ else{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title> Customer > Service History</title>
+    <title> Customer Dashboard</title>
     
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script src="https://kit.fontawesome.com/5602f8a8c9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
    <link
       rel="stylesheet"
       type="text/css"
@@ -35,125 +40,25 @@ else{
       src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
     ></script> 
     
- 
+    <link rel='stylesheet' href="./assets/css/headerall.css">
     <link rel='stylesheet' href="./assets/css/customerdashboard.css">
 </head>
 
-<body>
+<body >
 
 <!--for navbar-->
 <div class="wrapper">
 <!-- header -->
-<header class="site-header">
-        <div class="header-wrapper d-flex justify-content-between align-items-center">
-            <a href="?controller=Contact&function=HomePage" title="Helper hand" class="logo-block">
-                <img src="./assets/images/site-logo-large.png" alt="Helper hand logo">
-            </a>
-            <li class="nav-item line100  d-b">
-                <a class="nav-link notification">
-                    <img src="./assets/images/icon-notification.png">
-                    <span class="badge">2</span>
-                </a>
-               
-            </li>
-            <div class="header-right-block">
-                <div class="right-block-inner d-flex align-items-center">
-                    <nav class="navbar navbar-expand-lg align-items-center">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalnavbartoggle" data-bs-dismiss="modal">
-                        <span class="navbar-toggler-icon" style="background-image: url('./assets/images/menu-icon.svg');"></span>
-                    </button>
-                        <div class="collapse navbar-collapse" id="navbarNav" >
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item">
-                                    <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book Now</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices and Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" title="Blog">Warranty</a>
-                                </li>
-                              
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" title="Login" >Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=ContactUs'?>" title="Contact us">Contact</a>
-                                </li>
-                                
-                                <li class="nav-item line100  ">
-                                    <a class="nav-link notification">
-                                        <img src="./assets/images/icon-notification.png">
-                                        <span class="badge">2</span>
-                                    </a>
-                                   
-                                </li>
-                                <li class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle dropdown1" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" >
-                                        <img src="./assets/images/personforma-1.png" alt="">
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                        <li>Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item active"   href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
-                                      <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
-                                      <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
-                                    </ul>
-                                  
-                                </li>
-                               
-                            </ul>
-                            
-                        </div>
-                    </nav>
-                   
-            </div>
-                
-            </div>
-        </div>
-</header>
-<!--modal for tabs -->
-<div class="modal fade navbar-tmodel" id="exampleModalnavbartoggle" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $userdata['FirstName'];?></b> </h4>
-                </div>
-                <div class="modal-body tab">
-                    <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
-                    <a href="#servicehistory"  class="active" onclick="history();" role="button">Service History</a>
-                    <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
-                    <a href="#favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a>
-                    <a href="#invoices" class="" onclick="invoice()" role="button">Invoices</a>
-                    <a href="#notifications" class="" onclick="notification();" role="button">Notifications</a>
-                   
-                    <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
-                    <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
-                </div>
-                <div class="modal-footer tab">
-                    <a href="#"> Book Now </a>
-                    <a href="">Prices & Services</a>
-                    <a href="#">Warranty</a>
-                    <a href="#">Blog</a>
-                    <a href="">Contact</a>
-                </div>
-                <div class="modal-footer tab footer-widget">
-                    <ul class="social-media-list d-flex justify-content-center">
-                        <li>
-                            <a href="#" target="_blank" title="Facebook">
-                                <img src="./assets/images/facebook.png" alt="Facebook">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" title="Instagram">
-                                <img src="./assets/images/ic-instagram.png" alt="Instagram">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-</div>
+<?php include('includes/cusp.php'); ?>
+
+<?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$test = explode('=', $actual_link);
+$last = end($test);
+
+
+?>
+<?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <!--End Modal-->
 <!--Modal for Service Details--> 
 <div class="modal fade" id="ModalServiceDetails" tabindex="-1" aria-hidden="true">
@@ -166,26 +71,31 @@ else{
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="mb-3">
-               <h5>05/10/2021 08:00 - 11:30 </h5>
-               <p><b>Duration</b> : 3.5 Hrs</p>
+            <form action="#" id="servicedetails">
+            <input type="hidden" name="service_id" id="service_id1" class="service_id">
+              <div class="mb-3" >
+               <p><b>Date:</b><span id="appenddate"> </span></p>
+               <p ><b>Duration : </b> <span id="duration"></span></p>
                 <hr>
-                <p><b>Service Id</b>:8485</p>
-                <p><b>Extras</b>:Inside cabinets</p>
-                <p><b>Net Amount:</b><span class="singlefont"><i class="fa fa-eur"></i>63</span></p>
+                <p><b>Service Id : </b><span id="serviceid"> </span></p>
+                <p><b>Extras :</b><span id="extra"></span></p>
+                <p><b>Net Amount:</b><i class="fa fa-eur singlefont"></i><span class="singlefont" id="totalcost"></span></p>
                 <hr>
-                <p><b>Service Address</b> :Koenigstrasse 112, 99897 Tambach-Dietharz</p>
+                <p><b>Service Address :</b> <span id="address"></span></p>
                 <p><b>Billing Address</b> : Same as cleaning Service</p>
-                <p><b>Phone</b> : +49 9955648797</p>
-                <p><b>Email</b> :patel2128@gmail.com</p>
+                <p><b>Phone : </b>  <span id="mobile1"></span></p>
+                <p><b>Email : </b> <span id="email1"></span></p>
                 <hr>
-                <p><b>Comments</b></p>
-                <p>I don't have pets at home</p>
-                <hr>
-                <button class="Reschedule"> Reschedule </button>
-                <button class="cancel"> cancel </button>
+                <p><b>Comments : </b><span id="comments"></span></p>
+                <p><span id="haspets"></span></p>
+                <hr> 
+                
+                <button  type="button" class="Reschedule" id="btn1" data-bs-dismiss="modal" aria-label="Close" onclick="reschedule($('.service_id').val())" > Reschedule </button>
+                <button class="cancel" type="button" id="btn2" data-bs-dismiss="modal" aria-label="Close" onclick="trash21($('.service_id').val())"> cancel </button>
               </div>
-             </div>
+            </form>
+            </div>
+
         </div>
     </div>
 </div>
@@ -199,29 +109,33 @@ else{
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#">
+            <form action="#" id="datetimeforreschedule">
+            
+            <input type="hidden" name="reschedule_edit_id" id="reschedule_edit_id1" class="reschedule_edit_id">
                 <p><b>Select New Date & Time</b></p>
+
                 <div class="row">
                     <div  class="col-sm-6">
                        <div class="form-group">
-                          <input type="date" class="form-control1 w200">
+                          <input type="date" class="form-control w200 " id="getdate1" name="getdate1">
                        </div>
                     </div>
                     <div  class="col-sm-6">
                         <div class="form-group">
-                            <input type="time" class="form-control1 w200">
+                            <input type="time" class="form-control w200" id="gettime1" name="gettime1">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Login</a>
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close" class="blue-btn1" onclick="editdatetime();">Reschedule</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 </div>
+<!--  -->
 <!--Modal End-->
 <!--Modal for Cancel Service Request-->
 <div class="modal fade" id="CancelServiceRequest" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
@@ -232,12 +146,13 @@ else{
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#">
+            <form action="#" id="cancelsr">
+            <input type="hidden" name="cancel_id" id="cancel_id1" class="cancel_id">
                 <p><b>Why you want to cancel the service request?</b></p>
                 <textarea rows="5" class="form-control" placeholder="why do you want to cancel service requests?"></textarea>
                 <hr>
                 <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Cancel Now</a>
+                    <button type="button"  class="blue-btn1" data-bs-dismiss="modal" aria-label="Close" onclick="cancelsr();">Cancel Now</a>
                 </div>
             </form>
         </div>
@@ -246,73 +161,44 @@ else{
 </div>
 <!--Modal End-->
 <!--Modal for Rating in service history tab-->
-<div class="modal fade navbar-tmodel" id="exampleModalRateSP" tabindex="-1"
+<div class="modal fade" id="exampleModalRateSP" tabindex="-1"
 aria-labelledby="exampleModalLabel2" aria-hidden="true">
-<div class="modal-dialog modal-dialog-center">
+<div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
+        <div class="abc1"></div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="td-rating">
-                <div class="rating-user"><img src="./assets/images/forma-1_1.png" alt="">
-                </div>
-                <div class="rating-info">
-                    <div class="info-name">Swati Raiyani</div>
-                    <div class="info-ratings">
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star-o"></span>
-                        4
-                    </div>
-                </div>
-            </div>
-
             <div class="m-heading">
                 Rate Your Service Provider
             </div>
             <hr>
             <div class="m-form">
-                <form action="#">
-                    <div class="m-ratings">
-                        <p>On Time Arrival</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="m-ratings">
-                        <p>Friendy</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="m-ratings">
-                        <p>Quality of Service</p> 
-                        <div class="info-ratings">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star-o"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
+                <form  id="ratingcust">
+                    <input type="hidden" name="sid" class="sid1" id="sid2">
+                <div class="m-ratings">
+                        <p>On Time Arrival</p>
+                        <div  class="rateYo ontime" data-rateyo-rating="1"></div>
+                        <input type="hidden" name="ontime" id="ontime" class="getvalue" name="getvalue" >
+                </div>
+                <div class="m-ratings">
+                        <p>Friendly</p>
+                        <div  class="rateYo friendly" data-rateyo-rating="1"></div>
+                        <input type="hidden" name="friendly" id="friendly" class="getvalue1" name="getvalue" >
+                </div>
+                <div class="m-ratings">
+                        <p>Quality of Service</p>
+                        <div  class="rateYo qos" data-rateyo-rating="1"></div>
+                        <input type="hidden" name="qos" id="qos" class="getvalue2" name="getvalue" >
+                </div>
+                <div class="form-group">
                         <label for="feedback">Feedback on Service Provider</label>
-                        <textarea name="" id="" class="form-control" rows="2"></textarea>
-                    </div>
-                    <div >
-                         <button class="blue-btn1" type="button">Submit</button>
-                    </div>
+                        <textarea name="comment" id="comment1" class="form-control" rows="2"></textarea>
+                </div>
+                <div>
+                    <button class="blue-btn1" type="button" data-bs-dismiss="modal" aria-label="Close" onclick="checkrating();">Submit</button>
+                </div>
                 </form>
             </div>
 
@@ -331,18 +217,19 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#">
+            <form action="#" id="editdata">
+            <input type="hidden" name="edit_id" id="edit_id" class="edit_id1">
                 <div class="row">
                     <div  class="col-sm-6">
                        <div class="form-group">
                            <label>Street name</label>
-                          <input type="text" class="form-control w200" placeholder="Koenigstreet20">
+                          <input type="text" class="form-control w200" id="addStreetname1" name="addStreetname1">
                        </div>
                     </div>
                     <div  class="col-sm-6">
                         <div class="form-group">
                             <label>House Number</label>
-                            <input type="text" class="form-control w200" placeholder="112">
+                            <input type="text" class="form-control w200" id="addHouseno1" name="addHouseno1">
                         </div>
                     </div>
                 </div>
@@ -350,13 +237,13 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div  class="col-sm-6">
                        <div class="form-group">
                            <label>Postal code</label>
-                          <input type="text" class="form-control w200" placeholder="99397">
+                          <input type="text" class="form-control w200" id="addPostalcode1" name="addPostalcode1">
                        </div>
                     </div>
                     <div  class="col-sm-6">
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control w200" placeholder="Ahmedabad">
+                            <input type="text" class="form-control w200" id="addCity1" name="addCity1">
                         </div>
                     </div>
                 </div>
@@ -364,14 +251,14 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div class="col">
                         <label>Phone Number</label>
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1">+49</span>
-                            <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1">+91</span>
+                            <input type="text" class="form-control" id="addPhoneno1" name="addPhoneno1" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Edit</a>
+                    <button type="button"  class="blue-btn1" data-bs-dismiss="modal" aria-label="Close" onclick="edit();">Edit</a>
                 </div>
             </form>
         </div>
@@ -393,13 +280,13 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div  class="col-sm-6">
                        <div class="form-group">
                            <label>Street name</label>
-                          <input type="text" class="form-control w200" placeholder="Koenigstreet20">
+                          <input type="text" class="form-control w200" placeholder="Koenigstreet20" id="addStreetname">
                        </div>
                     </div>
                     <div  class="col-sm-6">
                         <div class="form-group">
                             <label>House Number</label>
-                            <input type="text" class="form-control w200" placeholder="112">
+                            <input type="text" class="form-control w200" placeholder="112" id="addHouseno">
                         </div>
                     </div>
                 </div>
@@ -407,13 +294,13 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div  class="col-sm-6">
                        <div class="form-group">
                            <label>Postal code</label>
-                          <input type="text" class="form-control w200" placeholder="99397">
+                          <input type="text" class="form-control w200" placeholder="99397" id="addPostalcode">
                        </div>
                     </div>
                     <div  class="col-sm-6">
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control w200" placeholder="Ahmedabad">
+                            <input type="text" class="form-control w200" placeholder="Ahmedabad" id="addCity">
                         </div>
                     </div>
                 </div>
@@ -421,14 +308,14 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div class="col">
                         <label>Phone Number</label>
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1">+49</span>
-                            <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1">+91</span>
+                            <input type="tel" class="form-control" placeholder="Phone Number" id="addPhoneno" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Add</a>
+                    <button type="button" class="blue-btn1"  data-bs-dismiss="modal" aria-label="Close" onclick="addaddress();">Add</a>
                 </div>
             </form>
         </div>
@@ -437,7 +324,7 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
 </div>
 <!--end--> 
 <!--Modal for delete Address-->
-<div class="modal fade" id="DeleteAddress" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+ <div class="modal fade" id="DeleteAddress" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1"> 
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -445,15 +332,17 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="#">
+            <form action="" method="post" id="deletedata">
+                <input type="hidden" name="trash_id" class="trash_id">
                 <div class="row">
                     <div class="col">
-                        <p> Are You Sure to delete the Address?</p>
+                        <p> <b> Are You Sure to delete the Address? </b></p>
+                        <span>Once You deleted address You can not recover your deleted address !</span>
                     </div>
                 </div>   
                 <hr>
-                <div class=" text-center">
-                    <button type="button"  class="blue-btn1">Delete</a>
+                <div class="text-center">
+                    <button type="button" class="blue-btn1" data-bs-dismiss="modal" aria-label="Close" onclick="trash();">Delete</a>
                 </div>
             </form>
         </div>
@@ -466,14 +355,15 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
 
 <main style="min-height:100vh;">
     <section id="section-home">
-        <h1 class="title-main">Welcome, <span class="title-main1"><?= $userdata['FirstName'];?></span></h1>
+        
+        <h1 class="title-main">Welcome, <span class="title-main1"><?= $userdata['FirstName']; ?></span></h1>
     </section>
   
     <section id="tab-section">
         <div class="div-main container-fluild" >
             <div class="div-tab" >
-                <a href="#dashboard" id="dashboard1" class="" onclick="dashboard();" role="button">Dashboard</a>
-                <a href="#servicehistory" id="history" class="active" onclick="history();" role="button">Service History</a>
+                <a href="#dashboard" id="dashboard1" class="active" onclick="dashboard();" role="button">Dashboard</a>
+                <a href="#servicehistory" id="history" class="" onclick="history();" role="button">Service History</a>
                 <a href="#serviceschedule" id="schedule" class="" onclick="schedule();" role="button">Service Schedule</a>
                 <a href="#favouriteprones" id="favprons" class="" onclick="favprons();" role="button" >Favourite Prons</a>
                 <a href="#invoices" id="invoice" class="" onclick="invoice();" role="button">Invoices</a>
@@ -482,33 +372,41 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
             </div>
 <div class="content-section">
             <div class="divContent" id="mySettings">
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">My Details</button>
-                      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My Addresses</button>
-                      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Change Password</button>
-                    </div>
-                  </nav>
+            
+
+                <div id="menu">
+                    <ul class="nav nav-tabs abc justify-content-center" id="tabination">
+                        <li class="selected" onclick="details();" id="mdetail">My Details</li>
+                        <li onclick="address();" id="madd">My Addresses</li>
+                        <li onclick="changepass();" id="cpass">Change Password</li>
+                     </ul>
+                </div>
+
+
+                <br>
+                <br>
                   <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                    <div  id="nav-home">
+                    <form action="" method="post" id="datauser">
                         <div class="row m-20">
                             <div class="col-sm-4 m-20">
                                 <div class="form-group">
                                     <label>First name</label>
-                                    <input type="text" class="form-control" placeholder="Swati">
+                                    <input type="text"  name="firstname" id="fname" class="form-control fname"  />
                                 </div>
 
                             </div>
                             <div class="col-sm-4 m-20">
                                 <div class="form-group">
                                     <label>Last name</label>
-                                    <input type="text" class="form-control" placeholder="Raiyani">
+                                    <input type="text"  name="lastname" id="lname" class="form-control lname"  />
                                 </div>
                             </div>
                             <div class="col-sm-4 m-20">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Swati@gmail.com">
+                                    <input type="email"  name="email" id="email" class="form-control email" disabled  />
                                 </div>
                             </div>
                         </div>
@@ -516,115 +414,87 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                             <div class="col-sm-4 m-20">
                                 <label>Mobile Number</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">+49</span>
-                                    <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="basic-addon1">+91</span>
+                                    <input type="tel"  name="mobile" minlength="10" maxlength="10" id="mobile" class="form-control mobile"  />
                                   </div>
                             </div>
-                            <div class="col-sm-8 m-20">
+                            <div class="col-sm-4 m-20">
                                 <div class="form-group">
                                     <label>Date of Birth</label>
-                                    <input type="date" class="form-control" placeholder="03/09/2001">
+                                    <input type="date"  name="date" class="form-control dob" id="date"/>
                                 </div>
                             </div>
                         </div>
                         <hr>
-                        <div class="row m-20">
-                            <div class="col m-20">
-                                
-                                <div class="dropdown">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                      My Preferred Language
-                                    </a>
-                                  
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                      <li><a class="dropdown-item" href="#">English</a></li>
-                                      <li><a class="dropdown-item" href="#">Hindi</a></li>
-                                      
-                                    </ul>
-                                  </div>
-
+                        <div class="row">
+                            <div class="col">
+                                    <label> My Preffered language </label><br>
+                                    <select name="language" id="language1">
+                                        <option value="1">English</option>
+                                        <option value="2">Hindi</option>
+                                    </select>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary m-20">Save</a>
-                        
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <table  class="current-services">
+                        <button type="button" name="submit" id="btnClick" onclick="savedata();" class="Reschedule">Save</button>
+                    </form>
+                    </div><!--first tab complete-->
+                    <div  id="nav-profile">
+                        <form action="#" method="post" id="addressuser">
+                        <table  class="current-services" id="service">
                             <thead>
                                 <tr>
+                                    <th>Billing Address</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                       <div><b>Address:</b> Second Street 23, 53225 Bonn</div> 
-                                        <div><b>Phone number:</b> 9988556644</div>
-                                    </td>
-                                    <td class="buttoncenter">
-                                        <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#EditAddress" data-bs-dismiss="modal"> Edit </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteAddress" data-bs-dismiss="modal"> Delete </button> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       <div><b>Address:</b> Second Street 23, 53225 Bonn</div> 
-                                        <div><b>Phone number:</b> 9988556644</div>
-                                    </td>
-                                    <td class="buttoncenter">
-                                        <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#EditAddress" data-bs-dismiss="modal"> Edit </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteAddress" data-bs-dismiss="modal"> Delete </button> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       <div><b>Address:</b> Second Street 23, 53225 Bonn</div> 
-                                        <div><b>Phone number:</b> 9988556644</div>
-                                    </td>
-                                    <td class="buttoncenter">
-                                        <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#EditAddress" data-bs-dismiss="modal"> Edit </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#DeleteAddress" data-bs-dismiss="modal"> Delete </button> 
-                                    </td>
-                                </tr>
+                            <tbody id="caddress1">
+                            
                             </tbody>
                         </table>
-                        <button class="Reschedule" data-bs-toggle="modal"
-                                    data-bs-target="#AddNewAddress" data-bs-dismiss="modal"> Add New Address </button>
-                    </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <div class="form-group m-20">
+                        </form>
+                        <button class="Reschedule" type="button" data-bs-toggle="modal"
+                            data-bs-target="#AddNewAddress" data-bs-dismiss="modal" > Add New Address </button>
+
+                    </div><!--2nd tab complete-->
+
+
+                    <div id="nav-contact">
+                        <form action="#" id="forpassword" method="post">
+                        
+                        <div class="row">
+                            <div class="col-sm-8 col-md-6 m-20">
                             <label>Old Password</label>
-                            <input type="password" class="form-control" placeholder="old password ">
+                            <input type="password" class="form-control" autocomplete="off" name="password1" id="password1" placeholder="old password ">
+                            </div>
                         </div>
-                        <div class="form-group m-20">
+                        <div class="row">
+                            <div class="col-sm-8 col-md-6 m-20">
                             <label>New Password</label>
-                            <input type="password" class="form-control" placeholder="new password">
+                            <input type="password" class="form-control" autocomplete="off" name="newpassword" id="newpassword" placeholder="new password">
+                            </div>
                         </div>
-                        <div class="form-group m-20">
+                        <div class="row">
+                            <div class="col-sm-8 col-md-6 m-20">
                             <label>Confirm Password</label>
-                            <input type="password" class="form-control" placeholder="Confirm password">
+                            <input type="password" class="form-control" autocomplete="off" name="confirmpassword" id="confirmpassword" placeholder="Confirm password">
+                            </div>
                         </div>
                         <div class="m-20">
-                            <button class="Reschedule"> Save </button>
+                            <button type="button" class="Reschedule" onclick="changepassword();"> Save </button>
                         </div>
-                    </div>
+                        </form>
+                    </div><!--3rd tab complete-->
                   </div>
 
-            </div>
+            </div><!--complete mysettings tab-->
             <div  class="divContent" id="dashboard">
                 <div class="row">
                     <div class="col-sm-6 title-filter">
                         <h3 class="medium-title"> Current Service Request </h3>
                     </div>
                     <div class="col-sm-6">
-                        <a class="btn btn-primary add-button" role="button" routerlink="/book-service" title="Add New Service Request" href="#">
+                        <a role="button" class="add-button1"  href="<?= $base_url.'?controller=Book&function=BookNow'?>">
                             Add New Service Request</a>
                     </div>
                     
@@ -637,417 +507,29 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                 <th>Service Date<img src="./assets/images/form-1_2.png"></th>
                                 <th>Service Provider <img src="./assets/images/form-1_2.png"></th>
                                 <th>Payment<img src="./assets/images/form-1_2.png"></th>
-                                <th>Action<img src="./assets/images/form-1_2.png"></th>
-                                
-                                
+                                <th style="min-width :120px !important; text-align:center; ">Action<img src="./assets/images/form-1_2.png"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal" >323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"   data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>31/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>15/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                               
-                            </tr>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>10/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                               
-                               
-                            </tr>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>28/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>15/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                               
-                            </tr>
-                           
-                            
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>11/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a>323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"><b>31/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a>323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>10/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a  data-bs-toggle="modal"
-                                    data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">323436 </a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>05/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a>323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal""><b>01/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td><a>323436</a></td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"  data-bs-toggle="modal"
-                                        data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>01/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Reschedule"  data-bs-toggle="modal"
-                                    data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>
-                                    <button class="cancel" data-bs-toggle="modal"
-                                    data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal"> cancel </button>
-                                </td>
-                                
-                            </tr>
+                        <tbody id="dashboarddata">
                         </tbody>
                     </table>
                 </div>
                
-            </div>
+            </div><!--complete dashboard-->
             <div class="divContent" id="serviceschedule">
                
 
-            </div>
+            </div><!--complete serviceschedule-->
             <div class="divContent" id="servicehistory">
                 <div class="row">
                     <div class="col-sm-6 title-filter">
                         <h3 class="medium-title"> Service History </h3>
                     </div>
                     <div class="col-sm-6">
-                        <a class="btn btn-primary add-button" style="float: right;" routerlink="/book-service" title="Add New Service Request" href="#">
-                            Export</a>
-                    </div>
+                    <a role="button" class="add-button1" onclick="html_table_to_excel('xlsx')" >Export</a>
                     
+                    </div>
                 </div>
-
-                
                 <div>
                     <table  id="tblCustomers"  class="current-services ">
                         <thead>
@@ -1058,391 +540,13 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                 <th>Payment<img src="./assets/images/form-1_2.png"></th>
                                 <th>Status<img src="./assets/images/form-1_2.png"></th>
                                 <th>Rate SP<img src="./assets/images/form-1_2.png"></th>
-                                
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>31/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating" >
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>15/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>10/03/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>28/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Canceled"> Cancelled </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>15/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                           
-                            
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>11/02/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Canceled"> Cancelled </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>31/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>10/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Completed"> Completed</button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>05/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Canceled"> Cancelled </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>01/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Canceled"> Cancelled </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
-                            <tr>
-                                <td>323436</td>
-                                <td>
-                                    <div><img src="./assets/images/calculator.png"><b>01/01/2018</b></div>
-                                    <div><img src="./assets/images/layer-712.png">12:00 - 18:00</div>
-                                </td>
-                                <td>
-                                    <div class="td-rating">
-                                        <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div>
-                                        <div class="rating-info">
-                                            <div class="info-name">Lyum Watson</div>
-                                            <div class="info-ratings">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
-                                                4
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                   <div class="singlefont"><i class="fa fa-eur"></i>63</div>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="Canceled"> Cancelled </button>
-                                </td>
-                                <td class="buttoncenter">
-                                    <button class="RateSP" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal"> Rate SP </button>
-                                 </td>
-                               
-                            </tr>
+                        <tbody id="historydata">
                         </tbody>
                     </table>
                 </div>
-              
-            </div>
+            </div><!--Complete service history part-->
             <div class="divContent" id="favouriteprones">
                 <div id="favprones">
                 <div class="row m-20" >
@@ -1562,68 +666,12 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
 </div>
 
 <!--footer section-->
-<footer class="site-footer">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-2 footer-widget">
-                    <a href="#" title="Helper Hand">
-                        <img src="./assets/images/site-logo.png" alt="Helper Hand">
-                    </a>
-                </div>
-                <div class="col-lg-8 footer-widget">
-                    <ul class="footer-navigation d-flex justify-content-center">
-                        <li>
-                            <a href="" title="Home">Home</a>
-                        </li>
-                        <li>
-                            <a href="" title="About">About</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Testimonials">Testimonials</a>
-                        </li>
-                        <li>
-                            <a href="" title="FAQs">FAQs</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Insurance Policy">Insurance Policy</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Impressum">Impressum</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 footer-widget">
-                    <ul class="social-media-list d-flex justify-content-end">
-                        <li>
-                            <a href="#" target="_blank" title="Facebook">
-                                <img src="./assets/images/facebook.png" alt="Facebook">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" title="Instagram">
-                                <img src="./assets/images/ic-instagram.png" alt="Instagram">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container text-center">
-            <p>©2018 Helperland. All rights reserved.     Terms and Conditions  |   <a href="#" title="Privacy Policy">Privacy Policy</a></p>
-            
-        </div>
-    </div>
-</footer>
+<?php include('includes/footerall.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"
@@ -1631,14 +679,11 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!--for service history-->
-    <script>
-      $(document).ready(function () {
-        $("#tblCustomers").DataTable();
-      });
-    </script>
-
-    <script>
+    
+<script>
         const dt1 = new DataTable("#tblCustomers", {
         dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
         responsive: false,
@@ -1656,37 +701,140 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
         buttons: ["excel"],
         columnDefs: [{ orderable: false, targets: 5 }],
     });
-    </script>
+</script>
 <!--for dashboard pagination-->
-<script>
-    $(document).ready(function () {
-      $("#dashboardforpagination").DataTable();
-    });
-  </script>
 
-  <script>
-      const dt2 = new DataTable("#dashboardforpagination", {
-      dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
-      responsive: true,
-      pagingType: "full_numbers",
-      language: {
-          paginate: {
-          first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
-          previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
-          next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
-          last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
-          },
-          info: "Total Record: _MAX_",
-          lengthMenu: "Show_MENU_Entries",
-      },
-      buttons: ["excel"],
-      columnDefs: [{ orderable: false, targets: 4 }],
-  });
+
+ <script>
+    const dt2 = new DataTable("#dashboardforpagination", {
+        dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+        responsive: true,
+        pagingType: "full_numbers",
+        language: {
+            paginate: {
+            first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+            previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+            next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+            last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+        },
+        buttons: ["excel"],
+        columnDefs: [{ orderable: false, targets: 4 }],
+    });
  
   </script>
   
+<!--for mysetting address-->
+<script>
+    const dt3 = new DataTable("#service", {
+        dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+        responsive: true,
+        pagingType: "full_numbers",
+        language: {
+            paginate: {
+            first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+            previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+            next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+            last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+        },
+        buttons: ["excel"],
+        columnDefs: [{ orderable: false, targets: 2 }],
+    });
+</script>
 
     <script type="text/javascript" src="./assets/js/customerdashboard.js"></script>
+
+
+<script>
+   $( document ).ready(function() {
+
+var test = '<?= $last ?>';
+// var str = document.URL;
+// var arr = str.split ("#");
+// var arr = arr[1];
+if(test == 'dashboard'){
+    dashboard();
+}
+else if(test == 'favouriteprones'){
+    favprons();
+}
+else if(test == 'serviceschedule'){
+    schedule();
+}
+else if(test == 'servicehistory' ){
+    history();
+}
+else if(test == 'invoice'){
+    invoice();
+}
+else if(test == 'notiftcation'){
+    notification();
+}
+else if(test == 'mysettings'){
+    mysettings();
+}
+
+
+// if(arr == 'favouriteprones'){
+//     favprons();
+// }else if(arr == 'serviceschedule'){
+//     schedule();
+// }else if(arr == 'invoices'){
+//     invoice();
+// }
+// else if(arr == 'dashboard'){
+//     dashboard();
+// }
+// else if(arr == 'notifications'){
+//     notification();
+// }
+// else if(arr == 'servicehistory' ){
+//     history();
+// }
+
+});
+function trash2(id){
+    $('.trash_id').val(id);
+    $("#DeleteAddress").modal('show');
+}
+function edit2(id){
+    $('.edit_id1').val(id);
+    geteditaddress();
+    $("#EditAddress").modal('show');
+}
+function reschedule(id){
+    $('.reschedule_edit_id').val(id);
+    geteditdatetime();
+    $("#RescheduleServiceRequest").modal('show');
+    $("#ModalServiceDetails").modal('hide');
+}
+
+function trash21(id){
+    $('.cancel_id').val(id);
+    $("#CancelServiceRequest").modal('show');
+    $("#ModalServiceDetails").modal('hide');
+}
+function servicedetails(obj){
+    var id = obj.attr('data-id');
+    var date = obj.attr('data-date');
+    var stime = obj.attr('data-time');
+    var etime = obj.attr('data-etime');
+    $("#appenddate").text(date + ' ' +stime + '-' + etime);
+    $('.service_id').val(id);
+    getservicedetails();
+    $("#ModalServiceDetails").modal('show');
+}
+
+
+
+
+
+</script>
 </body>
 
 </html>

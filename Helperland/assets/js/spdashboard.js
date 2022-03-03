@@ -7,7 +7,7 @@ function mysettings(){
             document.getElementById("servicehistory").style.display="none";
             document.getElementById("myratings").style.display="none";
             document.getElementById("bookcustomer").style.display="none";
-             if(document.getElementById("newservice").classList.contains("active")){
+            if(document.getElementById("newservice").classList.contains("active")){
                 document.getElementById("newservice").classList.remove("active");
             }
             if(document.getElementById("upcoming").classList.contains("active")){
