@@ -53,10 +53,14 @@ $userdata=$_SESSION['userdata'];
           <ul class="dropdown-menu dropdown-menu-dark dpm" aria-labelledby="dropdownMenuButton2">
             <li class="dropdown-item">Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
             <li><hr class="dropdown-divider"></li>
-            <!-- <li><a class="dropdown-item active"  href="#dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
-            <li><a class="dropdown-item" href="#mySettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li> -->
+            <?php   if(isset($_SESSION['userdata'])){
+                if($_SESSION['userdata']['UserTypeId']==1){?>
             <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
             <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+            <?php } elseif($_SESSION['userdata']['UserTypeId']==2){?>
+              <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
+            <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+            <?php } }?>
             <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
          </ul>
        </li>
@@ -80,22 +84,18 @@ $userdata=$_SESSION['userdata'];
              <?php   if(isset($_SESSION['userdata'])){
                 if($_SESSION['userdata']['UserTypeId']==2){?>
                 <div class="modal-body tab">
-                    <a href="#dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
-                    <a href="#newservicerequests" class="" onclick="newservice();" role="button">New Service Requests</a>
-                    <a href="#upcomingservice"   class="active" onclick="upcoming();" role="button">Upcoming Service</a>
-                    <a href="#serviceschedule" class="" onclick="schedule();" role="button">Service Schedule</a>
-                    <a href="#servicehistory"  class="" onclick="history();" role="button">Service History</a>
-                    <a href="#myratings"  class="" onclick="ratings();" role="button">My Ratings</a>
-                    <a href="#blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
-                    <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=newservicerequests" class="" onclick="newservice();" role="button">New Service Requests</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=upcomingservice"   class="active" onclick="upcoming();" role="button">Upcoming Service</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=serviceschedule" class="" onclick="schedule();" role="button">Service Schedule</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=servicehistory"  class="" onclick="history();" role="button">Service History</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=myratings"  class="" onclick="ratings();" role="button">My Ratings</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
                     <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                 </div>
                 <?php } elseif($_SESSION['userdata']['UserTypeId']==1){?>
                 <div class="modal-body tab">
-                    <!-- <a href="#dashboard" class="" onclick="dashboard();" role="button">Dashboard</a> -->
-                    <!-- <a href="#servicehistory"  class="active" onclick="history();" role="button">Service History</a> -->
-                    <!-- <a href="#serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a> -->
-                    <!-- <a href="#favouriteprones" class="" onclick="favprons();" role="button">Favourite Prons</a> -->
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=servicehistory"  class="active" onclick="history();" role="button">Service History</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=serviceschedule"  class="" onclick="schedule();" role="button">Service Schedule</a>
@@ -103,9 +103,6 @@ $userdata=$_SESSION['userdata'];
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=invoice" class="" onclick="invoice()" role="button">Invoices</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=notiftcation" class="" onclick="notification();" role="button">Notifications</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
-                    <!-- <a href="#invoices" class="" onclick="invoice()" role="button">Invoices</a> -->
-                    <!-- <a href="#notifications" class="" onclick="notification();" role="button">Notifications</a> -->
-                    <!-- <a href="#mySettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a> -->
                     <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                 </div>
                 <?php  }}?>

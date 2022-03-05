@@ -33,8 +33,9 @@ class CustomerModel
         {
         $emparray[] = $row;
         }
-        //print_r($emparray);die;
-        echo json_encode($emparray);
+    
+        return $emparray;
+        
     }
 
     public function Updatedata($array){
@@ -56,14 +57,9 @@ class CustomerModel
                 "LanguageId = $language " .
                 "WHERE UserId =". $userdata['UserId']; 
        
-        if (mysqli_query($this->conn, $sql)) {
-            $res['status'] = 'yes';
-        } 
-        else{
-            $res['status'] = 'no';
-        }
-        echo json_encode($res);
         
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
     }
 
     public function getaddress(){
@@ -79,7 +75,8 @@ class CustomerModel
         {
         $emparray[] = $row;
         }
-        echo json_encode($emparray);
+        return $emparray;
+       
     }
 
     public function addaddress($array){
@@ -93,23 +90,15 @@ class CustomerModel
         $city = $array['city'];
         $mobile = $array['mobile'];
         $sql = "INSERT INTO useraddress(UserId,AddressLine1,AddressLine2,City,PostalCode,Mobile,Email) VALUES('{$userdata['UserId']}','$houseno','$streetname','$city','$code','$mobile','{$userdata['Email']}')";
-        if (mysqli_query($this->conn, $sql)) {
-            echo json_encode("yes");
-        } 
-        else{
-            echo json_encode("no");
-        }
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
     }
 
     public function deleteaddress($array){
         $trash_id = $array['trash_id'];
         $sql = "DELETE FROM useraddress WHERE AddressId = ". $trash_id;
-        if (mysqli_query($this->conn, $sql)) {
-            echo json_encode("yes");
-        } 
-        else{
-            echo json_encode("no");
-        }
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
     }
 
     public function geteditaddress($array){
@@ -122,7 +111,8 @@ class CustomerModel
         {
         $emparray[] = $row;
         }
-        echo json_encode($emparray);
+        return $emparray;
+      
 
     }
 
@@ -141,13 +131,9 @@ class CustomerModel
                 "Mobile = $mobile " .
                 "WHERE AddressId =". $edit_id; 
        
-        if (mysqli_query($this->conn, $sql)) {
-            $res['status'] = 'yes';
-        } 
-        else{
-            $res['status'] = 'no';
-        }
-        echo json_encode($res);
+        $res = mysqli_query($this->conn, $sql);
+        return $res;
+          
     }
 
     public function updatepassword($array){
@@ -164,17 +150,11 @@ class CustomerModel
     
         if($row){
             $sql = "UPDATE user SET Password='$newpassword' WHERE UserId=". $userdata['UserId'];
-            
             $result = mysqli_query($this->conn, $sql);
-            if($result){
-                echo json_encode("yes");
-            }
+            return $result;
+            
         }
-        else{
-            echo json_encode("no");
-        }
-
-
+       
     }
 
     public function getdashboarddata(){
@@ -193,7 +173,7 @@ class CustomerModel
         {
             if($row['ServiceProviderId'] != null){
                 
-                $sql1= "SELECT FirstName,LastName FROM user WHERE UserId=". $row['ServiceProviderId'] ; 
+                $sql1= "SELECT * FROM user WHERE UserId=". $row['ServiceProviderId'] ; 
                 $result1 = mysqli_query($this->conn, $sql1); 
                 while($row1 = mysqli_fetch_assoc($result1))
                 {
@@ -211,7 +191,8 @@ class CustomerModel
                 $emparray[] = $row;   
             }
         }
-        echo json_encode($emparray);
+        return $emparray;
+       
     }
 
     function geteditdatetime($array){
@@ -224,7 +205,8 @@ class CustomerModel
         {
         $emparray[] = $row;
         }
-        echo json_encode($emparray);
+        return $emparray;
+       
     }
 
     function editdatetime1($array){
@@ -241,13 +223,8 @@ class CustomerModel
                 "ServiceStartDate = '$datetime' " .
                 "WHERE ServiceRequestId =". $edit_id; 
        
-        if (mysqli_query($this->conn, $sql)) {
-            $res['status'] = 'yes';
-        } 
-        else{
-            $res['status'] = 'no';
-        }
-        echo json_encode($res);
+        $res = mysqli_query($this->conn, $sql);
+         return $res;
     }
 
     function cancelsr1($array){
@@ -255,12 +232,9 @@ class CustomerModel
         $sql = "UPDATE servicerequest SET " . 
                 "Status = 3 " .
                 "WHERE ServiceRequestId =". $cancel_id;
-        if (mysqli_query($this->conn, $sql)) {
-            echo json_encode("yes");
-        } 
-        else{
-            echo json_encode("no");
-        }
+        $result = mysqli_query($this->conn, $sql);
+        return $result;
+            
     }
 
     function getservicedetails1($array){
@@ -273,7 +247,8 @@ class CustomerModel
         {
         $emparray[] = $row;
         }
-         echo json_encode($emparray); 
+        return $emparray;
+         
     }
 
     function gethistorydata1(){
@@ -290,7 +265,7 @@ class CustomerModel
         {
             if($row['ServiceProviderId'] != null){
                 
-                $sql1= "SELECT FirstName,LastName FROM user WHERE UserId=". $row['ServiceProviderId'] ; 
+                $sql1= "SELECT * FROM user WHERE UserId=". $row['ServiceProviderId'] ; 
                 $result1 = mysqli_query($this->conn, $sql1); 
                 while($row1 = mysqli_fetch_assoc($result1))
                 {
@@ -319,7 +294,8 @@ class CustomerModel
                 $emparray[] = $row;
             }
         }
-        echo json_encode($emparray);
+        return $emparray;
+       
     }
 
     function checkrating1($array){
@@ -353,14 +329,8 @@ class CustomerModel
         $avg1 = (float)(($ontime + $friendly + $qos)/3);
         $sql1 = "INSERT INTO rating(ServiceRequestId,RatingFrom,RatingTo,Ratings,Comments,OnTimeArrival,Friendly,QualityOfService)VALUES($sid2,'{$userdata['UserId']}','{$emparray['ServiceProviderId']}',$avg1,'$comment',$ontime,$friendly,$qos)";
         $res1 = mysqli_query($this->conn, $sql1);
+        return $res1;
         
-        if ($res1) {
-            $res['status'] = 'yes';
-        } 
-        else{
-            $res['status'] = 'no';
-        }
-        echo json_encode($res);
     }
 }
 ?>

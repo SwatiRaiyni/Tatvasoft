@@ -34,8 +34,14 @@
           <ul class="dropdown-menu dropdown-menu-dark dpm" aria-labelledby="dropdownMenuButton2">
             <li class="dropdown-item">Welcome ,<br> <?php echo $userdata['FirstName'];?></li>
             <li><hr class="dropdown-divider"></li>
+            <?php   if(isset($_SESSION['userdata'])){
+                if($_SESSION['userdata']['UserTypeId']==1){?>
             <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
             <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+            <?php } elseif($_SESSION['userdata']['UserTypeId']==2){?>
+              <li><a class="dropdown-item active"  href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=dashboard"   onclick="dashboard();" role="button">My Dashboard</a></li>
+            <li><a class="dropdown-item" href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button"> My Settings</a></li>
+            <?php } }?>
             <li><a class="dropdown-item" href="<?= $base_url.'?controller=Contact&function=logout'?>">Log out</a></li>
          </ul>
        </li>
@@ -56,7 +62,20 @@
                     <h4 class="modal-title" id="staticBackdropLabel">Welcome, <br><b><?php echo $userdata['FirstName'];?></b> </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            
+              <?php   if(isset($_SESSION['userdata'])){
+                if($_SESSION['userdata']['UserTypeId']==2){?>
+                <div class="modal-body tab">
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=dashboard"  class="" onclick="dashboard();" role="button">Dashboard</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=newservicerequests" class="" onclick="newservice();" role="button">New Service Requests</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=upcomingservice"   class="active" onclick="upcoming();" role="button">Upcoming Service</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=serviceschedule" class="" onclick="schedule();" role="button">Service Schedule</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=servicehistory"  class="" onclick="history();" role="button">Service History</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=myratings"  class="" onclick="ratings();" role="button">My Ratings</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=blockcustomer"   class="" onclick="bookcustomer();" role="button">Block Customer</a>
+                    <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
+                    <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
+                </div>
+                <?php } elseif($_SESSION['userdata']['UserTypeId']==1){?>
                 <div class="modal-body tab">
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=dashboard" class="" onclick="dashboard();" role="button">Dashboard</a>
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=servicehistory"  class="active" onclick="history();" role="button">Service History</a>
@@ -67,6 +86,7 @@
                     <a href="http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard&&id=mysettings" id="mysettings"  onclick="mysettings();" role="button">My Settings</a>
                     <a href="<?= $base_url.'?controller=Contact&function=logout'?>">Logout</a>
                 </div>
+                <?php  }}?>
                
                 <div class="modal-footer tab">
                     <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book Now </a>

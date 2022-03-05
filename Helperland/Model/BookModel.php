@@ -21,18 +21,12 @@ class BookModel
        $postalcode = 'postalcode';
         $result =mysqli_query($this->conn, $sql);
         $count=$result->num_rows;
-        if($count == 1){
         unset($_SESSION['postalcode']);
         $_SESSION['postalcode'] = $code;
-        echo json_encode("Yes");
-        }
-        else{
-            echo json_encode("No");
-        }
+        return $count;
+       
     }
-    public function tabsecond(){
-        echo json_encode("yes");
-    }
+    
     public function tabthird(){
         session_start(); 
         $postalcode = 'postalcode';
@@ -47,11 +41,10 @@ class BookModel
         {
         $emparray[] = $row;
         }
-        echo json_encode($emparray);
+        return $emparray;
+        
     }
-    public function tabfour(){
-        echo json_encode("yes");
-    }
+    
     public function addaddress($array){
         session_start(); 
         if(isset($_SESSION['userdata'])){
@@ -63,12 +56,8 @@ class BookModel
         $city = $array['city'];
         $mobile = $array['mobile'];
         $sql = "INSERT INTO useraddress(UserId,AddressLine1,AddressLine2,City,PostalCode,Mobile,Email) VALUES('{$userdata['UserId']}','$houseno','$streetname','$city','$code','$mobile','{$userdata['Email']}')";
-        if (mysqli_query($this->conn, $sql)) {
-            echo json_encode("yes");
-        } 
-        else{
-            echo json_encode("no");
-        }
+        $result = mysqli_query($this->conn, $sql);
+          return $result;
     }
     public function bookingdone($array){
         session_start(); 
@@ -76,11 +65,6 @@ class BookModel
             $userdata=$_SESSION['userdata'];
         }
         $postalcode = $array['postalcode'];
-        // $cabinet = $array['cabinet'];
-        // $window = $array['window'];
-        // $fridge = $n['fridge'];
-        // $oven = $name['oven'];
-        // $laundry = $name['laundry'];
         $serviceStartDate = $array['serviceStartDate'];
 
         //$datetime = date('Y-m-d H:i:s');
@@ -130,17 +114,19 @@ class BookModel
        $srextra = "INSERT INTO servicerequestextra (ServiceRequestId ,ServiceExtraId ) VALUES ('$last_id' , $array1)";
     
        $srextra1 = mysqli_query($this->conn, $srextra);
+       $emparray = [];
+       $emparray = array($qry1, $add1, $srextra1,$last_id);
+       return $emparray;
+        // if ($qry1 &&  $add1 && $srextra1) {
+        //     $res['status'] = 'yes';
+        //     $res['id'] = $last_id;
+        // } 
+        // else{
+        //     $res['status'] = 'no';
+        //     $res['id'] = 0;
+        // }
 
-        if ($qry1 &&  $add1 && $srextra1) {
-            $res['status'] = 'yes';
-            $res['id'] = $last_id;
-        } 
-        else{
-            $res['status'] = 'no';
-            $res['id'] = 0;
-        }
-
-        echo json_encode($res);
+       // echo json_encode($res);
 
     
     }

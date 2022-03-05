@@ -11,6 +11,7 @@ class CustomerController
     public function getdata(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = $this->model->getdata();
+            echo json_encode($result);
         } 
     }
 
@@ -31,13 +32,21 @@ class CustomerController
                     'dob'=> $dob,
                     'language'=>$language
                 ];
-                  $result = $this->model->Updatedata($array);
+                $result = $this->model->Updatedata($array);
+                if($result){
+                    $res['status'] = 'yes';
+                }
+                else{
+                    $res['status'] = 'no';
+                }
+                echo json_encode($res);
         }
     }
 
     public function getaddress(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = $this->model->getaddress();
+            echo json_encode($result);
         }
     }
 
@@ -56,6 +65,12 @@ class CustomerController
                 'mobile' => $mobile
             ];
             $result = $this->model->addaddress($array);
+            if($result){
+                echo json_encode("yes");
+            }
+            else{
+                echo json_encode("no"); 
+            }
         }
     }
 
@@ -66,6 +81,12 @@ class CustomerController
                 'trash_id' => $trash_id
             ];
             $result = $this->model->deleteaddress($array);
+            if($result){
+                echo json_encode("yes");
+            }
+            else{
+                echo json_encode("no"); 
+            }
 
         }
     }
@@ -78,6 +99,8 @@ class CustomerController
                 'edit_id' => $edit_id
             ];
             $result = $this->model->geteditaddress($array);
+            echo json_encode($result);
+
         }
     }
 
@@ -98,6 +121,14 @@ class CustomerController
                 'mobile' => $mobile
             ];
             $result = $this->model->editaddress($array);
+            if($result){
+                $res['status'] = 'yes';
+            }
+            else{
+                $res['status'] = 'no';
+            }
+            echo json_encode($res);
+
 
         }
     }
@@ -114,6 +145,12 @@ class CustomerController
             ];
            
             $result = $this->model->updatepassword($array);
+            if($result){
+                echo json_encode("yes");
+            }
+            else{
+                echo json_encode("no");
+            }
 
         }
     }
@@ -121,6 +158,7 @@ class CustomerController
     public function getdashboarddata(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = $this->model->getdashboarddata();
+            echo json_encode($result);
         } 
     }
 
@@ -132,6 +170,7 @@ class CustomerController
                 'edit_id' => $edit_id
             ];
             $result = $this->model->geteditdatetime($array);
+            echo json_encode($result);
         } 
     }
     
@@ -148,6 +187,13 @@ class CustomerController
                 
             ];
             $result = $this->model->editdatetime1($array);
+            if($result){
+                $res['status'] = 'yes';
+            }
+            else{
+                $res['status'] = 'no';
+            }
+            echo json_encode($res);
         }
     }
 
@@ -158,6 +204,12 @@ class CustomerController
                 'cancel_id' => $cancel_id
             ];
             $result = $this->model->cancelsr1($array);
+            if($result){
+                echo json_encode("yes");
+            }
+            else{
+                echo json_encode("no");
+            }
 
         }
     }
@@ -169,12 +221,14 @@ class CustomerController
                 'service_id' => $service_id
             ];
             $result = $this->model->getservicedetails1($array);
+            echo json_encode($result);
         }  
     }
 
     function gethistorydata(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = $this->model->gethistorydata1();
+            echo json_encode($result);
         } 
     }
 
@@ -192,7 +246,14 @@ class CustomerController
                 'qos'=> $qos,
                 'comment'=> $comment,
             ];
-             $result = $this->model->checkrating1($array);
+            $result = $this->model->checkrating1($array);
+            if($result){
+                $res['status'] = 'yes';
+            }
+            else{
+                $res['status'] = 'no';
+            }
+            echo json_encode($res);
         } 
     }
 

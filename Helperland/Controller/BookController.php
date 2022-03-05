@@ -16,6 +16,12 @@ class BookController
         if($_SERVER["REQUEST_METHOD"] == "POST") {
            $code =  $_POST['postalcode'];
            $result = $this->model->checkcode($code);
+           if($result == 1){
+            echo json_encode("Yes");
+           }
+           else{
+            echo json_encode("no"); 
+           }
         }
     }
     public function tabtwo(){
@@ -38,20 +44,21 @@ class BookController
             }
             session_start();
             $_SESSION['array']=$array;
-            
-           $result = $this->model->tabsecond();
+            echo json_encode("yes");
+          // $result = $this->model->tabsecond();
           
         }
     }
     public function tabthree(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = $this->model->tabthird();
+            echo json_encode($result);
         } 
     }
     public function tabfour(){
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-                $result = $this->model->tabfour();
+           
+            echo json_encode("yes");
             
         }
     }
@@ -70,6 +77,13 @@ class BookController
                  'mobile' => $mobile
             ];
             $result = $this->model->addaddress($array);
+            
+            if($result){
+                echo json_encode("yes");
+            } 
+            else{
+                echo json_encode("no");
+            }
           
         }
     }
@@ -77,11 +91,6 @@ class BookController
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $postalcode = $_POST['postalcode'];
-            // $cabinet = $_POST['cabinet'];
-            // $window = $_POST['window'];
-            // $fridge = $_POST['fridge'];
-            // $oven = $_POST['oven'];
-            // $laundry = $_POST['laundry'];
             $serviceStartDate = $_POST['serviceStartDate'];
             $serviceStartTime = $_POST['serviceStartTime'];
             $serviceHours = $_POST['serviceHours'];
@@ -95,7 +104,6 @@ class BookController
             $addressId = $_POST['addressId']; 
             $array = [
                     'postalcode' => $postalcode,
-                    
                     'serviceStartDate'=> $serviceStartDate,
                     'serviceStartTime' => $serviceStartTime,
                     'serviceHours'=> $serviceHours,
@@ -108,15 +116,19 @@ class BookController
                     'paymentDone' => $paymentDone,
                     'addressId' => $addressId
             ];
-            // $name =[
-            //     'cabinet' => $cabinet,
-            //         'window' => $window,
-            //         'fridge' => $fridge,
-            //         'oven' => $oven,
-            //         'laundry' => $laundry,
-            // ];
-            
             $result = $this->model->bookingdone($array);
+           // print_r($result);die;
+                if ($result) {
+                    $res['status'] = 'yes';
+                    $res['id'] = $result[3];
+
+                } 
+                else{
+                    $res['status'] = 'no';
+                    $res['id'] = 0;
+                }
+                echo json_encode($res);
+        
             
             
         }

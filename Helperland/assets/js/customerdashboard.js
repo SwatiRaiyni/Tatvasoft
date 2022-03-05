@@ -182,7 +182,7 @@ function dashboardshowdata(){
 							 starfilled1 +='<span class="fa fa-star-o"></span>';
 						}
                         var sprating = Math.round(data[i].sprating * 100) / 100;
-                myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+starfilled+ starfilled1+ (sprating) +' </div></div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>  <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
+                myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+starfilled+ starfilled1+ (sprating) +' </div></div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>  <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
                 }
                 else{
                     myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button> <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
@@ -273,7 +273,7 @@ function getservicedetails(){
             
             for(let i=0; i<count; i++){
                
-                $("#duration").text(data[i].ServiceHours);
+                $("#duration").text(data[i].SubTotal);
                 $("#serviceid").text(data[i].ServiceId);
                $("#totalcost").text(data[i].TotalCost);
                var abc = data[i].AddressLine1 + ' '+ data[i].AddressLine2 +' ' + data[i].PostalCode +' ' + data[i].City;
@@ -414,7 +414,7 @@ function historyshowdata(){
 							 starfilled1 +='<span class="fa fa-star-o"></span>';
 						}
                         var sprating = Math.round(data[i].sprating * 100) / 100;
-                myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td class="abc"> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/forma-1_1.png"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+ starfilled + starfilled1 + (sprating) +' </div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button id="s1" class="RateSP '+ color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +' onclick="ratesp('+ data[i].ServiceRequestId+')" > Rate SP </button></td></tr>')).draw();
+                myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td class="abc"> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+ starfilled + starfilled1 + (sprating) +' </div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button id="s1" class="RateSP '+ color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +' onclick="ratesp('+ data[i].ServiceRequestId+')" > Rate SP </button></td></tr>')).draw();
                 }
                 else{
                     myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button class="RateSP '+ color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +'> Rate SP </button></td></tr>')).draw();   
@@ -595,6 +595,30 @@ $('#btnClick').on('click', function(event){
     }else if(!$('.mobile').val().match("[0-9]{10}")){
         alert('Mobile no. should be 10 digits.');
         event.preventDefault();
+    }else{
+        $.ajax({
+            url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=savedata',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            method: 'POST',
+            dataType:'json',
+            data:$('#datauser').serialize(),
+            success:function(data){
+                if(data.status == "yes"){
+                    swal("Good job!", "data updated SuccessFully", "success");
+                }
+                else{
+                    swal({
+                      title: "Alert!",
+                      text: "Data not updated",
+                      icon: "warning",
+                      dangerMode: true,
+                    });
+                }
+            },
+            error:function(err){
+             console.error(err);
+            }
+        });
     }
 });
 
@@ -648,39 +672,13 @@ function getdata(){
         email.setAttribute('value',  data[i].Email);
         mobile.setAttribute('value',  data[i].Mobile);
         date.setAttribute('value',  data[i].DateOfBirth);
-        language.setAttribute('value',  data[i].LanguageId);
+        language.value =  data[i].LanguageId;
         }
       },
       error:function(err){
        console.error(err);
       }
   
-    });
-}
-
-function savedata(){
-    $.ajax({
-        url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=savedata',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        method: 'POST',
-        dataType:'json',
-        data:$('#datauser').serialize(),
-        success:function(data){
-            if(data.status == "yes"){
-                swal("Good job!", "data updated SuccessFully", "success");
-            }
-            else{
-                swal({
-                  title: "Alert!",
-                  text: "Data not updated",
-                  icon: "warning",
-                  dangerMode: true,
-                });
-            }
-        },
-        error:function(err){
-         console.error(err);
-        }
     });
 }
 

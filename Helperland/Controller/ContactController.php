@@ -68,7 +68,7 @@ class ContactController
                  'email'=> $email,
                  'msg'=> $message,
                  'mobile' => $mobile,
-                  'sub' => $subject,
+                    'sub' => $subject,
                   'filename' =>$filename
                   
              ];

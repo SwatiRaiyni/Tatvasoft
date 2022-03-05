@@ -435,7 +435,7 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                     </select>
                             </div>
                         </div>
-                        <button type="button" name="submit" id="btnClick" onclick="savedata();" class="Reschedule">Save</button>
+                        <button type="button" name="submit" id="btnClick"  class="Reschedule">Save</button>
                     </form>
                     </div><!--first tab complete-->
                     <div  id="nav-profile">
