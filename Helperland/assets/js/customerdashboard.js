@@ -529,6 +529,7 @@ function favprons(){
         if(document.getElementById("notification").classList.contains("active")){
             document.getElementById("notification").classList.remove("active");
         }
+        favpronsdata();
     }
     function invoice(){
         document.getElementById("invoices").style.display="block";
@@ -903,6 +904,114 @@ function changepassword(){
         });  
     }  
 
+}
+
+function favpronsdata(){
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=favpronsdata',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'GET',
+        dataType:'json',
+        
+        success:function(data){// alert(data);
+            var count = Object.keys(data).length;
+            $('.favpro').empty();
+            for(let i=0;i < count; i++){
+                var sprating1 = (Number)(data[i].AverageRating);
+                let star=Math.round(sprating1);
+						let remainning=5-star;
+						var starfilled ="";
+						var starfilled1="";
+						for(let i=0;i<star;i++)
+						{
+							 starfilled +='<span class="fa fa-star"></span>';
+							 
+						}
+						for(let i=0;i<remainning;i++)
+						{
+							 starfilled1 +='<span class="fa fa-star-o"></span>';
+						}
+                        var sprating = Math.round(data[i].AverageRating * 100) / 100;
+                        $('.favpro').append(
+
+                            `<div class="row m-20" >
+                            <div class= "col m-20 m-2">
+                              <div class="card">
+                                <div class="card-body text-center">
+                                 <div class="td-rating" style="justify-content: center;">  <div class="rating-user"> <img src="./assets/images/${data[i].UserProfilePicture}"></div></div>
+                                  <h5 class="card-title">${data[i].FullName}</h5>
+                                  <p>${starfilled+starfilled1+" "+sprating}</p>
+                                  <p class="card-text">${data[i].TotalCleaning} Cleanings</p>
+                                    ${ data[i].IsFavorite == 1 ? ` <button type='button' class='fav' onclick='favchange($(this))' data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >Remove</button>` : ` <button type='button' class='fav' onclick='favchange($(this));'  data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >favourite</button> ` }
+                                      
+                                    ${ data[i].IsBlocked == 1 ? ` <button type='button' class='cancel' onclick='blockchange($(this))' data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >Unblock</button>` : ` <button type='button' class='cancel' onclick='blockchange($(this));'  data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >Block</button> ` }
+                                
+                                </div>
+                              </div>
+                            </div>
+                            </div>`);
+
+                           
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+
+}
+
+function favchange(obj){
+    var u_id = obj.attr('data-uid');
+    var s_id = obj.attr('data-serUid');
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=IsFavSP',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            u_id : u_id ,
+            s_id :s_id 
+        }, 
+        success:function(data){
+            if(data == "yes"){
+                favpronsdata();
+            }
+            else{
+                alert ("Not fav and block");
+            } 
+        },
+        error:function(err){
+            console.error(err);
+        }
+    });
+}
+  
+function blockchange(obj){
+    var u_id = obj.attr('data-uid');
+    var s_id = obj.attr('data-serUid');
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=IsBlockSP',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            u_id : u_id ,
+            s_id :s_id 
+        }, 
+        success:function(data){
+            if(data == "yes"){
+                favpronsdata();
+            }
+            else{
+                alert ("Not fav and block");
+            } 
+        },
+        error:function(err){
+            console.error(err);
+        }
+    });
 }
   
 

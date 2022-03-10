@@ -139,6 +139,18 @@ th{
     margin-top: 10px;
     
 }
+.fav{
+    width:90px;
+    font-size: 16px;
+    background-color: #146371;
+    color: white;
+    border-radius: 17px;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    
+}
 .Canceled{
     width: 83px;
     font-size: 13px;
@@ -643,5 +655,10 @@ th{
 .w-100{
     width: 500px !important;
 }
+
+.favpro{
+    display: flex;
+}
+
 
 

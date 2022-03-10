@@ -414,7 +414,13 @@ function form2(){
   });
 }
 }
+//var =document.getElementById("insideCabinetCheck");
+function selectsp(){
+  // if(insideCabinet.checked == true){
 
+  // }
+  $('.btnaddnewadd11')
+}
 function form3(){
  
   $.ajax({
@@ -425,14 +431,24 @@ function form3(){
     data:$('#form3').serialize(),
     success:function(data){
     
-    var count = Object.keys(data).length;
+    var count = data[0].length;
     $('#addresses').empty();
     for(let i=0;i < count; i++){
-        document.getElementById("addresses").innerHTML+='<div><input type="radio" name="address" id="address'+ data[i].AddressId +
-         '" value="'+' '+ data[i].AddressId + '"><label for="address' + data[i].AddressId +'"><p><b>Address:</b> '+
-          data[i].AddressLine2 +" "+ data[i].AddressLine1 +','+data[i].City +" "+ data[i].PostalCode +
-          '</p><p><b>Phone number:</b> '+ data[i].Mobile +'</p></label></div>';
-  
+        document.getElementById("addresses").innerHTML+='<div><input type="radio" name="address" id="address'+ data[0][i].AddressId +
+         '" value="'+' '+ data[0][i].AddressId + '"><label for="address' + data[0][i].AddressId +'"><p><b>Address:</b> '+
+          data[0][i].AddressLine2 +" "+ data[0][i].AddressLine1 +','+data[0][i].City +" "+ data[0][i].PostalCode +
+          '</p><p><b>Phone number:</b> '+ data[0][i].Mobile +'</p></label></div>';
+    }
+
+    var count1 = data[1].length;
+    $('.appendsp').empty();
+    for(let i=0;i < count1; i++){
+      $('.appendsp').append(`<div style="text-align:center; width:20%;">
+        <img src="./assets/images/${data[1][i].UserProfilePicture }">
+        <p>${data[1][i].FullName}</p>
+        <input type="radio" name="favsp" class="radiobtn" id="fav${i}" value="${data[1][i].TargetUserId}" />
+        <label for="fav${i}" class="btnaddnewadd11">Select</label> 
+      </div>`);
     }
     },
     error:function(err){
@@ -522,7 +538,8 @@ function completebooking(){
   data.havepets = document.getElementById("havepet").checked;
   data.paymentDone = true;
   data.addressId = $('#addresses div input[type=radio]:checked').val();
- // console.log(data.addressId);
+  data.favId = $('.appendsp div input[type=radio]:checked').val();
+ 
 
   $.ajax({
     type : 'POST',

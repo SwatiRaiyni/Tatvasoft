@@ -33,15 +33,26 @@ class BookModel
         if(isset($_SESSION['userdata'])){
             $userdata=$_SESSION['userdata'];
         }
-         $sql= "select * from useraddress where UserId=". $userdata['UserId'] ." and PostalCode=".$_SESSION['postalcode'];  
+        $sql= "select * from useraddress where UserId=". $userdata['UserId'] ." and PostalCode=".$_SESSION['postalcode'];  
         $result = mysqli_query($this->conn, $sql);
-        
         $emparray = [];
          while($row =mysqli_fetch_assoc($result))
         {
         $emparray[] = $row;
         }
-        return $emparray;
+
+        $sql1="SELECT favoriteandblocked.*, user.UserProfilePicture, concat(user.FirstName, ' ', user.LastName) AS FullName FROM favoriteandblocked JOIN user ON user.UserId = favoriteandblocked.TargetUserId WHERE favoriteandblocked.TargetUserId IN (SELECT favoriteandblocked.TargetUserId FROM favoriteandblocked JOIN user ON user.UserId = favoriteandblocked.UserId WHERE user.UserId = ".$userdata['UserId']." AND user.UserTypeId = 1) AND favoriteandblocked.UserId=".$userdata['UserId']."  AND favoriteandblocked.IsFavorite = 1";
+        $result1 = mysqli_query($this->conn, $sql1);
+        $emparray1 = [];
+         while($row1 =mysqli_fetch_assoc($result1))
+        {
+        $emparray1[] = $row1;
+        }
+        
+        $array = [];
+        $array[0] = $emparray;
+        $array[1] = $emparray1;
+        return $array;
         
     }
     
@@ -84,14 +95,15 @@ class BookModel
         $havepets = $array['havepets'];
         $paymentDone = $array['paymentDone'];
         $addressId = $array['addressId'];
+        $favId = $array['favId'];
         $rand = rand(1000,2000);
         $sql = "INSERT INTO servicerequest(UserId,ServiceId,ServiceStartDate,ZipCode,ServiceHourlyRate,ServiceHours,
         ExtraHours,SubTotal,
         TotalCost,Comments,
-        PaymentDue,PaymentDone,HasPets,HasIssue,Status) VALUES('{$userdata['UserId']}',
+        PaymentDue,PaymentDone,HasPets,HasIssue,Status,ServiceProviderId) VALUES('{$userdata['UserId']}',
         $rand,'$serviceStartDate1','$postalcode',
         25,'$serviceHours','$extraHours','$subTotal',
-        '$totalCost','$comments',$paymentDue,true,$havepets,false,1)";
+        '$totalCost','$comments',$paymentDue,true,$havepets,false,1,$favId)";
         $qry1 =  mysqli_query($this->conn, $sql); 
         if ($qry1) {
             $last_id = mysqli_insert_id($this->conn);

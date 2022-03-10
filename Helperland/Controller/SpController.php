@@ -19,39 +19,54 @@ class SpController
     public function editspaddress(){
         if($_SERVER["REQUEST_METHOD"] == "POST") {
         
+            $number = $_POST['mobile'];
+            $sname = $_POST['sname'];
+            $hnumber = $_POST['hnumber'];
+            $postalcode = $_POST['postalcode'];
+            $city = $_POST['city'];
+            
+           $checkaddress = $this->model->checkaddress1();
+            if(!empty($checkaddress)){
+                $array = [
+                    'sname'=>$sname,
+                    'hnumber'=> $hnumber,
+                    'number'=> $number,
+                    'postalcode'=> $postalcode,
+                    'city' => $city
+                ];//update
+                $table2 = $this->model->updModel($array);//print_r($table2);die;
+            }else{
+                $array = [
+                    'sname'=>$sname,
+                    'hnumber'=> $hnumber,
+                    'number'=>$number,
+                    'postalcode'=>$postalcode,
+                    'city' => $city,
+                ];//insert
+                $table2 = $this->model->insModel($array);
+            }
+
             $firstname = $_POST['fname'];
             $lastname=  $_POST['lname']; 
             $number = $_POST['mobile'];
             $dob = $_POST['dob'];
             $nationality = $_POST['nationality'];
             $gender = $_POST['gender'];
-            $img =  $_POST['img']; //print_r($img); die;
-            $sname = $_POST['sname'];
-            $hnumber = $_POST['hnumber'];
             $postalcode = $_POST['postalcode'];
-            $city = $_POST['city'];
-
-            $result1 = $this->model->checkpostalcode($postalcode);
-            
+            $img =  $_POST['img']; 
             $array = [
-                'firstname' =>$firstname,
-                'lastname' =>$lastname,
+                'firstname'=>$firstname,
+                'lastname'=>$lastname,
                 'number'=>$number,
-                'dob'=> $dob,
+                'dob'=>$dob,
                 'nationality'=>$nationality,
-                'gender' =>$gender,
-                'img' =>$img,
-                'sname'=>$sname,
-                'hnumber'=> $hnumber,
-                'postalcode'=>$postalcode,
-                'city' => $city
+                'gender'=>$gender,
+                'postalcode' =>$postalcode,
+                'img'=>$img
             ];
-            
-            if($result1 != 0){
-                $result = $this->model->Updatedata($array);
-                if($result){
-                    echo json_encode("yes");
-                }
+            $result = $this->model->Updatedata($array);
+            if($result && $table2){
+                echo json_encode("yes");
             }
             else{
                 echo json_encode("no");
@@ -113,5 +128,64 @@ class SpController
             }
          }
     }
+
+    function cancel(){
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $service_id1 =  $_POST['service_id1'];
+            $date = date('Y-m-d H:i:s');
+            $result = $this->model->cancel1($service_id1,$date);
+            if($result){
+             echo json_encode("yes");
+            }
+            else{
+             echo json_encode("no"); 
+            }
+        }
+    }
+
+    function complete(){
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $service_id1 =  $_POST['service_id1'];
+            $date = date('Y-m-d H:i:s');
+            $result = $this->model->complete1($service_id1,$date);
+            if($result){
+             echo json_encode("yes");
+            }
+            else{
+             echo json_encode("no"); 
+            }
+        }
+    }
+
+    function showcustrating(){
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            $result = $this->model->showcustrating1();
+            echo json_encode($result);
+        } 
+    }
+
+    function upcomingdata(){
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            $result = $this->model->upcomingdata1();
+            echo json_encode($result);
+        }
+    }
+
+    function historydata(){
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            $result = $this->model->historydata1();
+            echo json_encode($result);
+        }
+    }
+
+    function blockcustomerdata(){
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            $result = $this->model->blockcustomerdata1();
+            echo json_encode($result);
+        }
+    }
+
+    
+
 }
 ?>

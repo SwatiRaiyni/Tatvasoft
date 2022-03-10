@@ -6,9 +6,16 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto" id="faq-nav">
+      <?php   if(isset($_SESSION['userdata'])){
+                if($_SESSION['userdata']['UserTypeId']==1){?>
         <li class="nav-item">
           <a class="nav-link rounded-pill nav-padding greenlink" aria-current="page" href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book now</a>
         </li>
+        <?php }}else{?>
+          <li class="nav-item">
+          <a class="nav-link rounded-pill nav-padding greenlink" aria-current="page" href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book now</a>
+        </li>
+        <?php } ?>
         <li class="nav-item">
           <a class="nav-link nav-padding rounded-pill" href="<?= $base_url.'?controller=Contact&function=price'?>">Price & Services</a>
         </li>
@@ -89,7 +96,12 @@
                 <?php  }}?>
                
                 <div class="modal-footer tab">
+                <?php   if(isset($_SESSION['userdata'])){
+                if($_SESSION['userdata']['UserTypeId']==1){?>
                     <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book Now </a>
+                    <?php }}else{ ?>
+                      <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book Now </a>
+                      <?php } ?> 
                     <a href="<?= $base_url.'?controller=Contact&function=price'?>">Prices & Services</a>
                     <a href="#">Warranty</a>
                     <a href="#">Blog</a>

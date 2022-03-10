@@ -1,6 +1,19 @@
 
-<?php  $base_url = 'http://localhost/TatvaSoft/Helperland/'; ?>
+<?php  $base_url = 'http://localhost/TatvaSoft/Helperland/'; 
+session_start();
+if(isset($_SESSION['status3'])){ 
+    $variablephp = $_SESSION['status3'];
+?>
 
+<script>
+var variablejs = "<?php echo $variablephp; ?>" ;
+alert("Error! = " + variablejs);
+</script>
+    
+   
+   <?php  unset($_SESSION['status3']);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +40,13 @@
     <div  class="col-sm-4" style="margin:100px 0px 20px 0px;">
        <div class="form-group">
            <label>New Password</label>
-          <input type="password" class="form-control" id="myInput" placeholder="Password" name="password" required>
+          <input type="password" class="form-control" id="myInput" placeholder="Password" name="password">
        </div>
     </div>
     <div  class="col-sm-4">
         <div class="form-group">
             <label>Confirm Password</label>
-            <input type="password" class="form-control" id="myInput1" placeholder="Confirm Password" name="confirmpassword" required>
+            <input type="password" class="form-control" id="myInput1" placeholder="Confirm Password" name="confirmpassword" >
         </div>
     </div>
     

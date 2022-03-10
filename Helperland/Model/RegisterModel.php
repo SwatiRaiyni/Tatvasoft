@@ -52,7 +52,7 @@ class RegisterModel
     public function login($array){
         $email = $array['email'];
         $password = $array['password'];
-        $sql= "select * from user where Email='$email' and Password='$password'";
+        $sql= "select * from user where Email='$email' ";
         $result = mysqli_query($this->conn, $sql);
          if(mysqli_num_rows($result) > 0){
              return mysqli_fetch_assoc($result);
@@ -61,8 +61,22 @@ class RegisterModel
              return [];
          }
     }
-    public function forgotpassword($array){
+
+    public function passwordverify($array){
         $email = $array['email'];
+        $password = $array['password'];
+        $sql = "SELECT * FROM user WHERE Password='$password'";
+        $result = mysqli_query($this->conn, $sql);
+         if(mysqli_num_rows($result) > 0){
+             return mysqli_fetch_assoc($result);
+         }
+         else{
+             return [];
+         }
+
+    }
+    public function forgotpassword($email){
+      //  $email = $array['email'];
         $sql = "select * from user where Email='$email'";
         $result = mysqli_query($this->conn, $sql);
         if(mysqli_num_rows($result) > 0){

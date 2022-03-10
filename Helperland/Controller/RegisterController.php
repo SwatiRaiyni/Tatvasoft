@@ -121,21 +121,24 @@ class RegisterController{
             ];
             $result = $this->model->login($array);
             if(count($result)>0){ 
+              $result1 = $this->model->passwordverify($array);
+              if(count($result1) == 0){
+                $_SESSION['status2'] = "Sorry! Password Doesnot Match!";
+                header('Location:'.  $this->base_url);
+              }else{
                 if($result['UserTypeId'] == 1){
-              
-                   $_SESSION['userdata']=$result;
-                   
-                    header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
+                  $_SESSION['userdata']=$result;
+                  header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
                 }
                 elseif($result['UserTypeId'] == 2){
-                  $_SESSION['userdata']=$result;
+                    $_SESSION['userdata']=$result;
                     header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
                 }
+              }
             }
             else{
               
-              $_SESSION['status2'] = "Pls register";
-        
+              $_SESSION['status2'] = "Email Doesnt Exist";
               header('Location:'.  $this->base_url);
             }
        }
@@ -144,13 +147,13 @@ class RegisterController{
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
       
-      $array = [
-        'email'=> $email
-      ];
-      $result = $this->model->forgotpassword($array);
+      // $array = [
+      //   'email'=> $email
+      // ];
+      $result = $this->model->forgotpassword($email);
     
       if(count($result)>0){ 
-       //echo '<pre>'; print_r($result['userid']); die;
+      // echo '<pre>'; print_r($result['FirstName']); die;
        $token = $result['UserId'];
         $subject = "Password Reset";
         $body = "Hello, ".$result['FirstName']." Click here to reset your password http://localhost:80/TatvaSoft/Helperland/resetpassword.php?token=$token";
@@ -174,7 +177,19 @@ class RegisterController{
             $token=$_POST['token'];
             $password = $_POST['password'];
             $confirmpassword = $_POST['confirmpassword'];
-            if($password == $confirmpassword){
+            if($password == "" || $confirmpassword == ""){
+              $_SESSION['status3'] = "All Fields are required";
+              header('Location:'.  $this->base_url.'?controller=Contact&function=resetpassword&token='.$token);
+            }
+            elseif($password != $confirmpassword ){
+              $_SESSION['status3'] = "Password and confirm Password Doesnot match";
+                header('Location:'.  $this->base_url.'?controller=Contact&function=resetpassword&token='.$token);
+            }
+            elseif(!preg_match('@[A-Z]@', $password) || !preg_match('@[a-z]@', $password) || !preg_match('@[0-9]@',$password) || !preg_match('@[^\w]@',$password) || strlen($password) < 8) {
+              $_SESSION['status3'] = "Password Should contain atleast one Uppercase,one Lowercase,Number and Special Characters";
+              header('Location:'.  $this->base_url.'?controller=Contact&function=resetpassword&token='.$token);
+            }
+            elseif($password == $confirmpassword){
             $array = [
               'token' => $token,
               'password'=> $password,
@@ -192,6 +207,7 @@ class RegisterController{
               echo "fail";
             }
           }
+         
         
      
       }

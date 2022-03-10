@@ -51,7 +51,7 @@ class BookController
     }
     public function tabthree(){
         if($_SERVER["REQUEST_METHOD"] == "GET") {
-            $result = $this->model->tabthird();
+            $result = $this->model->tabthird();//print_r($result);die;
             echo json_encode($result);
         } 
     }
@@ -102,6 +102,7 @@ class BookController
             $havepets = $_POST['havepets'];
             $paymentDone = $_POST['paymentDone'];
             $addressId = $_POST['addressId']; 
+            $favId = $_POST['favId'];
             $array = [
                     'postalcode' => $postalcode,
                     'serviceStartDate'=> $serviceStartDate,
@@ -114,7 +115,8 @@ class BookController
                     'paymentDue'=> $paymentDue,
                     'havepets' => $havepets,
                     'paymentDone' => $paymentDone,
-                    'addressId' => $addressId
+                    'addressId' => $addressId,
+                    'favId' => $favId
             ];
             $result = $this->model->bookingdone($array);
            // print_r($result);die;

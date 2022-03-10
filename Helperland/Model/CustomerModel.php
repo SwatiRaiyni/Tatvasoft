@@ -25,7 +25,7 @@ class CustomerModel
         if(isset($_SESSION['userdata'])){
             $userdata=$_SESSION['userdata'];
         }
-        $sql= "select * from user where UserId=". $userdata['UserId'] ;  
+        $sql= "select FirstName,LastName,Email,Mobile,DateOfBirth,LanguageId,UserId from user where UserId=". $userdata['UserId'] ;  
         $result = mysqli_query($this->conn, $sql);
         
         $emparray = [];
@@ -332,5 +332,142 @@ class CustomerModel
         return $res1;
         
     }
+
+   
+
+    public function favpronsdata1(){
+       session_start(); 
+        if(isset($_SESSION['userdata'])){
+            $userdata=$_SESSION['userdata'];
+        }
+        $id=$userdata['UserId'];
+        $sql="SELECT DISTINCT ServiceProviderId FROM servicerequest WHERE UserId=$id AND Status=2";
+        $result = mysqli_query($this->conn, $sql);
+        $data_main=[];
+        $data = [];
+        while($row = mysqli_fetch_assoc($result))
+        {
+            if ($row['ServiceProviderId'] != NULL ) {
+
+                $spid = $row['ServiceProviderId'];
+               
+                $userdata = $this->getdata1($spid);
+                $spratings = $this->getdata2($spid);
+                $getfp=$this->getdata3($id,$spid);
+                $data = array_merge($data,$userdata,$spratings,$getfp);
+            }
+            array_push($data_main, $data);
+        }
+ //echo "<pre>"; print_r($data_main);die;
+        return $data_main;
+      
+    }
+    public function getdata1($spid){
+        $sql1="SELECT CONCAT(FirstName,' ',LastName) as FullName,UserProfilePicture FROM user where UserId=$spid";
+        $result = mysqli_query($this->conn, $sql1);
+        $success = mysqli_fetch_assoc($result);
+        if($success)
+        {
+            return $success;
+        }else{
+            return [];
+        }
+    }
+    public function getdata2($spid){
+        $sql ="SELECT AVG(Ratings) AS AverageRating,COUNT(*) AS TotalCleaning FROM rating WHERE RatingTo=$spid";
+        $result = mysqli_query($this->conn, $sql);
+        $success = mysqli_fetch_assoc($result);//print_r($success);die;
+        if($success)
+        {
+            return $success;
+        }else{
+            return [];
+        }
+    }
+    public function getdata3($id,$spid){
+        $sql ="SELECT Id,UserId,TargetUserId,IsFavorite,IsBlocked FROM favoriteandblocked WHERE UserId=$id AND TargetUserId=$spid";
+        $result = mysqli_query($this->conn, $sql);
+        if($result->num_rows > 0){
+            $success = mysqli_fetch_assoc($result);
+            if($success)
+            {
+                return $success;
+            }
+            else{
+                return [];
+            }
+        }
+        else{
+            $sql2 = "INSERT INTO favoriteandblocked(UserId,TargetUserId,IsFavorite,IsBlocked)VALUES($id,$spid,0,0)"; 
+            $result1 = mysqli_query($this->conn, $sql2);
+            if($result1){
+                $sql1 ="SELECT Id,UserId,TargetUserId,IsFavorite,IsBlocked FROM favoriteandblocked WHERE UserId=$id AND TargetUserId=$spid";
+                $result = mysqli_query($this->conn, $sql1);
+                $success = mysqli_fetch_assoc($result);//print_r($success);die;
+                if($success)
+                {
+                 return $success;
+                }else{
+                 return [];
+                }
+            }
+            else{
+                return [];
+            }
+
+           
+        }
+
+    }
+
+    function IsFavSP1($array){
+        $u_id = $array['u_id'];
+        $s_id = $array['s_id'];
+
+        $sql="SELECT * FROM favoriteandblocked WHERE UserId = $u_id AND TargetUserId = $s_id "; 
+        $result = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+           
+                if($row['IsFavorite'] == 1){
+                    $sql1 = "UPDATE favoriteandblocked SET IsFavorite=0 WHERE UserId=$u_id AND TargetUserId=$s_id";
+                    $result1 = mysqli_query($this->conn, $sql1);
+                }else{
+                    $sql1 = "UPDATE favoriteandblocked SET IsFavorite=1 WHERE UserId=$u_id AND TargetUserId=$s_id";
+                    $result1 = mysqli_query($this->conn, $sql1);
+                }
+        }
+        if($result1){
+            return "yes";
+        }
+        else{
+            return "no";
+        }
+    }
+
+    function IsBlockSP1($array){
+        $u_id = $array['u_id'];
+        $s_id = $array['s_id'];
+
+        $sql="SELECT * FROM favoriteandblocked WHERE UserId = $u_id AND TargetUserId = $s_id "; 
+        $result = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+           
+                if($row['IsBlocked'] == 1){
+                    $sql1 = "UPDATE favoriteandblocked SET IsBlocked=0 WHERE UserId=$u_id AND TargetUserId=$s_id";
+                    $result1 = mysqli_query($this->conn, $sql1);
+                }else{
+                    $sql1 = "UPDATE favoriteandblocked SET IsBlocked=1 WHERE UserId=$u_id AND TargetUserId=$s_id";
+                    $result1 = mysqli_query($this->conn, $sql1);
+                }
+        }
+        if($result1){
+            return "yes";
+        }
+        else{
+            return "no";
+        }
+    }
+
+    
 }
 ?>

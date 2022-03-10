@@ -257,6 +257,42 @@ class CustomerController
         } 
     }
 
+    function favpronsdata(){
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            $result = $this->model->favpronsdata1();
+            echo json_encode($result);
+        }
+    }
+
+    function IsFavSP(){
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $u_id =  $_POST['u_id']; 
+            $s_id =  $_POST['s_id'];
+            $array = [
+                'u_id' => $u_id,
+                's_id' => $s_id
+            ];
+            $result = $this->model->IsFavSP1($array);
+            echo json_encode($result);
+        }
+    }
+
+   function IsBlockSP(){
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $u_id =  $_POST['u_id']; 
+        $s_id =  $_POST['s_id'];
+        $array = [
+            'u_id' => $u_id,
+            's_id' => $s_id
+        ];
+        $result = $this->model->IsBlockSP1($array);
+        echo json_encode($result);
+    }
+   }
     
 }
 ?>
+
+
+
+

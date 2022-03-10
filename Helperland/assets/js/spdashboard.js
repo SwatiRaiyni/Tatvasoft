@@ -1,3 +1,15 @@
+function html_table_to_excel(type) {
+    var data = document.getElementById("mytable");
+
+    var file = XLSX.utils.table_to_book(data, { sheet: "sheet1" });
+
+    XLSX.write(file, { bookType: type, bookSST: true, type: "base64" });
+
+    XLSX.writeFile(file, "history." + type);
+}
+
+
+
 function mysettings(){
     document.getElementById("mySettings").style.display="block";
     document.getElementById("upcomingservice").style.display="none";
@@ -31,7 +43,6 @@ function mysettings(){
     getdata();
 }
 
-
 function dashboard(){
     document.getElementById("upcomingservice").style.display="none";
     document.getElementById("mySettings").style.display="none";
@@ -60,7 +71,9 @@ function dashboard(){
     if(document.getElementById("customer").classList.contains("active")){
     document.getElementById("customer").classList.remove("active");
     }
+    
 }
+
 function newservice(){
     document.getElementById("newservicerequests").style.display="block";
     document.getElementById("mySettings").style.display="none";
@@ -120,6 +133,7 @@ function upcoming(){
     if(document.getElementById("customer").classList.contains("active")){
         document.getElementById("customer").classList.remove("active");
     }
+    upcomingdata();
 }
        
 function schedule(){
@@ -180,6 +194,7 @@ function history(){
     if(document.getElementById("customer").classList.contains("active")){
         document.getElementById("customer").classList.remove("active");
     }
+    historydata();
 }
 
 function ratings(){
@@ -210,6 +225,7 @@ function ratings(){
     if(document.getElementById("customer").classList.contains("active")){
         document.getElementById("customer").classList.remove("active");
     }
+    showcustrating();
 }
 
 function bookcustomer(){
@@ -240,6 +256,7 @@ function bookcustomer(){
     if(document.getElementById("ratings").classList.contains("active")){
         document.getElementById("ratings").classList.remove("active");
     }
+    showblockcustomerdata();
 }
 
 function details(){
@@ -248,6 +265,7 @@ function details(){
     document.getElementById('mdetail').classList.add("selected");
     document.getElementById('cpass').classList.remove("selected");
 }
+
 function changepass(){
     document.getElementById('nav-home').style.display="none";
     document.getElementById('nav-contact').style.display="block";
@@ -261,34 +279,22 @@ var img4 = document.getElementById("img4");
 var img5 = document.getElementById("img5");
 var img6 = document.getElementById("img6");
 function image1(){
-    // if(img1.checked){
     $(".imgall").attr("src","./assets/images/avatar-female.png");
-    // }
 }
 function image2(){
-    // if(img2.checked){
-    $(".imgall").attr("src","./assets/images/avatar-car.png");
-    // }
+   $(".imgall").attr("src","./assets/images/avatar-car.png");
 }
 function image3(){
-    // if(img3.checked){
-    $(".imgall").attr("src","./assets/images/avatar-hat.png");
-    // }
+   $(".imgall").attr("src","./assets/images/avatar-hat.png");
 }
 function image4(){
-    // if(img4.checked){
-    $(".imgall").attr("src","./assets/images/avatar-iron.png");
-    // }
+   $(".imgall").attr("src","./assets/images/avatar-iron.png");
 }
 function image5(){
-    // if(img5.checked){
-    $(".imgall").attr("src","./assets/images/avatar-male.png");
-    // }
+   $(".imgall").attr("src","./assets/images/avatar-male.png");
 }
 function image6(){
-    // if(img6.checked){
     $(".imgall").attr("src","./assets/images/avatar-ship.png");
-    // }
 }
 
 function getdata(){
@@ -311,77 +317,78 @@ function getdata(){
       dataType:'json',
       data : $('#datauser').serialize(),
       success:function(data){
-        var count = Object.keys(data).length; //alert(count);
-        
-        for(let i=0;i < count; i++){
-         $(".imgall").attr('src',"./assets/images/"+data[i].UserProfilePicture);  
-         fname.setAttribute('value', data[i].FirstName);
-         lname.setAttribute('value',  data[i].LastName);
-         email.setAttribute('value',  data[i].Email);
-         mobile.setAttribute('value',  data[i].Mobile);
-         dob.setAttribute('value',  data[i].DateOfBirth);
-         nationality.value =  data[i].NationalityId;
-         if(data[i].Gender == 1){
+        $(".imgall").attr('src',"./assets/images/"+data['UserProfilePicture']);  
+         fname.setAttribute('value', data['FirstName']);
+         lname.setAttribute('value',  data['LastName']);
+         email.setAttribute('value',  data['Email']);
+         mobile.setAttribute('value',  data['Mobile']);
+         dob.setAttribute('value',  data['DateOfBirth']);
+         nationality.value =  data['NationalityId'];
+         if(data['Gender'] == 1){
             document.getElementById("exampleRadios1").checked = true;
          } 
          else{
             document.getElementById("exampleRadios1").checked = false;
          }
-         if(data[i].Gender == 2){
+         if(data['Gender'] == 2){
             document.getElementById("exampleRadios2").checked = true;
          }
          else{
             document.getElementById("exampleRadios2").checked = false;
          }
-          if(data[i].Gender == 3){
+          if(data['Gender'] == 3){
             document.getElementById("exampleRadios3").checked = true;
          }
          else{
             document.getElementById("exampleRadios3").checked = false;
          }
          
-        if(data[i].UserProfilePicture == 'avatar-female.png'){
+        if(data['UserProfilePicture'] == 'avatar-female.png'){
             document.getElementById("img1").checked = true;
         }
         else{
             document.getElementById("img1").checked = false;
         }
-        if(data[i].UserProfilePicture == 'avatar-car.png'){
+        if(data['UserProfilePicture'] == 'avatar-car.png'){
             document.getElementById("img2").checked = true;
         }
         else{
             document.getElementById("img2").checked = false;
         }
-        if(data[i].UserProfilePicture == 'avatar-hat.png'){
+        if(data['UserProfilePicture'] == 'avatar-hat.png'){
             document.getElementById("img3").checked = true;
         }
         else{
             document.getElementById("img3").checked = false;
         }
-        if(data[i].UserProfilePicture == 'avatar-iron.png'){
+        if(data['UserProfilePicture'] == 'avatar-iron.png'){
             document.getElementById("img4").checked = true;
         }
         else{
             document.getElementById("img4").checked = false;
         }
-        if(data[i].UserProfilePicture == 'avatar-male.png'){
+        if(data['UserProfilePicture'] == 'avatar-male.png'){
             document.getElementById("img5").checked = true;
         }
         else{
             document.getElementById("img5").checked = false;
         }
-        if(data[i].UserProfilePicture == 'avatar-ship.png'){
+        if(data['UserProfilePicture'] == 'avatar-ship.png'){
             document.getElementById("img6").checked = true;
         }
         else{
             document.getElementById("img6").checked = false;
         }
-        sname.setAttribute('value', data[i].AddressLine2);
-         hnumber.setAttribute('value',  data[i].AddressLine1);
-         postalcode.setAttribute('value',  data[i].PostalCode);
-         city.setAttribute('value',  data[i].City);
+        if(data['AddressLine2']){
+            sname.setAttribute('value', data['AddressLine2']);}
+        if(data['AddressLine1']){
+            hnumber.setAttribute('value',  data['AddressLine1']);}
+        if(data['PostalCode']){
+            postalcode.setAttribute('value',  data['PostalCode']);}
+        if(data['City']){
+            city.setAttribute('value',  data['City']);}
 
-        }
+       
       },
       error:function(err){
        console.error(err);
@@ -429,7 +436,6 @@ $('#btnClick').on('click', function(event){
     });
     }
 });
-
 
 function changepassword(){
 
@@ -520,6 +526,23 @@ function getTimeAndDate(sdate, stime) {
     return { startdate: startdate, starttime: starttime, endtime: endtime };
 }
 
+var dt1 = new DataTable("#mytable1", {
+    dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+        first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+        previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+        next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+        last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Record: _MAX_",
+        lengthMenu: "Show_MENU_Entries",
+    },
+    buttons: ["excel"],
+    columnDefs: [{ orderable: false, targets: 5}],
+});
 
 function newservicerequestdata(){
     var myTable= $("#mytable1").DataTable();
@@ -534,7 +557,10 @@ function newservicerequestdata(){
             var count = Object.keys(data).length;
             $('#newservicerequestdata').empty();
             myTable.clear().draw();
-            
+            $("#btn1").show();
+            $("#btn2").hide();
+            $("#btn3").hide();
+           
             for(let i=0;i < count; i++){
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
                 myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
@@ -676,6 +702,339 @@ function accept(){
     });
 
 }
+
+function cancel(){
+    var service_id1=document.getElementById("service_id1").value;
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=cancel',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            service_id1 : service_id1,
+        },
+        success:function(data){
+            if(data == "yes"){
+                swal("Good job!", "You have cancel service Request", "success");
+                upcomingdata();
+            }
+            else{
+                swal({
+                  title: "Alert!",
+                  text: "Service Request does not Cancelled",
+                  icon: "warning",
+                  dangerMode: true,
+                });
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    });
+}
+
+function complete(){
+    var service_id1=document.getElementById("service_id1").value;
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=complete',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            service_id1 : service_id1,
+        },
+        success:function(data){
+            if(data == "yes"){
+                swal("Good job!", "You have Complete service Request", "success");
+                upcomingdata();
+            }
+            else{
+                swal({
+                  title: "Alert!",
+                  text: "Service Request does not Completed",
+                  icon: "warning",
+                  dangerMode: true,
+                });
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    });
+}
+
+var dt5 = new DataTable("#mytable4", {
+    dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+        first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+        previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+        next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+        last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Record: _MAX_",
+        lengthMenu: "Show_MENU_Entries",
+    },
+    buttons: ["excel"],
+    columnDefs: [{ orderable: false, targets: 3}],
+});
+
+function showcustrating(){
+    var myTable= $("#mytable4").DataTable();
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=showcustrating',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'GET',
+        dataType:'json',
+        
+        success:function(data){
+            var count = Object.keys(data).length;
+            myTable.clear().draw();
+            $('#sprating').empty();
+            
+            
+            for(let i=0;i < count; i++){
+                let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
+                var sprating1 = (Number)(data[i].Ratings);
+                let star=Math.round(sprating1);
+						let remainning=5-star;
+						var starfilled ="";
+						var starfilled1="";
+						for(let i=0;i<star;i++)
+						{
+							 starfilled +='<span class="fa fa-star"></span>';
+							 
+						}
+						for(let i=0;i<remainning;i++)
+						{
+							 starfilled1 +='<span class="fa fa-star-o"></span>';
+						}
+                        var sprating = Math.round(data[i].Ratings * 100) / 100;
+              
+                            myTable.row.add($(
+                            `<tr>
+                            <td>
+                                <h5 class="card-title">${data[i].ServiceId}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${data[i].FirstName+" "+data[i].LastName}</h6>
+                            </td>
+                            <td>
+                                <div><img src="./assets/images/calculator.png">${totaltime.startdate}</b></div>
+                                <div><img src="./assets/images/layer-712.png">${totaltime.starttime+"-"+totaltime.endtime}</div>
+                            </td>
+                            <td>
+                                <span>ratings</span>
+                               ${starfilled+starfilled1+" "+sprating}
+                            </td>
+                            <td>
+                                <span><b>Customer Comments : </b></span>
+                                <span>${data[i].Comments}</span>
+                            </td>
+                            </tr>`
+                        )).draw();
+                
+
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+
+}
+
+var dt2 = new DataTable("#mytable2", {
+    dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+        first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+        previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+        next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+        last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Record: _MAX_",
+        lengthMenu: "Show_MENU_Entries",
+    },
+    buttons: ["excel"],
+    columnDefs: [{ orderable: false, targets: 5}],
+});
+
+function upcomingdata(){
+    var myTable2= $("#mytable2").DataTable();
+    
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=upcomingdata',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'GET',
+        dataType:'json',
+        
+        success:function(data){
+            var count = Object.keys(data).length;
+            $('#upcomingservicedata').empty();
+            myTable2.clear().draw();
+            $("#btn1").hide();
+            $("#btn2").show();
+            $("#btn3").show();
+
+           
+            for(let i=0;i < count; i++){
+                let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
+                myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
+                data-bs-target="#ServiceAcceptModal"
+                data-bs-dismiss="modal">
+                <td>${data[i].ServiceRequestId}</td>
+                <td>
+                    <div><img src="./assets/images/calculator.png"><b>${totaltime.startdate}</b></div>
+                    <div><img src="./assets/images/layer-712.png">${totaltime.starttime+"-"+totaltime.endtime}</div>
+                </td>
+                <td>
+                    <div>${data[i].FirstName+" "+data[i].LastName}</div>
+                    <div><img src="./assets/images/layer-719.png">${data[i].AddressLine1+" "+data[i].AddressLine2+","+data[i].PostalCode+" "+data[i].City}</div>
+                </td>
+                <td> <i class="fa fa-eur"></i>${data[i].TotalCost}</td>
+                <td></td>
+                <td class="buttoncancel"><button  data-bs-toggle="modal" data-bs-target="#ServiceAcceptModal" data-bs-dismiss="modal">Cancel</button></td>
+            </tr>`
+                )).draw();
+
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+
+}
+
+var dt = new DataTable("#mytable", {
+    dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+        first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
+        previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
+        next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
+        last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Record: _MAX_",
+        lengthMenu: "Show_MENU_Entries",
+    },
+    buttons: ["excel"],
+    columnDefs: [{ orderable: false, targets: 2 }],
+});
+
+function historydata(){
+    var myTable = $("#mytable").DataTable();
+    
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=historydata',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'GET',
+        dataType:'json',
+        
+        success:function(data){
+            var count = Object.keys(data).length;
+            $('#historydata').empty();
+            myTable.clear().draw();
+            $("#btn1").hide();
+            $("#btn2").hide();
+            $("#btn3").hide();
+            for(let i=0;i < count; i++){
+                let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
+                myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
+                data-bs-target="#ServiceAcceptModal"
+                data-bs-dismiss="modal">
+                <td>${data[i].ServiceRequestId}</td>
+                <td>
+                    <div><img src="./assets/images/calculator.png"><b>${totaltime.startdate}</b></div>
+                    <div><img src="./assets/images/layer-712.png">${totaltime.starttime+"-"+totaltime.endtime}</div>
+                </td>
+                <td>
+                    <div>${data[i].FirstName+" "+data[i].LastName}</div>
+                    <div><img src="./assets/images/layer-719.png">${data[i].AddressLine1+" "+data[i].AddressLine2+","+data[i].PostalCode+" "+data[i].City}</div>
+                </td>
+                </tr>`
+                )).draw();
+
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+
+}
+
+function showblockcustomerdata(){
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=blockcustomerdata',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'GET',
+        dataType:'json',
+        
+        success:function(data){
+            var count = Object.keys(data).length;
+            $('.blockcustmer').empty();
+            for(let i=0;i < count; i++){
+               
+                        $('.blockcustmer').append(
+
+                          `<div class="row m-20" >
+                            <div class= "col m-20 m-2">
+                              <div class="card">
+                                <div class="card-body text-center">
+                                 <div><img src="./assets/images/${data[i].UserProfilePicture}"></div>
+                                  <h5 class="card-title">${data[i].FullName}</h5>
+                                  ${ data[i].IsBlocked == 1 ? ` <button type='button' class='cancel' onclick='blockchange($(this))' data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >Unblock</button>` : ` <button type='button' class='cancel' onclick='blockchange($(this));'  data-uid='${data[i].UserId }' data-serUid='${data[i].TargetUserId}' >Block</button> ` }
+                                </div>
+                              </div>
+                            </div>
+                            </div>`);
+
+            }
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+}
+
+function blockchange(obj){
+    var u_id = obj.attr('data-uid');
+    var s_id = obj.attr('data-serUid');
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=IsBlockSP',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            u_id : u_id ,
+            s_id :s_id 
+        }, 
+        success:function(data){
+            if(data == "yes"){
+                showblockcustomerdata();
+            }
+            else{
+                alert ("Not fav and block");
+            } 
+        },
+        error:function(err){
+            console.error(err);
+        }
+    });
+}
+  
+
+
 
   
             

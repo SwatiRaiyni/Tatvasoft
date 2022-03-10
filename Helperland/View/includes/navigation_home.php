@@ -21,9 +21,17 @@ $userdata=$_SESSION['userdata'];}
                         </button>
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav align-items-center">
+                                <?php   if(isset($_SESSION['userdata'])){
+                                                if( $_SESSION['userdata']['UserTypeId']==1){?>
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="<?= $base_url.'?controller=Book&function=BookNow'?>" title="Book a Cleaner">Book now</a>
-                                    </li>
+                                    </li> 
+                                               <?php }} else{?>
+                                                <li class="nav-item">
+                                        <a class="nav-link border-btn" href="<?= $base_url.'?controller=Book&function=BookNow'?>" title="Book a Cleaner">Book now</a>
+                                    </li> 
+                                    <?php } ?>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= $base_url.'?controller=Contact&function=price'?>" title="Prices">Prices</a>
                                     </li>
@@ -125,7 +133,8 @@ $userdata=$_SESSION['userdata'];}
                     </div>
                     <?php  }}?>
                     <div class="modal-footer tab">
-                        <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book now </a>
+                    
+                        <a href="<?= $base_url.'?controller=Book&function=BookNow'?>">Book now </a> 
                         <a href="<?= $base_url.'?controller=Contact&function=price'?>">Prices & Services</a>
                         <a href="#">Warranty</a>
                         <a href="#">Blog</a>

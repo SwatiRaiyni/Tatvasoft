@@ -147,6 +147,14 @@ h2, .h2 {
      padding:7px 25px; 
     border-radius: 50px;
 }
+.btnaddnewadd11{
+    background-color: white;
+    color: #1d7a8c;
+    border:1px solid #1d7a8c;
+    
+     padding:7px 25px; 
+    border-radius: 50px;
+}
 .btnaddnewadd:hover,.btnaddnewadd1:hover{
     border:1px solid white;
     color: white;
@@ -254,6 +262,14 @@ h2, .h2 {
     transition-duration: 0.4s;
     transform: scale(0);
   } 
+  input[type=radio][name="favsp"]:checked+label{
+    background-color: #1d7a8c;
+    color: white;
+} 
+
+input[type=radio].radiobtn{
+    display: none;
+} 
 
  input[type=checkbox].htmlcheckbox{
     display: none;
@@ -696,3 +712,11 @@ ul.no-bullets {
     background-color: red;
     color: white;
   }
+
+  /* input[type=radio].radiobtn{
+    display: none;
+}  */
+
+.appendsp{
+    display: flex;
+}

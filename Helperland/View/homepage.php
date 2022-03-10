@@ -10,11 +10,18 @@ if(isset($_SESSION['status1'])){
     unset($_SESSION['status1']);
 }
 
-if(isset($_SESSION['status2'])){
-    //alert($_SESSION['status1']);
-    echo "<script> alert('Pls register First'); 
-    </script> " ;
-    unset($_SESSION['status2']);
+
+if(isset($_SESSION['status2'])){ 
+    $variablephp = $_SESSION['status2'];
+?>
+
+<script>
+var variablejs = "<?php echo $variablephp; ?>" ;
+alert("Error! = " + variablejs);
+</script>
+    
+   
+   <?php  unset($_SESSION['status2']);
 }
 ?>
 

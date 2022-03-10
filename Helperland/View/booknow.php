@@ -216,15 +216,12 @@
                     </div> 
                   </form>
                     <hr>
-                    <!-- <p class="mt-20"><b>Your favourite service Provider</b></p>
+                     <p class="mt-20"><b>Your favourite service Provider</b></p>
                     <hr>
                     <p>You can choose your favourite service provider from the below list</p>
-                    <div class="td-rating">
-                        <div class="rating-user"><img src="./assets/images/forma-1-copy-19.png"></div>
+                    <div class="appendsp">
+                      
                     </div>
-                    <p>Sundip Patel</p>
-                    <input type="button" value="select" class="btnaddnewadd1">
-                    <hr> -->
                     <input type="button" class="btncontinue" value="Continue" onclick="form4()">
                 </div>
                 </form><!--ends your details-->
