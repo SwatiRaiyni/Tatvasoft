@@ -4,6 +4,13 @@ var mm = String(today.getMonth() + 1).padStart(2, '0');
 var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 $('#date_picker').attr('min',today);
+
+
+function showLoader() {
+  $.LoadingOverlay("show", {
+    background: "rgba(0, 0, 0, 0.7)",
+  });
+}
                                         
 var insideCabinet=document.getElementById("insideCabinetCheck");
 var insideFridge=document.getElementById("insideFridgeCheck");
@@ -338,6 +345,7 @@ function payment(){
 }
 function form1(){
  // $('#addresses div').html('');
+ 
   var postalcode=document.getElementById("postalcode").value;
   if(postalcode == ""){
     swal({
@@ -348,7 +356,10 @@ function form1(){
     });
     
   }
+
   else{
+    showLoader();
+
     $.ajax({
       url:'http://localhost/TatvaSoft/Helperland/?controller=Book&function=postalcodeavailability',
       method: 'POST',
@@ -357,6 +368,7 @@ function form1(){
         postalcode : postalcode,
       },
       success:function(data){
+        $.LoadingOverlay("hide");
         if(data == "Yes"){
          scheduleplan();
         }
@@ -387,13 +399,17 @@ function form2(){
     });
     
   }else{
+    showLoader();
   $.ajax({
     url:'http://localhost/TatvaSoft/Helperland/?controller=Book&function=tabtwo',
     method: 'POST',
     dataType:'json',
     data:$('#form2').serialize(),
     success:function(data){
+    $.LoadingOverlay("hide");
+
       if(data == "yes"){
+
         details();
       }
       else{
@@ -415,12 +431,12 @@ function form2(){
 }
 }
 //var =document.getElementById("insideCabinetCheck");
-function selectsp(){
-  // if(insideCabinet.checked == true){
+// function selectsp(){
+//   // if(insideCabinet.checked == true){
 
-  // }
-  $('.btnaddnewadd11')
-}
+//   // }
+//   $('.btnaddnewadd11')
+// }
 function form3(){
  
   $.ajax({
@@ -461,6 +477,7 @@ function form3(){
 
 
 function form4(){
+  showLoader();
   var id1=document.querySelector('input[name=address]:checked'); 
    if(id1){
   $.ajax({
@@ -471,6 +488,8 @@ function form4(){
     
     data:$('#form3').serialize(),
     success:function(data){
+      $.LoadingOverlay("hide");
+
       if(data == "yes"){
         payment();//fourth tab
       }
@@ -523,7 +542,10 @@ function save(){
   
 }
 
+
+
 function completebooking(){
+  showLoader();
   var data = {};
   var extrahour = 0;
   data.postalcode = document.getElementById("postalcode").value;
@@ -548,7 +570,7 @@ function completebooking(){
     data :data ,
     dataType:'json',
     success :function(data){
-      
+      $.LoadingOverlay("hide");
       if(data.status == "yes"){
         var id = data.id;
         swal("Good job!", "booking successful : "+id, "success");

@@ -143,5 +143,18 @@ class BookModel
     
     }
 
+    function sendmail($postalcode){
+        $sql = "SELECT UserTypeId,ZipCode,Email FROM user WHERE ZipCode=$postalcode AND UserTypeId=2";
+        $result = mysqli_query($this->conn, $sql);
+        $emparray = [];
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $emparray[] = $row['Email'];
+            }
+        }
+        return $emparray;
+
+    }
+
 }
 ?>

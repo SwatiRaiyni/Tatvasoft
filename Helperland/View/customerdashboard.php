@@ -112,6 +112,7 @@ $last = end($test);
             <form action="#" id="datetimeforreschedule">
             
             <input type="hidden" name="reschedule_edit_id" id="reschedule_edit_id1" class="reschedule_edit_id">
+            <input type="hidden" name="customerid" id="customerid1" class="customerid">
                 <p><b>Select New Date & Time</b></p>
 
                 <div class="row">
@@ -577,6 +578,8 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script
       type="text/javascript"
       src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"
@@ -712,8 +715,9 @@ function edit2(id){
     geteditaddress();
     $("#EditAddress").modal('show');
 }
-function reschedule(id){
+function reschedule(id,spid){
     $('.reschedule_edit_id').val(id);
+    $('.customerid').val(spid);
     geteditdatetime();
     $("#RescheduleServiceRequest").modal('show');
     $("#ModalServiceDetails").modal('hide');

@@ -658,6 +658,7 @@ th{
 
 .favpro{
     display: flex;
+    flex-wrap: wrap;
 }
 
 

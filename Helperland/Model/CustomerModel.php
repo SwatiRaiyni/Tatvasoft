@@ -162,7 +162,7 @@ class CustomerModel
         if(isset($_SESSION['userdata'])){
             $userdata=$_SESSION['userdata'];
         }
-        $sql= "SELECT * FROM servicerequest WHERE UserId=". $userdata['UserId'] ." and Status = 1 "; 
+        $sql= "SELECT * FROM servicerequest WHERE UserId=". $userdata['UserId'] ." and Status in (1,4)"; 
         
         $result = mysqli_query($this->conn, $sql);
         
@@ -197,7 +197,7 @@ class CustomerModel
 
     function geteditdatetime($array){
         $edit_id = $array['edit_id'];
-        $sql= "SELECT ServiceStartDate FROM servicerequest WHERE ServiceRequestId=". $edit_id;  
+        $sql= "SELECT ServiceStartDate,ServiceProviderId FROM servicerequest WHERE ServiceRequestId=". $edit_id;  
         $result = mysqli_query($this->conn, $sql);
         
         $emparray = [];
@@ -214,6 +214,7 @@ class CustomerModel
         $getdate1 = $array['getdate1'];
         $gettime1 = $array['gettime1'];
         
+        
         $mydate = date('Y-m-d', strtotime($getdate1));
         $mytime = date('H:i:s', strtotime($gettime1));
 
@@ -225,6 +226,13 @@ class CustomerModel
        
         $res = mysqli_query($this->conn, $sql);
          return $res;
+    }
+
+    function sendmail($sp_id){
+        $sql = "SELECT Email From useraddress WHERE UserId=".$sp_id;
+        $result = mysqli_query($this->conn, $sql);
+        $res1 =mysqli_fetch_assoc($result);
+        return $res1;
     }
 
     function cancelsr1($array){

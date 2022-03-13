@@ -135,6 +135,7 @@ class SpModel
     }
 
     public function newservicerequestdata1(){
+    
         session_start(); 
         if(isset($_SESSION['userdata'])){
             $userdata=$_SESSION['userdata'];
@@ -149,11 +150,31 @@ class SpModel
         $sql= "SELECT * FROM servicerequest  WHERE (ServiceProviderId is NULL || ServiceProviderId = ".$id.") && ZipCode = ".$zipcode." && Status=1 "; 
         $result = mysqli_query($this->conn, $sql);
         
+        
         $emparray = [];
         $emparray1 = [];
+        $emparray15 = [];
         $obj_merged =  (object)[];
          while($row = mysqli_fetch_assoc($result))
-        {  
+         {  
+
+        //     $servicesdate = $row['ServiceStartDate'];//2022-02-12 08:57:51.000 formate
+        //     $subtotal = $row['SubTotal']*60;//4.5
+        //     $time = new DateTime($servicesdate);
+        //     $time->add(new DateInterval('PT' . $subtotal . 'M'));
+        //     $endtime = $time->format('Y-m-d H:i:s');//2022-02-12 13:27:51 formate
+        //      print_r( $endtime);die;
+
+        //  echo  $sql15 = "SELECT * FROM servicerequest WHERE (ServiceProviderId=".$id." AND ServiceStartDate <= ".$servicesdate." AND ". $servicesdate ." <= ". $endtime ." ) OR (ServiceProviderId=".$id." AND ServiceStartDate <= ".$endtime." AND  >= ". $endtime ." ) OR (ServiceProviderId=".$id." AND ServiceStartDate >= ".$endtime." AND DATE_ADD(".$servicesdate.",interval  ".$subtotal." minute) <= ". $endtime .")"; die;
+
+        
+
+          //  $result15 = mysqli_query($this->conn, $sql15); 
+           // print_r($result15->num_rows());die;
+            // while($row15 = mysqli_fetch_assoc($result15))
+            //     {
+            //         $emparray15[] = $row15;
+            //     }print_r($emparray15);die;
                $sql = "SELECT * FROM `favoriteandblocked` t1 , `favoriteandblocked` t2 WHERE t1.UserId=t2.TargetUserId AND t2.UserId=t1.TargetUserId AND t1.UserId=$id AND t1.TargetUserId=".$row['UserId'];
                $result1 = mysqli_query($this->conn, $sql);
                $rowcount=mysqli_num_rows($result1);
@@ -216,8 +237,44 @@ class SpModel
         return $emparray;
     }
 
+    function checkvalidation($service_id1,$mydate,$mystart_time,$myend_time){
+
+        session_start();
+        if(isset($_SESSION['userdata'])){
+            $userdata=$_SESSION['userdata'];
+        }
+        $id = $userdata['UserId'];
+
+        $mydate = date('Y-m-d', strtotime(str_replace('/', '-', $mydate)));
+        $st = str_replace(':', '.', $mystart_time);//." = ";
+        $et = str_replace(':', '.', $myend_time);
+        $tot = (float)$et-(float)$st;
+        $con_date = $mydate.' '.$mystart_time.':00';
+         //$sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND DATE(ServiceStartDate) = DATE('".$mydate."')";
+
+      
+      $sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND DATE(ServiceStartDate) = DATE('".$mydate."') AND TIME(ServiceStartDate) >= TIME('".$mystart_time."') AND SubTotal <= ". $tot; 
+
+
+   
+   
+        $result = mysqli_query($this->conn, $sql);
+        $emparray = [];
+        while($row = mysqli_fetch_assoc($result)){
+               
+                $emparray[] = $row;
+            } //print_r($emparray);die;
+       
+        return $emparray;
+
+       //echo $sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND ServiceStartDate >= '".$con_date."' AND SubTotal <= ".$tot; die;
+
+
+
+    }
+
     function accept1($service_id1,$date){
-        session_start(); 
+        //session_start(); 
         if(isset($_SESSION['userdata'])){
             $userdata=$_SESSION['userdata'];
         }
@@ -226,6 +283,26 @@ class SpModel
          WHERE ServiceRequestId =". $service_id1; 
         $result = mysqli_query($this->conn, $sql);
         return $result;
+    }
+
+    function checkpostalcode($postalcode,$service_id1){
+        
+        if(isset($_SESSION['userdata'])){
+            $userdata=$_SESSION['userdata'];
+        }
+        $id = $userdata['UserId'];
+        $sql = "SELECT UserId,UserTypeId,ZipCode,Email FROM user WHERE UserTypeId=2 AND ZipCode=$postalcode ";
+        $result = mysqli_query($this->conn, $sql);
+        $emparray = [];
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                if($row['UserId'] == $id){
+                    continue;
+                }
+                $emparray[] = $row['Email'];
+            } //print_r($emparray);die;
+        }
+        return $emparray;
     }
 
     function cancel1($service_id1,$date){

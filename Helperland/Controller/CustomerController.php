@@ -179,16 +179,24 @@ class CustomerController
             $edit_id =  $_POST['edit_id'];
             $getdate1 = $_POST['getdate1'];
             $gettime1 = $_POST['gettime1'];
+           
             
             $array = [
                 'edit_id' => $edit_id,
                 'getdate1'=> $getdate1,
                 'gettime1'=> $gettime1,
-                
             ];
+
+            $sp_id = $_POST['sp_id'];
             $result = $this->model->editdatetime1($array);
             if($result){
                 $res['status'] = 'yes';
+                $result1 = $this->model->sendmail($sp_id);
+                //print_r($result1);die;
+                foreach($result1 as $email){
+                $headers = "From: 180320116044.it.swati@gmail.com";
+                $sendmail = mail($email,"About Reschedule Service-date and time","Service RequestId=".$edit_id." is reschedule by customer Pls check Your dashboard and updated date and time is ".$getdate1.",". $gettime1,$headers);
+                }
             }
             else{
                 $res['status'] = 'no';

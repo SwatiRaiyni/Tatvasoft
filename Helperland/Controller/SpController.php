@@ -118,14 +118,36 @@ class SpController
     function accept(){
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $service_id1 =  $_POST['service_id1'];
+            $postalcode = $_POST['postalcode'];
+            $mydate = $_POST['mydate'];
+           $mystart_time = $_POST['mystart_time'];
+          $myend_time = $_POST['myend_time'];
             $date = date('Y-m-d H:i:s');
+
+
+            $result1 = $this->model->checkvalidation($service_id1,$mydate,$mystart_time,$myend_time);
+            if(empty($result1)){
             $result = $this->model->accept1($service_id1,$date);
+            
             if($result){
-             echo json_encode("yes");
+                echo json_encode("yes");
+               // $email = [];
+                $checkpostalcode = $this->model->checkpostalcode($postalcode,$service_id1);
+               // print_r($checkpostalcode);die;
+                foreach($checkpostalcode as $email){
+                    $headers = "From: 180320116044.it.swati@gmail.com";
+                    $sendmail = mail($email,"About Service Request","service request has ". $service_id1 ." already been accepted by someone and is no more available to You",$headers);
+                }
             }
             else{
              echo json_encode("no"); 
             }
+        }else{
+            echo json_encode("no"); 
+        }
+
+
+
          }
     }
 

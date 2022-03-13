@@ -8,8 +8,6 @@ function html_table_to_excel(type) {
     XLSX.writeFile(file, "history." + type);
 }
 
-
-
 function mysettings(){
     document.getElementById("mySettings").style.display="block";
     document.getElementById("upcomingservice").style.display="none";
@@ -509,9 +507,9 @@ function changepassword(){
 }
 
 function getTimeAndDate(sdate, stime) {
-    
-    var dateobj = new Date(sdate);
-    var startdate = dateobj.toLocaleDateString("en-IN");
+    //debugger;
+    var dateobj = new Date(sdate); //Thu Feb 24 2022 08:56:10 GMT+0530 (India Standard Time) 
+    var startdate = dateobj.toLocaleDateString("en-IN"); // '24/2/2022'
     
     var starttime = ("0" + dateobj.getHours()).slice(-2) + ":" + ("0" + dateobj.getMinutes()).slice(-2);
     var totalhour = stime;
@@ -563,7 +561,7 @@ function newservicerequestdata(){
            
             for(let i=0;i < count; i++){
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
-                myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
+                myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" data-zcode="${data[i].PostalCode}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
                 data-bs-target="#ServiceAcceptModal"
                 data-bs-dismiss="modal">
                
@@ -579,7 +577,7 @@ function newservicerequestdata(){
                                 <td> <i class="fa fa-eur"></i>${data[i].TotalCost}</td>
                                 <td></td>
                                 <td class="buttonaccept">
-                                    <button data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
+                                    <button data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" data-zcode="${data[i].PostalCode}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
                                     data-bs-target="#ServiceAcceptModal"
                                     data-bs-dismiss="modal">Accept</button>
                                 </td>
@@ -672,25 +670,43 @@ function getservicedetails(){
     });
 }
 
+function showLoader() {
+    $.LoadingOverlay("show", {
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+  }
+
 function accept(){
+    showLoader();
     var service_id1=document.getElementById("service_id1").value;
+    var postalcode=document.getElementById("zipcode").value;
+    
+    var mydate=document.getElementById("mydate").value;
+    var mystart_time=document.getElementById("mystart_time").value;
+    var myend_time=document.getElementById("myend_time").value;// alert(mydate+" "+mystart_time+" "+myend_time); return false;
     $.ajax({
         url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=accept',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         method: 'POST',
         dataType:'json',
         data:{
+            mydate : mydate,
+            postalcode : postalcode,
             service_id1 : service_id1,
+            mystart_time : mystart_time,
+            myend_time : myend_time
         },
         success:function(data){
+            $.LoadingOverlay("hide");
             if(data == "yes"){
+                
                 swal("Good job!", "You have accept service Request", "success");
                 newservicerequestdata();
             }
             else{
                 swal({
                   title: "Alert!",
-                  text: "Service Request does not Accepted",
+                  text: "Service Request does not Accepted Bcz there is some service request that already overlap with this service request",
                   icon: "warning",
                   dangerMode: true,
                 });
@@ -863,6 +879,7 @@ var dt2 = new DataTable("#mytable2", {
     columnDefs: [{ orderable: false, targets: 5}],
 });
 
+
 function upcomingdata(){
     var myTable2= $("#mytable2").DataTable();
     
@@ -878,12 +895,15 @@ function upcomingdata(){
             myTable2.clear().draw();
             $("#btn1").hide();
             $("#btn2").show();
-            $("#btn3").show();
+
+           // alert()
+           $("#btn3").show();
 
            
             for(let i=0;i < count; i++){
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
-                myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
+               
+                myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}"  data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="servicedetails($(this));"  "data-bs-toggle="modal"
                 data-bs-target="#ServiceAcceptModal"
                 data-bs-dismiss="modal">
                 <td>${data[i].ServiceRequestId}</td>
@@ -897,7 +917,8 @@ function upcomingdata(){
                 </td>
                 <td> <i class="fa fa-eur"></i>${data[i].TotalCost}</td>
                 <td></td>
-                <td class="buttoncancel"><button  data-bs-toggle="modal" data-bs-target="#ServiceAcceptModal" data-bs-dismiss="modal">Cancel</button></td>
+                
+                <td class="buttoncancel"><button  data-bs-toggle="modal" data-bs-target="#ServiceAcceptModal" data-bs-dismiss="modal" class="btncancel" data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="completeshowhide($(this));">Cancel</button></td>
             </tr>`
                 )).draw();
 
@@ -910,6 +931,31 @@ function upcomingdata(){
     });
 
 }
+
+function completeshowhide(obj){
+    var subtotal = obj.attr('data-subtotal');
+    var sdatetime = obj.attr('data-sdatetime');
+    let totaltime = getTimeAndDate(sdatetime, subtotal);
+    var sdate = totaltime.startdate;
+    var etime = totaltime.endtime;
+    var d = sdate.split("/"); 
+    var day = d[0];
+    var month = d[1];
+    var year = d[2];
+    var hours = etime.split(":")[0];
+    var minute =  etime.split(":")[1];
+    var currentDate = new Date();
+    var endDate = new Date(year,month-1,day,hours,minute); 
+    //debugger;
+    if(currentDate < endDate){
+        $("#btn3").hide();
+    }
+    else{
+        $("#btn3").show();
+    }
+    
+}
+
 
 var dt = new DataTable("#mytable", {
     dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',

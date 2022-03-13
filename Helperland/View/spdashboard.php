@@ -24,6 +24,8 @@ else{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     
     <link
@@ -70,6 +72,11 @@ $last = end($test);
                 <div class="modal-body">
                     <form action="#" id="servicedetails">
                     <input type="hidden" name="service_id" id="service_id1" class="service_id">
+                    <input type="hidden" name="zipcode1" id="zipcode" class="zipcode1">
+                    <input type="hidden" name="mydate" id="mydate" class="mydate">
+                    <input type="hidden" name="mystart_time" id="mystart_time" class="mystart_time">
+                    <input type="hidden" name="myend_time" id="myend_time" class="myend_time">
+
                         <div class="row">
                             <div class="col-7 modal-section-body">
                                 <div class="row">
@@ -441,7 +448,7 @@ $last = end($test);
 
 <!--footer section end-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -491,10 +498,17 @@ function servicedetails(obj){
     var etime = obj.attr('data-etime');
     var fname = obj.attr('data-fname');
     var lname = obj.attr('data-lname');
+    var zipcode = obj.attr('data-zcode');
+    $('.zipcode1').val(zipcode);
     $("#custname").text(fname + ' ' + lname);
     $("#appenddate").text(date + ' ' +stime + '-' + etime);
     $('.service_id').val(id);
     getservicedetails();
+
+    $('.mydate').val(date);
+    $('.mystart_time').val(stime);
+    $('.myend_time').val(etime);
+
     $("#ServiceAcceptModal").modal('show');
 }
 </script>  

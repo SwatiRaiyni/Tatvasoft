@@ -102,7 +102,12 @@ class BookController
             $havepets = $_POST['havepets'];
             $paymentDone = $_POST['paymentDone'];
             $addressId = $_POST['addressId']; 
-            $favId = $_POST['favId'];
+            
+            if(isset($_POST['favId'])){
+                $favId = $_POST['favId'];
+            }else{
+                $favId = "NULL";
+            }//print_r($favId);die;
             $array = [
                     'postalcode' => $postalcode,
                     'serviceStartDate'=> $serviceStartDate,
@@ -123,13 +128,19 @@ class BookController
                 if ($result) {
                     $res['status'] = 'yes';
                     $res['id'] = $result[3];
-
+                   
                 } 
                 else{
                     $res['status'] = 'no';
                     $res['id'] = 0;
                 }
                 echo json_encode($res);
+                $postalcode = $_POST['postalcode'];
+                $result1 = $this->model->sendmail($postalcode);
+                foreach($result1 as $email){
+                    $headers = "From: 180320116044.it.swati@gmail.com";
+                    $sendmail = mail($email,"About New book Service Request","New ServiceRequest is book by Customer Please Check With Your New Service Request Portal",$headers);
+                }
         
             
             

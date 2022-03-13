@@ -9,6 +9,13 @@ function html_table_to_excel(type) {
 }
 
 
+function showLoader() {
+    $.LoadingOverlay("show", {
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+  }
+
+
 $(function () {
  
     $(".rateYo").rateYo({
@@ -118,6 +125,7 @@ function geteditdatetime(){
                 var dateString = year+ "-" +("0"+(month)).slice(-2)+"-"+date;
                 $('#gettime1').val(time);
                 $('#getdate1').val(dateString);
+              
                 
             }
         },
@@ -182,10 +190,10 @@ function dashboardshowdata(){
 							 starfilled1 +='<span class="fa fa-star-o"></span>';
 						}
                         var sprating = Math.round(data[i].sprating * 100) / 100;
-                myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+starfilled+ starfilled1+ (sprating) +' </div></div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>  <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
+                myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+starfilled+ starfilled1+ (sprating) +' </div></div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId +' ,'+ data[i].ServiceProviderId +');" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button>  <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
                 }
                 else{
-                    myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button> <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
+                    myTable.row.add($( '<tr><td> <a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))"  data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal"" ><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td class="buttoncenter"><button class="Reschedule" onclick="reschedule('+ data[i].ServiceRequestId + ' ,'+ data[i].ServiceProviderId + ')" data-bs-toggle="modal" data-bs-target="#RescheduleServiceRequest" data-bs-dismiss="modal"> Reschedule </button> <button class="cancel" data-bs-toggle="modal" data-bs-target="#CancelServiceRequest" data-bs-dismiss="modal" onclick="trash21('+ data[i].ServiceRequestId + ')"> cancel </button></td></tr>')).draw();
                 }
 
             }
@@ -200,12 +208,14 @@ function editdatetime(){
     var edit_id =document.getElementById("reschedule_edit_id1").value;
     var getdate1 =document.getElementById("getdate1").value;
     var gettime1 =document.getElementById("gettime1").value;
+    var sp_id = document.getElementById("customerid1").value;
     
     if(edit_id == '' || getdate1 == '' || gettime1 == ''){
         alert('All Fields are required');
        
     }
     else{ 
+        showLoader();
     $.ajax({
 
         url: 'http://localhost/TatvaSoft/Helperland/?controller=Customer&function=editdatetime',
@@ -215,10 +225,12 @@ function editdatetime(){
         data:{
             edit_id : edit_id ,
             getdate1 : getdate1 ,
-            gettime1 :gettime1 , 
+            gettime1 :gettime1 ,
+            sp_id : sp_id 
            
         },
         success: function (data) {
+            $.LoadingOverlay("hide");
             if(data.status == "yes"){
                 swal("Good job!", "date and time updated SuccessFully", "success");
                 dashboardshowdata();
