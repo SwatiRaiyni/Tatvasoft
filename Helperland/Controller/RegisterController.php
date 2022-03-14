@@ -134,6 +134,10 @@ class RegisterController{
                     $_SESSION['userdata']=$result;
                     header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
                 }
+                elseif($result['UserTypeId'] == 3){
+                  $_SESSION['userdata']=$result;
+                  header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
+              }
               }
             }
             else{

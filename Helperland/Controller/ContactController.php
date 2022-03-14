@@ -40,6 +40,11 @@ class ContactController
     public function conta(){
         include("./View/contact.php");
     }
+
+    public function admin(){
+        include("./View/admin.php");
+    }
+    
     public function logout()
     {   session_start();
         unset($_SESSION['userdata']);

@@ -698,7 +698,7 @@ function accept(){
         },
         success:function(data){
             $.LoadingOverlay("hide");
-            if(data == "yes"){
+            if(data.error === ""){
                 
                 swal("Good job!", "You have accept service Request", "success");
                 newservicerequestdata();
@@ -706,7 +706,7 @@ function accept(){
             else{
                 swal({
                   title: "Alert!",
-                  text: "Service Request does not Accepted Bcz there is some service request that already overlap with this service request",
+                  text: data.error,
                   icon: "warning",
                   dangerMode: true,
                 });
@@ -903,7 +903,7 @@ function upcomingdata(){
             for(let i=0;i < count; i++){
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
                
-                myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}"  data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="servicedetails($(this));"  "data-bs-toggle="modal"
+                myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}"  data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="servicedetails($(this)); completeshowhide($(this)); "  "data-bs-toggle="modal"
                 data-bs-target="#ServiceAcceptModal"
                 data-bs-dismiss="modal">
                 <td>${data[i].ServiceRequestId}</td>
@@ -1079,6 +1079,14 @@ function blockchange(obj){
     });
 }
   
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var calendarEl = document.getElementById('calendar');
+//     var calendar = new FullCalendar.Calendar(calendarEl, {
+//       initialView: 'dayGridMonth'
+//     });
+//     calendar.render();
+//   });
 
 
 

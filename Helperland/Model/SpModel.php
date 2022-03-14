@@ -250,14 +250,8 @@ class SpModel
         $et = str_replace(':', '.', $myend_time);
         $tot = (float)$et-(float)$st;
         $con_date = $mydate.' '.$mystart_time.':00';
-         //$sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND DATE(ServiceStartDate) = DATE('".$mydate."')";
-
-      
-      $sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND DATE(ServiceStartDate) = DATE('".$mydate."') AND TIME(ServiceStartDate) >= TIME('".$mystart_time."') AND SubTotal <= ". $tot; 
-
-
-   
-   
+        
+     $sql = "SELECT ServiceRequestId, DATE_FORMAT(ServiceStartDate, '%H:%i') as ServiceStartTime,DATE_FORMAT(ServiceStartDate, '%Y-%m-%d') as ServiceStartDate, SubTotal FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND DATE(ServiceStartDate) = DATE('".$mydate."')"; 
         $result = mysqli_query($this->conn, $sql);
         $emparray = [];
         while($row = mysqli_fetch_assoc($result)){
@@ -267,8 +261,7 @@ class SpModel
        
         return $emparray;
 
-       //echo $sql = "SELECT * FROM servicerequest WHERE Status=4 AND ServiceProviderId=".$id." AND ServiceStartDate >= '".$con_date."' AND SubTotal <= ".$tot; die;
-
+      
 
 
     }
