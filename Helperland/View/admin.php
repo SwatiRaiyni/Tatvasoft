@@ -71,86 +71,64 @@ $userdata=$_SESSION['userdata'];
                         </div>
                        
                         <div class="search-section1">
-                                <form action="#">
+                                <form action="#" id="forreset1">
                                     <ul class="control-list">
                                         <li>
-                                            <input type="text" class="form-control" placeholder="ServiceId">
+                                            <input type="text" class="form-control id_sel" placeholder="ServiceId">
                                         </li>
                                         <li>
-                                            <input type="text" class="form-control" placeholder="postalcode">
+                                            <input type="text" class="form-control zip_sel" placeholder="postalcode">
                                         </li>
                                         <li>
-                                            <input type="text" class="form-control w240" placeholder="Email">
+                                            <input type="text" class="form-control w240 email1_sel" placeholder="Email">
                                         </li>
                                         <li>
-                                            <select class="form-select w220" aria-label="Default select example">
-                                                <option selected>Customer</option>
-                                                <option value="1">User1</option>
-                                                <option value="2">User2</option>
-                                                <option value="3">User3</option>
+                                            <select class="form-select w220 cust_sel" aria-label="Default select example">
+                                            <option value="">Customer</option>
                                             </select>
                                         </li>
                                         <li>
-                                            <select class="form-select w152" aria-label="Default select example">
-                                                <option selected>Service Provider</option>
-                                                <option value="1">Type1</option>
-                                                <option value="2">Type2</option>
-                                                <option value="3">Type3</option>
+                                            <select class="form-select w152 sp_sel" aria-label="Default select example">
+                                            <option value="">ServiceProvider</option>
                                             </select>
                                         </li>
                                         <li>
-                                            <select class="form-select w120" aria-label="Default select example">
-                                                <option selected>Status</option>
-                                                <option value="1">Type1</option>
-                                                <option value="2">Type2</option>
-                                                <option value="3">Type3</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            <select class="form-select w190" aria-label="Default select example">
-                                                <option selected>SP Payment Status</option>
-                                                <option value="1">Type1</option>
-                                                <option value="2">Type2</option>
-                                                <option value="3">Type3</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            <select class="form-select w120" aria-label="Default select example">
-                                                <option selected>Status</option>
-                                                <option value="1">Type1</option>
-                                                <option value="2">Type2</option>
-                                                <option value="3">Type3</option>
+                                            <select class="form-select w120 status_sel" aria-label="Default select example">
+                                                <option value="">Status</option>
+                                                <option value="1">Pending</option>
+                                                <option value="2">complete</option>
+                                                <option value="3">cancel</option>
+                                                <option value="4">Assigned</option>
                                             </select>
                                         </li>
                                         <li>
                                             <div class="checkbox inline">
-                                                <input type="checkbox" value="has issue">Has issue
-                                            </div>
-                                           
-                                        </li>
-                                        <li>
-                                            <div class="input-wrapper">
-                                                <img src="./assets/images/for.png">
-                                                <input type="text" class="form-control w140" placeholder="     From Date">
+                                                <input type="checkbox" value="0" class="check_sel" onclick="$(this).val(this.checked ? 1 : 0)">Has issue
                                             </div>
                                         </li>
                                         <li>
                                             <div class="input-wrapper">
                                                 <img src="./assets/images/for.png">
-                                                <input type="text" class="form-control w140" placeholder="     To Date">
+                                                <input type="text" class="form-control w140 fromd_sel" placeholder="     From Date">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-wrapper">
+                                                <img src="./assets/images/for.png">
+                                                <input type="text" class="form-control w140 tod_sel" placeholder="     To Date">
                                             </div>
                                         </li>
                                         <li>
                                             <div class="buttons">
-                                                <button type="button" class="search">Search</button>
-                                                <button type="button" class="clear">Clear</button>
+                                                <button type="button" class="search"  onclick="searchservicerequest();">Search</button>
+                                                <button type="button" class="clear" onclick="servicerequestdata();">Clear</button>
                                             </div>
                                         </li>
                                     </ul>
                                 </form>
                         </div>
                         <div class="table-section">
-                            <table class="current-services" id="mytable11">
+                            <table class="current-services mytable11">
                                 <thead>
                                     <tr>
                                         <th>Service Id</th>
@@ -167,63 +145,60 @@ $userdata=$_SESSION['userdata'];
                             </table>
                         </div>
                         <div class="footer">
-                            ©2018 Helperland. All rights reserved.
+                            ©2022 Helperland. All rights reserved.
                         </div>
                         
                     </div>
                     <div id="usermanagement">
                         <div class="usermangement" >
                           <div class="u1"> <p>User Management</p></div> 
-                          <div>  <button class="buttonright"><span class="fa fa-plus-circle"></span>Add New User</button></div>
+                          <!-- <div>  <button class="buttonright"><span class="fa fa-plus-circle"></span>Add New User</button></div> -->
                         </div>
 
                         <div class="search-section1">
-                            <form action="#">
+                            <form action="#" id="forreset11">
                                 <ul class="control-list">
                                     <li>
-                                        <select class="form-select w205" aria-label="Default select example">
-                                            <option selected>User name</option>
-                                            <option value="1">User1</option>
-                                            <option value="2">User2</option>
-                                            <option value="3">User3</option>
-                                          </select> 
+                                        <select class="form-select w205 user_sel" aria-label="Default select example">
+                                            <option value="">User name</option>
+                                        </select> 
                                     </li>
                                     <li>
-                                        <select class="form-select w205" aria-label="Default select example">
-                                            <option selected>User Type</option>
-                                            <option value="1">Type1</option>
-                                            <option value="2">Type2</option>
-                                            <option value="3">Type3</option>
+                                        <select class="form-select w205 type_sel" aria-label="Default select example">
+                                            <option value="">User Type</option>
+                                            <option value="1">Customer</option>
+                                            <option value="2">Sp</option>
+                                            
                                         </select>
                                     </li>
                                     <li>
                                         <div class="input-group w219">
                                             <span class="input-group-text" id="basic-addon1">+49</span>
-                                            <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="text" class="form-control mol_sel" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
                                           </div>
                                     </li>
                                     <li>
-                                        <input type="text" class="form-control w140" placeholder="postalcode">
+                                        <input type="text" class="form-control w140 pos_sel" placeholder="postalcode">
                                     </li>
                                     <li>
-                                        <input type="text" class="form-control w240" placeholder="Email">
+                                        <input type="text" class="form-control w240 email_sel" placeholder="Email">
                                     </li>
                                     <li>
                                         <div class="input-wrapper">
                                             <img src="./assets/images/for.png">
-                                            <input type="text" class="form-control w140" placeholder="     From Date">
+                                            <input type="text" class="form-control w140 from_sel" placeholder="     From Date">
                                         </div>
                                     </li>
                                     <li>
                                         <div class="input-wrapper">
                                             <img src="./assets/images/for.png">
-                                            <input type="text" class="form-control w140" placeholder="     To Date">
+                                            <input type="text" class="form-control w140 to_sel" placeholder="     To Date">
                                         </div>
                                     </li>
                                     <li>
                                     <div class="buttons">
-                                        <button type="button"  class="search">Search</button>
-                                        <button type="button" class="clear">Clear</button>
+                                        <button type="button"  class="search" onclick="search();">Search</button>
+                                        <button type="button" class="clear" onclick="usermanagementdata();">Clear</button>
                                     </div>
                                     </li>
                                 </ul>
@@ -239,7 +214,6 @@ $userdata=$_SESSION['userdata'];
                                 <thead>
                                     <tr>
                                         <th>User Name</th>
-                                        <th>Role</th>
                                         <th>Date of Registration</th>
                                         <th>User Type</th>
                                         <th>Phone</th>
@@ -248,266 +222,13 @@ $userdata=$_SESSION['userdata'];
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td>Finance Manager</td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed1">Inactive</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td>Finance Manager</td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed1">Inactive</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td>Inqiury Manager</td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed1">Inactive</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td></td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed">Active</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lyum Watson</td>
-                                        <td>Content Manager</td>
-                                        <td><img src="./assets/images/calculator.png"><b>15/03/2018</b></td>
-                                        <td>Customer</td>
-                                        <td>123456789</td>
-                                        <td></td>
-                                        <td ><button class="completed1">Inactive</button></td>
-                                        <td class="btn-raction">
-                                            <div class="dropdown">
-                                                <button class="dropdown-toggle" type="button"
-                                                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="material-icons" style="color:#646464;">&#xe5d4;</i>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                    <li><button class="dropdown-item" type="button">Deactivate</button></li>
-                                                    <li><button class="dropdown-item" type="button">Service History</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tbody id="usermanagment">
                                 </tbody>
                             </table>
                         </div>
                         <div class="footer">
-                            ©2018 Helperland. All rights reserved.
-                            </div>
+                            ©2022 Helperland. All rights reserved.
+                        </div>
                     </div>
                    
                 </div>
@@ -546,17 +267,18 @@ $userdata=$_SESSION['userdata'];
             </div>
             <div class="modal-body">
                 <form action="#">
+                    <input type="text" id="id" class="id">
                     <div class="row">
                         <div  class="col-sm-6">
                            <div class="form-group">
                                <label>Date</label>
-                               <input type="date" class="form-control1 w200">
+                               <input type="date" name="date" class="form-control1 w200 date" id="getdate1">
                            </div>
                         </div>
                         <div  class="col-sm-6">
                             <div class="form-group">
                                 <label>Time</label>
-                                <input type="time" class="form-control1 w200">
+                                <input type="time" name="time1" id="time1" class="form-control1 w200 time">
                             </div>
                         </div>
                     </div>
@@ -565,13 +287,13 @@ $userdata=$_SESSION['userdata'];
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Street name</label>
-                                <input type="text" class="form-control1 w200">
+                                <input type="text" name="sname" id="sname1" class="form-control1 w200 sname1">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>House number</label>
-                                <input type="text" class="form-control1 w200">
+                                <input type="text" name="hnumber" id="hnumber1" class="form-control1 w200 hnumber1">
                             </div>
                         </div>
                     </div>
@@ -579,15 +301,15 @@ $userdata=$_SESSION['userdata'];
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="postalcode">Postal Code</label>
-                                <input type="text" class="form-control1 w205">
+                                <input type="text" name="pcode" id="pcode1" class="form-control1 w205 pcode1">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <select name="" id="" class="form-control1 w205">
+                                <select name="city" id="city" class="form-control1 w205 city1">
                                     <option value="Ahmedabad">Ahmedabad</option>
-                                    <option value="Surat">Surat</option>
+                                    <option value="surat">Surat</option>
                                 </select>
                             </div>
                         </div>
@@ -639,7 +361,7 @@ $userdata=$_SESSION['userdata'];
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-modal form-control1 w401">Update</button>
+                            <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-modal form-control1 w401" onclick="editaddress();">Update</button>
                         </div>
                     </div>
                 </form>
@@ -654,13 +376,14 @@ $userdata=$_SESSION['userdata'];
 </div>
 </body>
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script
       type="text/javascript"
       src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"
@@ -668,34 +391,35 @@ $userdata=$_SESSION['userdata'];
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#tblCustomers").DataTable();
-      });
-    </script>
-
-    <script>
-        const dt1 = new DataTable("#tblCustomers", {
-        dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
-        responsive: true,
-        pagingType: "full_numbers",
-        language: {
-            paginate: {
-            first: "<img src='./assets/images/pagination-first.png' alt='first'/>",
-            previous: "<img src='./assets/images/pagination-left.png' alt='previous' />",
-            next: '<img src="./assets/images/pagination-left.png" alt="next" style="transform: rotate(180deg)" />',
-            last: "<img src='./assets/images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
-            },
-            info: "Total Record: _MAX_",
-            lengthMenu: "Show_MENU_Entries",
-        },
-        buttons: ["excel"],
-        columnDefs: [{ orderable: false, targets: 7 }],
-    });
-    </script>
-
-
     <script type="text/javascript" src="./assets/js/admin.js"></script>
 </body>
+
+<script>
+    function getaddress(obj){
+
+        var id = obj.attr('data-id');
+        var addressline1 = obj.attr('data-add1');
+        var addressline2 = obj.attr('data-add2');
+        var pcode = obj.attr('data-pcode');
+        var city = obj.attr('data-city');
+        var sdate = obj.attr('data-sdate');
+        var date = sdate.split('/')[0];
+        var month = sdate.split('/')[1];
+        var year = sdate.split('/')[2];
+        var newdate = year +'-'+ (month<9 ? '0'+month : month) +'-'+ (date<9 ? '0'+date : date);
+        var stime = obj.attr('data-stime'); 
+        
+        $('.id').val(id);
+        $('.hnumber1').val(addressline1);
+        $('.sname1').val(addressline2);
+        $('.pcode1').val(pcode);
+        $('.city1').val(city);
+        $('#getdate1').val(newdate);
+        $('.time').val(stime);
+        $("#editServiceRequest").modal('show');
+    
+    }
+</script>
+
 
 </html>

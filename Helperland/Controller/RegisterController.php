@@ -132,7 +132,17 @@ class RegisterController{
                 }
                 elseif($result['UserTypeId'] == 2){
                     $_SESSION['userdata']=$result;
+                    
+                   $isactive = $result['IsApproved'];
+                   if($isactive == 0){
+                    // echo "if";die;
+                    session_start();
+                    unset($_SESSION['userdata']);
+                    header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
+                   }else{
+                     //echo"else";die;
                     header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
+                   }
                 }
                 elseif($result['UserTypeId'] == 3){
                   $_SESSION['userdata']=$result;

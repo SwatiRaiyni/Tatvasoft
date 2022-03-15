@@ -8,6 +8,31 @@ function html_table_to_excel(type) {
     XLSX.writeFile(file, "history." + type);
 }
 
+
+
+var map = L.map("mappappend");
+
+ 
+  async function getmap(zipcode) {
+    map.setView([0, 0], 1);
+    const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, { attribution });
+    tiles.addTo(map);
+  
+    const response = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=india,' + zipcode);
+    const data = await response.json();
+    const { lat, lon } = data[0];
+    map.flyTo([lat, lon], 15);
+    L.marker([lat, lon]).addTo(map);
+
+    //console.log(lat);
+  }
+
+ 
+
+
+
 function mysettings(){
     document.getElementById("mySettings").style.display="block";
     document.getElementById("upcomingservice").style.display="none";
@@ -558,8 +583,9 @@ function newservicerequestdata(){
             $("#btn1").show();
             $("#btn2").hide();
             $("#btn3").hide();
-           
+           var postalcode;
             for(let i=0;i < count; i++){
+                postalcode = data[i].PostalCode;
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
                 myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" data-zcode="${data[i].PostalCode}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
                 data-bs-target="#ServiceAcceptModal"
@@ -583,8 +609,9 @@ function newservicerequestdata(){
                                 </td>
                             </tr>`
                 )).draw();
+                
 
-            }
+            }getmap(postalcode);
         },
         error:function(err){
          console.error(err);

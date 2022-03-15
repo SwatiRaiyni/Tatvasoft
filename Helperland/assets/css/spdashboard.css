@@ -757,3 +757,7 @@ table.dataTable.no-footer {
     text-decoration: none !important;
     /* margin-top: 10px; */
 }
+#mappappend{
+    height:100%;
+    width: 100%;
+}
