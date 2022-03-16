@@ -1,3 +1,14 @@
+function html_table_to_excel(type) {
+    var data = document.getElementById("tblCustomers");
+
+    var file = XLSX.utils.table_to_book(data, { sheet: "sheet1" });
+
+    XLSX.write(file, { bookType: type, bookSST: true, type: "base64" });
+
+    XLSX.writeFile(file, "history." + type);
+}
+
+
 $(document).ready(function(){
     $(".menu-bar").click(function(){
         $('.nav-list').toggleClass("active");

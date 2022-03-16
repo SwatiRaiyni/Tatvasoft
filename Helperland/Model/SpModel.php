@@ -304,7 +304,7 @@ class SpModel
             $userdata=$_SESSION['userdata'];
         }
        
-       $sql = "UPDATE servicerequest SET Status = 3,SPAcceptedDate = NULL, ServiceProviderId = ".$userdata['UserId']." 
+       $sql = "UPDATE servicerequest SET Status = 1,SPAcceptedDate = NULL, ServiceProviderId = ".$userdata['UserId']." 
          WHERE ServiceRequestId =". $service_id1; 
         $result = mysqli_query($this->conn, $sql);
         return $result;
@@ -364,6 +364,12 @@ class SpModel
             while($row2 =mysqli_fetch_assoc($result2))
             {
             $obj_merged = (object) array_merge((array) $obj_merged, (array) $row2);
+            }
+            $sql3= "SELECT * FROM servicerequestextra WHERE ServiceRequestId=". $row['ServiceRequestId'] ; 
+            $result3 = mysqli_query($this->conn, $sql3); 
+            while($row3 =mysqli_fetch_assoc($result3))
+            {
+            $obj_merged = (object) array_merge((array) $obj_merged, (array) $row3);
             }
             $emparray[] = $obj_merged;
         }//echo '<pre>'; print_r($emparray);die;

@@ -29,11 +29,7 @@ var map = L.map("mappappend");
     //console.log(lat);
   }
 
- 
-
-
-
-function mysettings(){
+ function mysettings(){
     document.getElementById("mySettings").style.display="block";
     document.getElementById("upcomingservice").style.display="none";
     document.getElementById("newservicerequests").style.display="none";
@@ -187,6 +183,7 @@ function schedule(){
     if(document.getElementById("customer").classList.contains("active")){
         document.getElementById("customer").classList.remove("active");
     }
+    scheduledata();
 }
 
 function history(){
@@ -610,8 +607,8 @@ function newservicerequestdata(){
                             </tr>`
                 )).draw();
                 
-
-            }getmap(postalcode);
+                getmap(postalcode);
+            }
         },
         error:function(err){
          console.error(err);
@@ -637,22 +634,23 @@ function getservicedetails(){
                
                 $("#duration").text(data[i].SubTotal);
                 $("#serviceid").text(data[i].ServiceId);
-               $("#totalcost").text(data[i].TotalCost);
-               var abc = data[i].AddressLine1 + ' '+ data[i].AddressLine2 +' ' + data[i].PostalCode +' ,' + data[i].City;
-               $("#address").text(abc);
+                $("#totalcost").text(data[i].TotalCost);
+                var abc = data[i].AddressLine1 + ' '+ data[i].AddressLine2 +' ' + data[i].PostalCode +' ,' + data[i].City;
+                $("#address").text(abc);
                 $("#mobile1").text(data[i].Mobile);
-               $("#email1").text(data[i].Email);
-               $("#comments").text(data[i].Comments);
-               if(data[i].HasPets == 1){
+                $("#email1").text(data[i].Email);
+                $("#comments").text(data[i].Comments);
+                getmap(data[i].PostalCode);
+                if(data[i].HasPets == 1){
                    var comm = "I have pet at home";
-               }
-               else if(data[i].HasPets == 0){
-                var comm = "I have not pet at home";
-               }
-               $("#haspets").text(comm) ;
-               var e = data[i].ServiceExtraId;
-             let myFunc = num => Number(num);
-            var array = Array.from(String(e), myFunc);
+                }
+                else if(data[i].HasPets == 0){
+                    var comm = "I have not pet at home";
+                }
+                $("#haspets").text(comm) ;
+                var e = data[i].ServiceExtraId;
+                let myFunc = num => Number(num);
+                var array = Array.from(String(e), myFunc);
              
                if(array.includes(1)){
                    var comm1 = "inside cabinet";
@@ -948,6 +946,7 @@ function upcomingdata(){
                 <td class="buttoncancel"><button  data-bs-toggle="modal" data-bs-target="#ServiceAcceptModal" data-bs-dismiss="modal" class="btncancel" data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="completeshowhide($(this));">Cancel</button></td>
             </tr>`
                 )).draw();
+                getmap(data[i].PostalCode);
 
             }
         },
@@ -1034,6 +1033,7 @@ function historydata(){
                 </td>
                 </tr>`
                 )).draw();
+                getmap(data[i].PostalCode);
 
             }
         },
@@ -1105,15 +1105,124 @@ function blockchange(obj){
         }
     });
 }
+
+
+var emparray = [];
+var today = new Date();
+function scheduledata(){
+   
+
+    //var date = d.getFullYear() + "-" + (d.getMonth()) + "-" + d.getDay();
+    var date=today.getFullYear() + "-" + ("0" + (today.getMonth() + 1)).slice(-2) + "-" + ("0" + today.getDate()).slice(-2); //alert(date);
+    $.ajax({
+        url:'http://localhost/TatvaSoft/Helperland/?controller=Sp&function=scheduledata',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        method: 'POST',
+        dataType:'json',
+        data:{
+            date: date
+        },
+        
+        success:function(data){
+          $('#serviceschedule').html(data.html);
+           emparray = data.result;
+        },
+        error:function(err){
+         console.error(err);
+        }
+    
+    });
+
+
+}
+
+$(document).on('click','.leftcall',function(){
+    today.setMonth(today.getMonth()-1);
+    scheduledata();
+});
+
+$(document).on('click','.rightcall',function(){
+    today.setMonth(today.getMonth()+1);
+    scheduledata();
+});
+
+$(document).on('click','.serviceevent',function(){
+        var index = $(this).data('index');
+        var result = emparray[index];
+        var AddressLine1 = result['AddressLine1'];
+        var AddressLine2 = result['AddressLine2'];
+        var City = result['City'];
+        var FirstName = result['FirstName'];
+        var LastName = result['LastName'];
+        var PostalCode = result['PostalCode'];
+        var id = result['ServiceId'];
+        var ServiceStartDate = result['ServiceStartDate'];
+        var SubTotal = result['SubTotal'];
+        var TotalCost = result['TotalCost'];
+        var HasPets = result['HasPets'];
+        var e = result['ServiceExtraId'];
+        var Comments = result['Comments'];
+        if(HasPets == 1){
+            var comm = "I have pet at home";
+        }
+        else if(HasPets == 0){
+            var comm = "I have not pet at home";
+        }
+        $("#haspets").text(comm);
+        let myFunc = num => Number(num);
+        var array = Array.from(String(e), myFunc);
+     
+       if(array.includes(1)){
+           var comm1 = "inside cabinet";
+       }
+       else{
+        var comm1 = " ";
+       }
+        if(array.includes(2)){
+        var comm2 = "inside Fridge";
+       }
+        else{
+        var comm2 = " ";
+       }
+        if(array.includes(3)){
+        var comm3 = "inside oven";
+       }
+       else{
+        var comm3 = " ";
+       }
+     if(array.includes(4)){
+        var comm4 = "laundary Wash & dry";
+       }
+       else{
+           var comm4 = " ";
+       }
+        if(array.includes(5)){
+        var comm5 = "interior windows";
+       }
+       else{
+        var comm5 = " "; 
+       }
+       
+        var comm = comm1 +' '+comm2 +' '+comm3 +' '+comm4 +' '+comm5;
+        $("#extra").text(comm) ;
+        $("#btn1").hide();
+        $("#btn2").hide();
+        $("#btn3").hide();
+      
+        let totaltime = getTimeAndDate(ServiceStartDate,SubTotal);
+        $("#duration").text(SubTotal);
+        $("#serviceid").text(id);
+        $("#totalcost").text(TotalCost);
+        var abc = AddressLine1 + ' '+ AddressLine2 +' ' + PostalCode +' ,' + City;
+        $("#address").text(abc);
+        $("#comments").text(Comments);
+        $("#custname").text(FirstName + ' ' + LastName);
+        $("#appenddate").text(totaltime.startdate + ' ' +totaltime.starttime + '-' + totaltime.endtime);
+        $("#ServiceAcceptModal").modal('show');
+       
+});
   
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var calendarEl = document.getElementById('calendar');
-//     var calendar = new FullCalendar.Calendar(calendarEl, {
-//       initialView: 'dayGridMonth'
-//     });
-//     calendar.render();
-//   });
 
 
 

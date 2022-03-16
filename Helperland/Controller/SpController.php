@@ -2,9 +2,11 @@
 
 class SpController
 {  
+
     function __construct()
     {   
         include('Model/SpModel.php');
+        include ('calender.php');
         $this->model = new SpModel();
         
     }
@@ -225,8 +227,26 @@ class SpController
             echo json_encode($result);
         }
     }
-
-    
+   
+    function scheduledata(){
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $date = $_POST['date'];
+            $result = $this->model->upcomingdata1();
+            // echo '<pre>';print_r($result);die;
+            $this->Controller = new Calendar($date);
+            $i=0;
+            foreach($result as $val){
+                $sdate = $val->ServiceStartDate;
+                $subtotal = $val->SubTotal;
+                $stime=  date('H:i', strtotime($sdate));// print_r($sdate); die;
+                $stime1 = str_replace(':', '.', $stime);
+                $etime = $stime1 + $subtotal;
+                $etime1 = str_replace('.', ':', $etime);
+                $this->Controller->add_event($stime."-".$etime1,date('Y-m-d',strtotime($val->ServiceStartDate)), 1, 'green',$i++);
+            }
+            echo json_encode(['html' => $this->Controller->mycalendar(),'result' => $result]);
+        }
+    }
 
 }
 ?>

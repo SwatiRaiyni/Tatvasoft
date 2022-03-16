@@ -3,10 +3,9 @@ session_start();
 if(isset($_SESSION['userdata'])){
 $userdata=$_SESSION['userdata'];}
 else{
-        header('Location:'. 'http://localhost/TatvaSoft/Helperland/?controller=Contact&function=HomePage');
+    header('Location:'. 'http://localhost/TatvaSoft/Helperland/?controller=Contact&function=HomePage');
 }
 ?>
-
 <?php $base_url='http://localhost/TatvaSoft/Helperland/' ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,9 +28,7 @@ else{
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
-    <!-- <link href='./assets/js/main.css' rel='stylesheet' />
-    <script src='./assets/js/main.js'></script> -->
-    
+  
     
     <link
   rel="stylesheet"
@@ -387,7 +384,7 @@ $last = end($test);
 
             <!--service schedule starts-->
             <div class="divContent" id="serviceschedule">
-            <!-- <div id="calendar" style="height:1000px !important;"></div> -->
+                
             </div>
             <!--service schedule ends-->
             <!--service history starts-->
