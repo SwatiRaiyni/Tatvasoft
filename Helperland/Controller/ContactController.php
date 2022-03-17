@@ -48,10 +48,7 @@ class ContactController
     public function logout()
     {   session_start();
         unset($_SESSION['userdata']);
-        $_SESSION['isloggedin'] = 'FALSE';
-       // session_destroy();
-        
-         header('Location: http://localhost/TatvaSoft/Helperland/');
+        header('Location: http://localhost/TatvaSoft/Helperland/');
         
     }
     public function ContactUs()
@@ -59,7 +56,7 @@ class ContactController
         session_start();
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-             $base_url = "http://localhost/TatvaSoft/Helperland/contact";
+            // $base_url = "http://localhost/TatvaSoft/Helperland/";
              $mobile =  $_POST['number'];
              $email = $_POST['email'];
              $subject = $_POST['sub'];
@@ -84,10 +81,14 @@ class ContactController
               }
                 else{
                     $result = $this->model->Contactus($array);
+                    if($result){
+                        $result = $this->model->Mail();
+                        $result = $result['Email'];// print_r($result);die;
+                        $headers = "From: 180320116044.it.swati@gmail.com";
+                        $sendmail = mail($result,"About Contact us","one contact us form is filled ",$headers);
+                    }
                     header('Location:'.  $this->base_url.'?controller=Contact&function=ContactUs');
                 }
-          
-           
         }
         include("./View/contact.php");
     }

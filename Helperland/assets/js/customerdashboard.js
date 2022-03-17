@@ -710,7 +710,7 @@ function getaddress(){
       myTable2.clear().draw();
       for(let i=0;i < count; i++){ 
           
-          myTable2.row.add($( '<tr><td><input type="hidden" name="hidden_id" value="'+ data[i].AddressId + '"><input type="radio" name="address" id="address'+ data[i].AddressId+' " value="'+' '+ data[i].AddressId + '"></td><td><label for="address' + data[i].AddressId +'"><p><b>Address:</b> '+ data[i].AddressLine2 +""+ data[i].AddressLine1 +','+data[i].City +" "+ data[i].PostalCode +'</p><p><b>Phone number:</b> '+ data[i].Mobile +'</p></label></td><td><button type="button" class="Reschedule" onclick="edit2('+ data[i].AddressId + ')" data-bs-toggle="modal" data-bs-target="#EditAddress" data-bs-dismiss="modal" > Edit </button> <button type="button" class="cancel"   onclick="trash2('+ data[i].AddressId + ')" id="delete"  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#DeleteAddress" > Delete </button></td></tr>')).draw();
+          myTable2.row.add($( '<tr><td><input type="hidden" name="hidden_id" value="'+ data[i].AddressId + '"><label for="address' + data[i].AddressId +'"><p><b>Address:</b> '+ data[i].AddressLine2 +""+ data[i].AddressLine1 +','+data[i].City +" "+ data[i].PostalCode +'</p><p><b>Phone number:</b> '+ data[i].Mobile +'</p></label></td><td><button type="button" class="Reschedule" onclick="edit2('+ data[i].AddressId + ')" data-bs-toggle="modal" data-bs-target="#EditAddress" data-bs-dismiss="modal" > Edit </button> <button type="button" class="cancel"   onclick="trash2('+ data[i].AddressId + ')" id="delete"  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#DeleteAddress" > Delete </button></td></tr>')).draw();
         }
       },
       error:function(err){

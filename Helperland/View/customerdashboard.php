@@ -444,7 +444,7 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
                         <table  class="current-services" id="service">
                             <thead>
                                 <tr>
-                                    <th>Billing Address</th>
+                                    <!-- <th>Billing Address</th> -->
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -651,7 +651,7 @@ aria-labelledby="exampleModalLabel2" aria-hidden="true">
             lengthMenu: "Show_MENU_Entries",
         },
         buttons: ["excel"],
-        columnDefs: [{ orderable: false, targets: 2 }],
+        columnDefs: [{ orderable: false, targets: 1 }],
     });
 </script>
 

@@ -12,12 +12,8 @@ class ContactModel
         $db_name = "helperland1";
       
       //   Create Connection
-         $this->conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
-        //  if ($this->conn) {
-        //     echo "Connected!";
-        //   } else {
-        //     echo "Connection Failed";
-        //   }
+      $this->conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
+       
     }
 
     public function ContactUs($array)
@@ -33,12 +29,14 @@ class ContactModel
             $result =mysqli_query($this->conn, $sql);
             return $result;
            
-            // if ($result == 'true') {
-            //     $_SESSION['message'] = "Message Has Been Sent Succesfully";
-            // } else {
-            //     $_SESSION['message'] = "Your Account is not Created Please Try Again.";
-            // }
-            // return $_SESSION['message'];
+    }
+
+    public function Mail(){
+      $sql = "SELECT UserTypeId,Email FROM user WHERE UserTypeId=3";
+      $result =mysqli_query($this->conn, $sql);
+      $res2 = mysqli_fetch_assoc($result);
+      return $res2;
+
     }
 
 }

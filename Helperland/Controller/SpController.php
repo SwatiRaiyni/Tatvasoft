@@ -36,6 +36,7 @@ class SpController
                     'postalcode'=> $postalcode,
                     'city' => $city
                 ];//update
+                
                 $table2 = $this->model->updModel($array);//print_r($table2);die;
             }else{
                 $array = [

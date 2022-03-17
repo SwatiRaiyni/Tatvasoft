@@ -29,6 +29,8 @@ var map = L.map("mappappend");
     //console.log(lat);
   }
 
+  
+
  function mysettings(){
     document.getElementById("mySettings").style.display="block";
     document.getElementById("upcomingservice").style.display="none";
@@ -924,8 +926,9 @@ function upcomingdata(){
            // alert()
            $("#btn3").show();
 
-           
+           var postalcode;
             for(let i=0;i < count; i++){
+                postalcode = data[i].PostalCode;
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
                
                 myTable2.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}"  data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="servicedetails($(this)); completeshowhide($(this)); "  "data-bs-toggle="modal"
@@ -946,9 +949,10 @@ function upcomingdata(){
                 <td class="buttoncancel"><button  data-bs-toggle="modal" data-bs-target="#ServiceAcceptModal" data-bs-dismiss="modal" class="btncancel" data-sdatetime="${data[i].ServiceStartDate}"  data-subtotal="${data[i].SubTotal}" onclick="completeshowhide($(this));">Cancel</button></td>
             </tr>`
                 )).draw();
-                getmap(data[i].PostalCode);
+               
 
             }
+            getmap(postalcode);
         },
         error:function(err){
          console.error(err);
@@ -1017,7 +1021,9 @@ function historydata(){
             $("#btn1").hide();
             $("#btn2").hide();
             $("#btn3").hide();
+            var postalcode;
             for(let i=0;i < count; i++){
+                getmap(data[i].PostalCode);
                 let totaltime = getTimeAndDate(data[i].ServiceStartDate, data[i].SubTotal);
                 myTable.row.add($(  `<tr data-etime="${totaltime.endtime}" data-time="${totaltime.starttime}" data-date="${totaltime.startdate}" data-id="${data[i].ServiceRequestId}" data-fname="${data[i].FirstName}" data-lname="${data[i].LastName}" onclick="servicedetails($(this));" "data-bs-toggle="modal"
                 data-bs-target="#ServiceAcceptModal"
@@ -1033,7 +1039,7 @@ function historydata(){
                 </td>
                 </tr>`
                 )).draw();
-                getmap(data[i].PostalCode);
+                getmap(postalcode);
 
             }
         },

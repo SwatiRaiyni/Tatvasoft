@@ -299,12 +299,9 @@ class SpModel
     }
 
     function cancel1($service_id1,$date){
-        session_start(); 
-        if(isset($_SESSION['userdata'])){
-            $userdata=$_SESSION['userdata'];
-        }
        
-       $sql = "UPDATE servicerequest SET Status = 1,SPAcceptedDate = NULL, ServiceProviderId = ".$userdata['UserId']." 
+       
+       $sql = "UPDATE servicerequest SET Status = 1,SPAcceptedDate = NULL, ServiceProviderId = NULL
          WHERE ServiceRequestId =". $service_id1; 
         $result = mysqli_query($this->conn, $sql);
         return $result;

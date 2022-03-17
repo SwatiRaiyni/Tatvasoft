@@ -39,12 +39,7 @@ class RegisterModel
             $sql = "INSERT INTO user(FirstName,LastName , Email ,Password , Mobile,UserTypeId)
             VALUES ( '$firstname','$lastname','$email','$password','$number','$userType')";
              
-             $result = mysqli_query($this->conn, $sql);
-            // $result1= mysqli_fetch_assoc($result);
-            // foreach($result1 as $num){
-            //     echo $num['firstname'];
-            // }
-            // print_r($result); die();
+            $result = mysqli_query($this->conn, $sql);
             return $result;
            
           
