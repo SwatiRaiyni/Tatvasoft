@@ -400,12 +400,14 @@ function historyshowdata(){
                     var status = 'complete';
                     var class1 = 'Completed';
                     var class2 = '';
-                    var color = 'class3'; 
+                   // var color = ''; 
                     if(data[i].alreadyrated == true){
                         class2 = 'disabled';
+                        var color = 'class4'; 
                     }
                     else{
                         class2 = ' ';
+                        var color = 'class3';
                     }
                 }
                 $("#btn1").addClass("d-none");
@@ -426,7 +428,7 @@ function historyshowdata(){
 							 starfilled1 +='<span class="fa fa-star-o"></span>';
 						}
                         var sprating = Math.round(data[i].sprating * 100) / 100;
-                myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td class="abc"> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+ starfilled + starfilled1 + (sprating) +' </div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button id="s1" class="RateSP '+ color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +' onclick="ratesp('+ data[i].ServiceRequestId+')" > Rate SP </button></td></tr>')).draw();
+                myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td class="abc"> <div class="td-rating"> <div class="rating-user"><img src="./assets/images/'+ data[i].UserProfilePicture +'" style="width:50px;"></div> <div class="rating-info"><div class="info-name">'+data[i].FirstName + " " +data[i].LastName +'</div> '+ starfilled + starfilled1 + (sprating) +' </div> </div></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button id="s1" class="RateSP '+  color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +' onclick="ratesp('+ data[i].ServiceRequestId+')" > Rate SP </button></td></tr>')).draw();
                 }
                 else{
                     myTable1.row.add($('<tr><td><a role="button" data-etime="'+ totaltime.endtime + '" data-time="'+ totaltime.starttime + '" data-date="'+ totaltime.startdate + '" data-id="'+ data[i].ServiceRequestId + '" onclick="servicedetails($(this))" data-bs-toggle="modal" data-bs-target="#ModalServiceDetails" data-bs-dismiss="modal">'+ data[i].ServiceRequestId + '</a></td><td><div><img src="./assets/images/calculator.png"><b>'+ totaltime.startdate + '</b></div> <div><img src="./assets/images/layer-712.png">'+ totaltime.starttime +'-'+totaltime.endtime+ '</td><td></td><td><div class="singlefont"><i class="fa fa-eur">'+ data[i].TotalCost + '</i></div></td><td><span class="'+class1+'"> '+ status +'</span></td><td> <button class="RateSP '+ color +'" data-bs-toggle="modal" data-bs-target="#exampleModalRateSP" data-bs-dismiss="modal" '+ class2 +'> Rate SP </button></td></tr>')).draw();   

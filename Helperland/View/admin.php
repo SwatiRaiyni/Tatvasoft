@@ -129,7 +129,7 @@ $userdata=$_SESSION['userdata'];
                                 </form>
                         </div>
                         <div class="table-section">
-                            <table class="current-services mytable11">
+                            <table class="current-services" id="mytable11" >
                                 <thead>
                                     <tr>
                                         <th>Service Id</th>

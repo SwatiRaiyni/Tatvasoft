@@ -40,6 +40,13 @@ class SpModel
                 
     }
 
+    public function checkzipcodeintable($postalcode){
+        $sql = "SELECT * FROM zipcode WHERE ZipcodeValue = '$postalcode'";
+        $result =mysqli_query($this->conn, $sql);
+        $count=$result->num_rows;
+        return $count;
+    }
+
     public function checkaddress1(){
         session_start(); 
         if(isset($_SESSION['userdata'])){

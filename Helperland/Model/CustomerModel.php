@@ -172,6 +172,12 @@ class CustomerModel
          while($row =mysqli_fetch_assoc($result))
         {
             if($row['ServiceProviderId'] != null){
+
+                $sql ="SELECT * FROM `favoriteandblocked` WHERE UserId=".$userdata['UserId']." AND TargetUserId= ".$row['ServiceProviderId']." AND IsBlocked = 1"; 
+                $result1 = mysqli_query($this->conn, $sql);
+                $rowcount=mysqli_num_rows($result1);
+                if($rowcount == 0){
+
                 
                 $sql1= "SELECT * FROM user WHERE UserId=". $row['ServiceProviderId'] ; 
                 $result1 = mysqli_query($this->conn, $sql1); 
@@ -186,6 +192,8 @@ class CustomerModel
                     $obj_merged = (object) array_merge((array) $obj_merged, (array) $row2);
                 }
                 $emparray[] = $obj_merged;
+
+                }
             }
             else{
                 $emparray[] = $row;   

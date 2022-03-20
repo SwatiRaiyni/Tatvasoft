@@ -587,7 +587,7 @@ th{
     color: white !important;
 }
 #tblCustomers_length label{
-    margin-top: 15px;
+    margin-top: 15px ;
 }
 
 #tblCustomers_length label select{
@@ -599,16 +599,16 @@ th{
     margin-left: 7px;
 }
 #mytable11_length label{
-    margin-top: 15px;
+    margin-top: 15px !important;
 }
 
 #mytable11_length label select{
-    margin: 0 5px;
+    margin: 0 5px !important;
 }
 
 #mytable11_info{
-    margin-top: 7px;
-    margin-left: 7px;
+    margin-top: 7px !important;
+    margin-left: 7px !important;
 }
 
 

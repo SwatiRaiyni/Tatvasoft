@@ -107,7 +107,7 @@ $(document).ready(function(){
 
 
 
-var dt2 = new DataTable(".mytable11", {
+var dt2 = new DataTable("#mytable11", {
 
     dom: 't<"table-bottom d-flex justify-content-between"<"table-bottom-inner d-flex"li>p>',
     responsive: true,

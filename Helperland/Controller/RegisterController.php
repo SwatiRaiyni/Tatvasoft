@@ -126,45 +126,62 @@ class RegisterController{
                 $_SESSION['status2'] = "Sorry! Password Doesnot Match!";
                 header('Location:'.  $this->base_url);
               }else{
-                if($result['UserTypeId'] == 1){
-                  $_SESSION['userdata']=$result;
-                  header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
+                  if(isset($_POST['rememberme'])){
+                      setcookie('emailcookie',$email,time()+86400);
+                      setcookie('passwordcookie',$password,time()+86400);
+                      if($result['UserTypeId'] == 1){
+                        $_SESSION['userdata']=$result;
+                        header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
+                      }
+                      elseif($result['UserTypeId'] == 2){
+                        $_SESSION['userdata']=$result;
+                        $isactive = $result['IsApproved'];
+                        if($isactive == 0){
+                          session_start();
+                          unset($_SESSION['userdata']);
+                          header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
+                        }else{
+                          header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
+                        }
+                      }
+                      elseif($result['UserTypeId'] == 3){
+                        $_SESSION['userdata']=$result;
+                        header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
+                      }
+                  }else{
+                      if($result['UserTypeId'] == 1){
+                        $_SESSION['userdata']=$result;
+                        header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
+                      }
+                      elseif($result['UserTypeId'] == 2){
+                        $_SESSION['userdata']=$result;
+                        $isactive = $result['IsApproved'];
+                        if($isactive == 0){
+                          session_start();
+                          unset($_SESSION['userdata']);
+                          header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
+                        }else{
+                          header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
+                        }
+                      }
+                      elseif($result['UserTypeId'] == 3){
+                        $_SESSION['userdata']=$result;
+                        header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
+                      }
+                  }
                 }
-                elseif($result['UserTypeId'] == 2){
-                    $_SESSION['userdata']=$result;
-                    
-                   $isactive = $result['IsApproved'];
-                   if($isactive == 0){
-                    // echo "if";die;
-                    session_start();
-                    unset($_SESSION['userdata']);
-                    header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
-                   }else{
-                     //echo"else";die;
-                    header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
-                   }
-                }
-                elseif($result['UserTypeId'] == 3){
-                  $_SESSION['userdata']=$result;
-                  header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
               }
+              else{
+                $_SESSION['status2'] = "Email Doesnt Exist";
+                header('Location:'.  $this->base_url);
               }
-            }
-            else{
-              
-              $_SESSION['status2'] = "Email Doesnt Exist";
-              header('Location:'.  $this->base_url);
-            }
        }
     }//end login function
+
     public function forgotpassword(){
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
-      
-      // $array = [
-      //   'email'=> $email
-      // ];
-      $result = $this->model->forgotpassword($email);
+        $result = $this->model->forgotpassword($email);
     
       if(count($result)>0){ 
       // echo '<pre>'; print_r($result['FirstName']); die;
@@ -173,7 +190,8 @@ class RegisterController{
         $body = "Hello, ".$result['FirstName']." Click here to reset your password http://localhost:80/TatvaSoft/Helperland/resetpassword.php?token=$token";
         $headers = "From: 180320116044.it.swati@gmail.com";
         if(mail($email,$subject,$body,$headers)){
-          echo"Email successfully";
+          echo "Email successfully ";
+         // echo $this->base_url;
         }
         else{
           echo "Fail";

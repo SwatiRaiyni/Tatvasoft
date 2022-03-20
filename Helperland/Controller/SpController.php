@@ -28,6 +28,8 @@ class SpController
             $city = $_POST['city'];
             
            $checkaddress = $this->model->checkaddress1();
+           $checkpostalcode = $this->model->checkzipcodeintable($postalcode);
+           if($checkpostalcode > 0){
             if(!empty($checkaddress)){
                 $array = [
                     'sname'=>$sname,
@@ -36,9 +38,9 @@ class SpController
                     'postalcode'=> $postalcode,
                     'city' => $city
                 ];//update
-                
-                $table2 = $this->model->updModel($array);//print_r($table2);die;
-            }else{
+                $table2 = $this->model->updModel($array);
+            }
+            else{
                 $array = [
                     'sname'=>$sname,
                     'hnumber'=> $hnumber,
@@ -67,9 +69,11 @@ class SpController
                 'postalcode' =>$postalcode,
                 'img'=>$img
             ];
+            
             $result = $this->model->Updatedata($array);
             if($result && $table2){
                 echo json_encode("yes");
+            }
             }
             else{
                 echo json_encode("no");
