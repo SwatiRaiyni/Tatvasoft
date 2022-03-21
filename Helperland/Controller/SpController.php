@@ -118,6 +118,7 @@ class SpController
                 'service_id' => $service_id
             ];
             $result = $this->model->getservicedetails1($array);
+           // echo '<pre>'; print_r($result); die;
             echo json_encode($result);
         }  
     }

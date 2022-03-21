@@ -341,6 +341,7 @@ $last = end($test);
             <!--New service request starts-->
             <div class="divContent" id="newservicerequests">
                 <div>
+                   
                     <table class="current-services" id="mytable1"> 
                         <thead>
                             <tr>
@@ -502,6 +503,7 @@ function servicedetails(obj){
     $("#custname").text(fname + ' ' + lname);
     $("#appenddate").text(date + ' ' +stime + '-' + etime);
     $('.service_id').val(id);
+   // getmap(zipcode);
     getservicedetails();
 
     $('.mydate').val(date);

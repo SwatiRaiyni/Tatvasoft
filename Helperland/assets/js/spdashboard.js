@@ -629,28 +629,28 @@ function getservicedetails(){
 
         success:function(data){
             
-            var count = Object.keys(data).length; 
+           // var count = Object.keys(data).length; 
             
             
-            for(let i=0; i<count; i++){
+          //  for(let i=0; i<count; i++){
                
-                $("#duration").text(data[i].SubTotal);
-                $("#serviceid").text(data[i].ServiceId);
-                $("#totalcost").text(data[i].TotalCost);
-                var abc = data[i].AddressLine1 + ' '+ data[i].AddressLine2 +' ' + data[i].PostalCode +' ,' + data[i].City;
+                $("#duration").text(data[0].SubTotal);
+                $("#serviceid").text(data[0].ServiceId);
+                $("#totalcost").text(data[0].TotalCost);
+                var abc = data[0].AddressLine1 + ' '+ data[0].AddressLine2 +' ' + data[0].PostalCode +' ,' + data[0].City;
                 $("#address").text(abc);
-                $("#mobile1").text(data[i].Mobile);
-                $("#email1").text(data[i].Email);
-                $("#comments").text(data[i].Comments);
-                getmap(data[i].PostalCode);
-                if(data[i].HasPets == 1){
+                $("#mobile1").text(data[0].Mobile);
+                $("#email1").text(data[0].Email);
+                $("#comments").text(data[0].Comments);
+                //getmap(data[0].PostalCode);
+                if(data[0].HasPets == 1){
                    var comm = "I have pet at home";
                 }
-                else if(data[i].HasPets == 0){
+                else if(data[0].HasPets == 0){
                     var comm = "I have not pet at home";
                 }
                 $("#haspets").text(comm) ;
-                var e = data[i].ServiceExtraId;
+                var e = data[0].ServiceExtraId;
                 let myFunc = num => Number(num);
                 var array = Array.from(String(e), myFunc);
              
@@ -688,7 +688,7 @@ function getservicedetails(){
                var comm = comm1 +' '+comm2 +' '+comm3 +' '+comm4 +' '+comm5;
               $("#extra").text(comm) ;
             
-            }
+          //  }
         },
         error:function(err){
          console.error(err);
