@@ -11,19 +11,19 @@ if(isset($_SESSION['status1'])){
 }
 
 
-if(isset($_SESSION['status2'])){ 
-    $variablephp = $_SESSION['status2'];
-?>
+// if(isset($_SESSION['status2'])){ 
+//     $variablephp = $_SESSION['status2'];
+// 
 
-<script>
-var variablejs = "<?php echo $variablephp; ?>" ;
-alert("Error! = " + variablejs);
-</script>
+// <script>
+// var variablejs = "<?php echo $variablephp; " ;
+// alert("Error! = " + variablejs);
+// </script>
     
    
-   <?php  unset($_SESSION['status2']);
-}
-?>
+//    <?php  unset($_SESSION['status2']);
+// }
+ ?>
 
 <main>
 <form action="<?= $base_url.'?controller=Register&function=login' ?>" method="post">
@@ -291,10 +291,11 @@ alert("Error! = " + variablejs);
 
 <?php include('includes/footer_home.php'); ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript" src="./assets/js/homepage.js"></script>
 
 

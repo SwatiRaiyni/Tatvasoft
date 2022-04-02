@@ -115,66 +115,59 @@ class RegisterController{
        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST['email'];
             $password = $_POST['password'];
+           // $remember = $_POST['remember'];
             $array = [
               'email'=> $email,
-              'password' => $password
+              'password' => $password,
+              
             ];
             $result = $this->model->login($array);
             if(count($result)>0){ 
               $result1 = $this->model->passwordverify($array);
               if(count($result1) == 0){
-                $_SESSION['status2'] = "Sorry! Password Doesnot Match!";
-                header('Location:'.  $this->base_url);
+                $array['status'] = 'error';
+			          $array['msg'] = 'Sorry! Password Doesnot Match!';
+                echo json_encode(['data'=>$array]);
               }else{
-                  if(isset($_POST['rememberme'])){
-                      setcookie('emailcookie',$email,time()+86400);
-                      setcookie('passwordcookie',$password,time()+86400);
+                if($_POST['remember']=='true'){
+                  setcookie('emailcookie',$result['Email'],time()+86400);
+                  setcookie('passwordcookie',$result['Password'],time()+86400);
+                }elseif($_POST['remember']=='false'){
+                  setcookie('emailcookie','',time()-3600);
+                  setcookie('passwordcookie','',time()-3600);
+                }
+                 
+                      
                       if($result['UserTypeId'] == 1){
                         $_SESSION['userdata']=$result;
-                        header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
+                        echo json_encode(['data'=>$result]);
                       }
                       elseif($result['UserTypeId'] == 2){
-                        $_SESSION['userdata']=$result;
                         $isactive = $result['IsApproved'];
                         if($isactive == 0){
-                          session_start();
-                          unset($_SESSION['userdata']);
-                          header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
+                         echo json_encode(['data'=>$result]);
                         }else{
-                          header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
+                          $_SESSION['userdata']=$result;
+                          echo json_encode(['data'=>$result]);
                         }
                       }
                       elseif($result['UserTypeId'] == 3){
                         $_SESSION['userdata']=$result;
-                        header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
+                        echo json_encode(['data'=>$result]);
                       }
-                  }else{
-                      if($result['UserTypeId'] == 1){
-                        $_SESSION['userdata']=$result;
-                        header('Location:'.  $this->base_url.'?controller=Contact&function=customerdashboard');
-                      }
-                      elseif($result['UserTypeId'] == 2){
-                        $_SESSION['userdata']=$result;
-                        $isactive = $result['IsApproved'];
-                        if($isactive == 0){
-                          session_start();
-                          unset($_SESSION['userdata']);
-                          header('Location:'.  $this->base_url.'?controller=Contact&function=HomePage');
-                        }else{
-                          header('Location:'.  $this->base_url.'?controller=Contact&function=spdashboard');
-                        }
-                      }
-                      elseif($result['UserTypeId'] == 3){
-                        $_SESSION['userdata']=$result;
-                        header('Location:'.  $this->base_url.'?controller=Contact&function=admin');
-                      }
-                  }
+                  
                 }
               }
               else{
-                $_SESSION['status2'] = "Email Doesnt Exist";
-                header('Location:'.  $this->base_url);
+               
+               $array['status'] = 'error';
+               $array['msg'] = 'Sorry! Email Doesnt Exist!';
+               echo json_encode(['data'=>$array]);
+               
               }
+              
+             
+
        }
     }//end login function
 

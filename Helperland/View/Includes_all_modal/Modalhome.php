@@ -5,12 +5,8 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
               <!-- Login Form -->
-              <form action="<?=$base_url.'?controller=Register&function=login' ?>" method="post">
-              
-             
-               
-            
-              <input type="hidden" name="userType" >
+              <form  id="form">
+                <input type="hidden" name="userType" >
                 <div class="modal-header">
                   <h5 class="modal-title">Login to your account</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -29,7 +25,7 @@
                   </div>
                 </div>
                 <div class=" text-center">
-                    <button type="submit"  class="blue-btn1">Login</a>
+                    <button type="button" id="clickBtn" class="blue-btn1">Login</a>
                 </div>
                <center style="margin-top: 20px;" > <a class="float-center" role="button" data-bs-target="#forgotpassword" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a></center>
                 <p class="text-center" style="margin-top: 20px;">Don't have an account? <a href="<?= $base_url.'?controller=Contact&function=registercustomer'?>">Create an account</a></p> 
@@ -64,6 +60,10 @@
 </div>
 </div>
 <!--Modal End-->
+<script>
+
+
+   </script>
 
 
 

@@ -115,3 +115,44 @@ if(url=="loginmodal=true"){
     document.getElementById("homelogin").click();
 }
 
+
+$("#clickBtn").on('click', function(){
+    var email=document.getElementById("Username").value;
+    var password=document.getElementById("Password").value;
+    var remember = document.getElementById("remember").checked; //alert(remember);
+    var url = "http://localhost/TatvaSoft/Helperland/?controller=Register&function=login";
+    if(email == '' && password == ''){
+        toastr.error('Error , both fiellds are requierd');
+    }else{
+    $.ajax({
+       url:url,    
+       type: "post",   
+       dataType: 'json',
+       data:{
+        email : email,
+        password : password,
+        remember : remember
+        },
+        success:function(result){
+           if(result.data.status == 'error'){
+               toastr.error(result.data.msg, 'Error');
+               var password = $("#Password").val('');
+            	var email = $("#Username").val('');
+
+           }else{
+               if(result.data['UserTypeId'] == 1){
+                   window.location = " http://localhost/TatvaSoft/Helperland/?controller=Contact&function=customerdashboard";
+               }else if(result.data['UserTypeId'] == 2){
+                    window.location = " http://localhost/TatvaSoft/Helperland/?controller=Contact&function=spdashboard";
+               }else if(result.data['UserTypeId'] == 3){
+                window.location = " http://localhost/TatvaSoft/Helperland/?controller=Contact&function=admin";
+            }
+           }
+          
+       }
+   });
+    }
+
+
+});
+
