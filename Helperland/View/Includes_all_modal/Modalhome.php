@@ -12,7 +12,8 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                
+                <div class="signup-msg"></div>
+               
                   <div class="mb-3">
                     <input type="text" name="email" value="<?php if(isset($_COOKIE['emailcookie'])){ echo $_COOKIE['emailcookie']; } ?>" class="form-control" id="Username" placeholder="Email" required autofocus/>
                   </div>

@@ -121,9 +121,11 @@ $("#clickBtn").on('click', function(){
     var password=document.getElementById("Password").value;
     var remember = document.getElementById("remember").checked; //alert(remember);
     var url = "http://localhost/TatvaSoft/Helperland/?controller=Register&function=login";
-    if(email == '' && password == ''){
-        toastr.error('Error , both fiellds are requierd');
-    }else{
+   if(email == '' && password == ''){
+       
+    alertMsg =`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Hey!</strong> All Fields are required <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div> `;
+    $('.signup-msg').html(alertMsg);
+     }else{
     $.ajax({
        url:url,    
        type: "post",   
@@ -135,9 +137,10 @@ $("#clickBtn").on('click', function(){
         },
         success:function(result){
            if(result.data.status == 'error'){
-               toastr.error(result.data.msg, 'Error');
-               var password = $("#Password").val('');
-            	var email = $("#Username").val('');
+             alertMsg =`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Hey!</strong> ${result.data.msg} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div> `;
+            $('.signup-msg').html(alertMsg);
+            var password = $("#Password").val('');
+            var email = $("#Username").val('');
 
            }else{
                if(result.data['UserTypeId'] == 1){
